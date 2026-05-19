@@ -37,15 +37,13 @@
             <h1>Talk through a Vysible rollout.</h1>
             <p>Tell us whether this is for your own Magento store or an agency package. We will respond with the fastest path to a demo or live workspace.</p>
             <ul class="ideal-list">
-              <li>Magento 2 merchant or agency portfolio.</li>
-              <li>Needs executive reporting across GA4, Search Console, and revenue.</li>
-              <li>Wants a hosted white-label dashboard instead of a custom reporting build.</li>
+              <li>Magento 2 merchant or agency looking for executive reporting.</li>
+              <li>Needs GA4, Search Console, and Magento revenue in one view.</li>
+              <li>Wants a hosted dashboard instead of a custom reporting build.</li>
             </ul>
-            <p class="fallback-note">Prefer email? Reach us at <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>.</p>
+            <p class="fallback-note">Or reach us directly at <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>.</p>
           </div>
-          <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/">
-            <input type="hidden" name="form-name" value="contact">
-            <p class="hidden-field"><label>Do not fill this out <input name="bot-field"></label></p>
+          <form class="contact-form reveal" method="POST" action="mailto:vysiblesales@gmail.com" enctype="text/plain">
             <div class="form-row">
               <label for="name">Name</label>
               <input id="name" name="name" type="text" autocomplete="name" required>
@@ -63,29 +61,22 @@
               <input id="website" name="website" type="url" autocomplete="url" placeholder="https://">
             </div>
             <div class="form-row">
-              <label for="role">Role</label>
-              <select id="role" name="role">
-                <option>Agency</option><option>Merchant</option><option>Consultant</option><option>Other</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <label for="volume">Monthly order volume</label>
-              <select id="volume" name="monthly_order_volume">
-                <option>Under 500</option><option>500-2,500</option><option>2,500-10,000</option><option>10,000+</option>
-              </select>
-            </div>
-            <div class="form-row">
               <label for="tier">Interested tier</label>
               <select id="tier" name="interested_tier">
-                <option>Starter</option><option>Growth</option><option>Agency</option><option>Not sure</option>
+                <option>Starter</option>
+                <option>Growth</option>
+                <option>Agency</option>
+                <option>Not sure</option>
               </select>
             </div>
             <div class="form-row">
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="5" required></textarea>
             </div>
-            <button class="button button-primary button-large" type="submit">Send rollout details</button>
-            <p class="form-note">We will reply from <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>.</p>
+            <button class="button button-primary button-large" type="submit">
+              Send rollout details
+            </button>
+            <p class="form-note">We will reply from <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>. Or email us directly if you prefer.</p>
           </form>
         </div>
       </section>

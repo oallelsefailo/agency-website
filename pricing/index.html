@@ -42,18 +42,18 @@
         <div class="container pricing-grid">
           <article class="pricing-card reveal">
             <h2>Starter</h2><div class="plan-price"><strong class="monthly-price">$149<span>/mo</span></strong><span class="annual-price">$1,490/yr billed annually</span></div><p>For a focused dashboard with essential AI review coverage.</p>
-            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1-mini (standard)</li><li>6 executive insights</li><li>6 review targets</li><li>8 AI refreshes per hour per user</li><li>No white-label branding</li><li>Email support, 24-hour response</li></ul>
+            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1-mini (standard)</li><li>6 executive insights</li><li>6 review targets</li><li>8 AI refreshes per hour per user</li><li>No white-label branding</li><li>Email support, 24-hour response</li><li>AI model updates: mini variants as released</li></ul>
             <a class="button button-secondary" href="/contact/">Talk to Vysible</a>
           </article>
           <article class="pricing-card pricing-card-featured reveal">
             <span class="tier-label">Recommended for retained service</span><h2>Growth</h2><div class="plan-price"><strong class="monthly-price">$299<span>/mo</span></strong><span class="annual-price">$2,990/yr, save two months</span></div><p>A fuller operating readout with white-label delivery.</p>
-            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1-mini (standard)</li><li>9 executive insights per brief</li><li>9 priority review targets</li><li>15 AI refreshes per hour per user</li><li>White-label branding &mdash; your name, not ours</li><li>Priority email support</li></ul>
+            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1-mini (standard)</li><li>9 executive insights per brief</li><li>9 priority review targets</li><li>15 AI refreshes per hour per user</li><li>White-label branding &mdash; your name, not ours</li><li>Priority email support</li><li>AI model updates: mini variants as released</li></ul>
             <a class="button button-primary" href="/demo/">See Demo</a>
             <a class="button button-secondary" href="/contact/">Talk to Vysible</a>
           </article>
           <article class="pricing-card reveal">
             <h2>Agency</h2><div class="plan-price"><strong class="monthly-price">$499<span>/mo</span></strong><span class="annual-price">$4,990/yr billed annually</span></div><p>For deeper AI analysis, more review targets, and dedicated support.</p>
-            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1 full (advanced reasoning)</li><li>12 executive insights per brief</li><li>12 priority review targets</li><li>25 AI refreshes per hour per user</li><li>White-label branding &mdash; your name, not ours</li><li>Dedicated email support</li></ul>
+            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1 full (advanced reasoning)</li><li>12 executive insights per brief</li><li>12 priority review targets</li><li>25 AI refreshes per hour per user</li><li>White-label branding &mdash; your name, not ours</li><li>Dedicated email support</li><li>AI model updates: full models on release, always first</li></ul>
             <a class="button button-secondary" href="/contact/">Talk to Vysible</a>
           </article>
         </div>
@@ -75,6 +75,7 @@
               <tr><th scope="row">Sources</th><td>GA4 + GSC + Magento</td><td>GA4 + GSC + Magento</td><td>GA4 + GSC + Magento</td></tr>
               <tr><th scope="row">White label</th><td>No</td><td>Yes</td><td>Yes</td></tr>
               <tr><th scope="row">Support</th><td>Email, 24-hour response</td><td>Priority email</td><td>Dedicated email support</td></tr>
+              <tr><th scope="row">AI model updates</th><td>Mini variants when available</td><td>Mini variants when available</td><td>Full models on release</td></tr>
             </tbody>
           </table>
         </div>
@@ -88,9 +89,6 @@
             </tbody>
           </table>
         </div>
-        <div class="container note-band reveal">
-          <strong>Implementation note:</strong> Pricing assumes standard Magento 2 access and source availability. Complex data cleanup, custom reporting, or unusual source constraints can be scoped separately.
-        </div>
       </section>
       <section class="section compact">
         <div class="container section-heading reveal"><p class="eyebrow">FAQ</p><h2>Common rollout questions.</h2></div>
@@ -99,6 +97,30 @@
           <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Can we see the demo before connecting sources?</button><div class="faq-panel"><p>Yes. Demo mode uses sample ecommerce data so you can review the dashboard before connecting GA4, Search Console, or Magento access.</p></div></article>
           <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Who owns the data?</button><div class="faq-panel"><p>You own your source data. Vysible uses connected data to operate the dashboard, briefs, and review targets for the service.</p></div></article>
           <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Do you replace GA4 or Magento reports?</button><div class="faq-panel"><p>No. Vysible gives operators an executive view over those systems so weekly reviews do not depend on jumping between separate reporting surfaces.</p></div></article>
+          <article class="faq-item reveal">
+            <button type="button" data-faq aria-expanded="false">How is my store data protected?</button>
+            <div class="faq-panel"><p>GA4 and Search Console are connected read-only via OAuth &mdash; no passwords are stored and access can be revoked from your Google account at any time. The Magento connection uses a read-only database user with SELECT access only. The dashboard queries live sources on each load and does not store your data.</p></div>
+          </article>
+          <article class="faq-item reveal">
+            <button type="button" data-faq aria-expanded="false">Does Vysible store my customer or order data?</button>
+            <div class="faq-panel"><p>No. The dashboard pulls data on demand and returns it to your browser. No customer records, order details, or personally identifiable information are stored on Vysible infrastructure.</p></div>
+          </article>
+          <article class="faq-item reveal">
+            <button type="button" data-faq aria-expanded="false">Does the AI brief use my customer data?</button>
+            <div class="faq-panel"><p>No. The AI brief sends metric summaries &mdash; numbers like revenue totals, session counts, and CTR percentages &mdash; to OpenAI. No customer names, emails, or personally identifiable information are included.</p></div>
+          </article>
+          <article class="faq-item reveal">
+            <button type="button" data-faq aria-expanded="false">What happens if I want to disconnect?</button>
+            <div class="faq-panel"><p>Revoke the GA4 and Search Console OAuth token from your Google account and drop the read-only Magento database user. Access is cut immediately. There is no data to delete on our end because none is stored.</p></div>
+          </article>
+          <article class="faq-item reveal">
+            <button type="button" data-faq aria-expanded="false">Will I get access to newer AI models?</button>
+            <div class="faq-panel"><p>Yes. When OpenAI releases a new full model, Agency tier deployments are updated first. When a mini or efficiency variant of that model becomes available, Starter and Growth tier deployments are updated. Everyone moves forward &mdash; Agency always stays one step ahead. You will be notified before any change is made to your deployment.</p></div>
+          </article>
+          <article class="faq-item reveal">
+            <button type="button" data-faq aria-expanded="false">Can multiple team members use the dashboard at the same time?</button>
+            <div class="faq-panel"><p>Yes. Each client dashboard is access-controlled so only authorized team members can open it. Multiple users can be active simultaneously &mdash; AI refresh limits apply per IP address so each team member gets their own allowance.</p></div>
+          </article>
         </div>
       </section>
       <section class="final-cta"><div class="container final-cta-inner reveal"><p class="eyebrow">Ready to compare the fit?</p><h2>Open the demo, then choose the service tier your review cycle needs.</h2><div class="hero-actions"><a class="button button-primary button-large" href="/demo/">See Demo</a><a class="button button-secondary button-large" href="/contact/">Contact Us</a></div></div></section>
