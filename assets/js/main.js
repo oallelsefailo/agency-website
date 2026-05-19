@@ -79,6 +79,62 @@
     });
   }
 
+  document.querySelectorAll("[data-async-form]").forEach((form) => {
+    const submitButton = form.querySelector("button[type='submit']");
+    const status = form.querySelector("[data-form-status]");
+    const success = form.parentElement ? form.parentElement.querySelector("[data-form-success]") : null;
+    const submitLabel = submitButton ? submitButton.dataset.submitLabel || submitButton.textContent.trim() : "";
+    const loadingLabel = submitButton ? submitButton.dataset.loadingLabel || "Sending..." : "Sending...";
+
+    function setStatus(message) {
+      if (!status) return;
+      status.textContent = message;
+      status.classList.add("is-error");
+      status.hidden = false;
+    }
+
+    function resetSubmitButton() {
+      if (!submitButton) return;
+      submitButton.disabled = false;
+      submitButton.removeAttribute("aria-busy");
+      submitButton.textContent = submitLabel;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!submitButton) return;
+
+      if (status) {
+        status.hidden = true;
+        status.textContent = "";
+        status.classList.remove("is-error");
+      }
+
+      submitButton.disabled = true;
+      submitButton.setAttribute("aria-busy", "true");
+      submitButton.textContent = loadingLabel;
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        });
+
+        if (!response.ok) throw new Error("Form submission failed");
+
+        form.hidden = true;
+        if (success) {
+          success.hidden = false;
+          success.classList.add("is-visible");
+        }
+      } catch (error) {
+        setStatus("Something went wrong. Try again, or email vysiblesales@gmail.com directly.");
+        resetSubmitButton();
+      }
+    });
+  });
+
   document.querySelectorAll("[data-faq]").forEach((button) => {
     button.addEventListener("click", () => {
       const item = button.closest(".faq-item");

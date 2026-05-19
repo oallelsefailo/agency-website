@@ -50,7 +50,7 @@
             </ul>
             <p class="fallback-note">Or reach us directly at <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>.</p>
           </div>
-          <form class="contact-form reveal" method="POST" action="https://formspree.io/f/mredezjw">
+          <form class="contact-form reveal" method="POST" action="https://formspree.io/f/mredezjw" data-async-form>
             <div class="form-row">
               <label for="name">Name</label>
               <input id="name" name="name" type="text" autocomplete="name" required>
@@ -80,11 +80,17 @@
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="5" required></textarea>
             </div>
-            <button class="button button-primary button-large" type="submit">
+            <button class="button button-primary button-large" type="submit" data-submit-label="Send rollout details" data-loading-label="Sending...">
               Send rollout details
             </button>
+            <p class="contact-form-status" data-form-status role="alert" hidden></p>
             <p class="form-note">We will reply from <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>. Or email us directly if you prefer.</p>
           </form>
+          <div class="contact-form-success reveal" data-form-success role="status" hidden>
+            <p class="eyebrow">Message received</p>
+            <h2>We got it.</h2>
+            <p>Expect a reply from <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a> within one business day.</p>
+          </div>
         </div>
       </section>
     </main>
