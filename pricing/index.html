@@ -106,7 +106,7 @@
           <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Do you replace GA4 or Magento reports?</button><div class="faq-panel"><p>No. Vysible gives operators an executive view over those systems so weekly reviews do not depend on jumping between separate reporting surfaces.</p></div></article>
           <article class="faq-item reveal">
             <button type="button" data-faq aria-expanded="false">How is my store data protected?</button>
-            <div class="faq-panel"><p>GA4 and Search Console are connected read-only via OAuth &mdash; no passwords are stored and access can be revoked from your Google account at any time. The Magento connection uses a read-only database user with SELECT access only. The dashboard queries live sources on each load and does not store your data.</p></div>
+            <div class="faq-panel"><p>GA4 and Search Console are connected read-only via OAuth - no passwords are stored and access can be revoked from your Google account at any time. The Magento connection uses a read-only database user with SELECT access only. The dashboard queries live sources on each load and does not store your data.</p></div>
           </article>
           <article class="faq-item reveal">
             <button type="button" data-faq aria-expanded="false">Does Vysible store my customer or order data?</button>
@@ -114,7 +114,15 @@
           </article>
           <article class="faq-item reveal">
             <button type="button" data-faq aria-expanded="false">Does the AI brief use my customer data?</button>
-            <div class="faq-panel"><p>No. The AI brief sends metric summaries &mdash; numbers like revenue totals, session counts, and CTR percentages &mdash; to OpenAI. No customer names, emails, or personally identifiable information are included.</p></div>
+            <div class="faq-panel"><p>No. The AI brief sends metric summaries - numbers like revenue totals, session counts, and CTR percentages - to OpenAI. No customer names, emails, or personally identifiable information are included.</p></div>
+          </article>
+          <article class="faq-item reveal">
+            <button type="button" data-faq aria-expanded="false">How does the AI work? What does it actually see?</button>
+            <div class="faq-panel"><p>The AI powers two things in your dashboard: the Executive Brief and the Priority Review Targets.
+            For both, it only sees aggregated metrics for the selected period. Things like total sessions, revenue, conversion rate, search impressions, top pages, and product revenue movement. No customer names, no order details, no personally identifiable information ever leaves your dashboard.<br>
+            The Executive Brief takes those numbers and writes a plain English summary of where things stand and what's moving. The Priority Review Targets use the same data to surface specific areas worth a closer look, whether that's a page with high impressions and low CTR, a product with dropping revenue, or a category that's outperforming everything else.<br>
+            If the AI is unavailable for any reason, both fall back to a rule-based version built from the same data so you always get an output either way.<br>
+            OpenAI's API does not train on API inputs so your data is never used to improve their models.</p></div>
           </article>
           <article class="faq-item reveal">
             <button type="button" data-faq aria-expanded="false">What happens if I want to disconnect?</button>
@@ -126,7 +134,7 @@
           </article>
           <article class="faq-item reveal">
             <button type="button" data-faq aria-expanded="false">Can multiple team members use the dashboard at the same time?</button>
-            <div class="faq-panel"><p>Yes. Each client dashboard is access-controlled so only authorized team members can open it. Multiple users can be active simultaneously &mdash; AI refresh limits apply per IP address so each team member gets their own allowance.</p></div>
+            <div class="faq-panel"><p>Yes. Each client dashboard is access-controlled so only authorized team members can open it. Multiple users can be active simultaneously - AI refresh limits apply per IP address so each team member gets their own allowance.</p></div>
           </article>
         </div>
       </section>
