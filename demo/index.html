@@ -43,11 +43,17 @@
             <p class="eyebrow">Demo mode</p>
             <h1>Open the Vysible walkthrough with no credentials.</h1>
             <p>The demo uses sample ecommerce data and the same dashboard shell used for branded client workspaces. It is built for agency walkthroughs before GA4, Search Console, or Magento access exists.</p>
-            <div class="hero-actions">
-              <a class="button button-primary button-large" href="https://demo.vysible.io">Launch Demo</a>
+            <form class="contact-form" method="POST" action="https://api.web3forms.com/submit" novalidate data-demo-form>
+              <input type="hidden" name="access_key" value="a22c4fb4-464b-4135-8507-f5c6e50d4364">
+              <input type="hidden" name="subject" value="Demo Access Request">
+              <div class="form-row">
+                <input type="email" name="email" required placeholder="Work email" data-demo-email>
+                <p class="fallback-note" data-demo-error hidden>Please enter a valid email address.</p>
+              </div>
+              <button class="button button-primary button-large" type="submit">Open Demo</button>
+              <p class="fallback-note">Your email is only used to open the demo. We do not store, sell, or market to it.</p>
               <a class="button button-secondary button-large" href="/contact/">Talk through a client rollout</a>
-            </div>
-            <p class="fallback-note">If the demo does not open, use <a href="https://demo.vysible.io">https://demo.vysible.io</a> directly.</p>
+            </form>
           </div>
           <div class="browser-frame reveal">
             <div class="browser-bar"><span class="browser-dot red"></span><span class="browser-dot amber"></span><span class="browser-dot green"></span><span class="address-pill">demo.vysible.io/client/overview</span></div>
@@ -72,5 +78,65 @@
       <div class="container footer-bottom"><span>&copy; 2026 Vysible. All rights reserved.</span><a class="footer-demo" href="/demo/">See Demo</a></div>
     </footer>
     <script src="../assets/js/main.js" defer></script>
+    <script>
+      const demoForm = document.querySelector('[data-demo-form]');
+      if (demoForm) {
+        const emailInput = demoForm.querySelector('[data-demo-email]');
+        const errorNote = demoForm.querySelector('[data-demo-error]');
+        const submitButton = demoForm.querySelector('button[type="submit"]');
+        const defaultButtonText = submitButton.textContent;
+
+        const isValidEmail = (value) => {
+          const email = value.trim();
+          const atMatches = email.match(/@/g) || [];
+          if (atMatches.length !== 1) return false;
+
+          const [localPart, domain] = email.split('@');
+          if (!localPart || !domain) return false;
+          if (!domain.includes('.')) return false;
+
+          const lastDotIndex = domain.lastIndexOf('.');
+          return lastDotIndex > 0 && domain.length - lastDotIndex - 1 >= 2;
+        };
+
+        const showError = (message) => {
+          errorNote.textContent = message;
+          errorNote.hidden = false;
+        };
+
+        demoForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          errorNote.hidden = true;
+
+          if (!isValidEmail(emailInput.value)) {
+            showError('Please enter a valid email address.');
+            return;
+          }
+
+          submitButton.disabled = true;
+          submitButton.textContent = 'Opening...';
+
+          try {
+            const response = await fetch(demoForm.action, {
+              method: 'POST',
+              body: new FormData(demoForm),
+              headers: {
+                Accept: 'application/json'
+              }
+            });
+
+            if (!response.ok) {
+              throw new Error('Demo request failed');
+            }
+
+            window.location.href = 'https://demo.vysible.io';
+          } catch (error) {
+            submitButton.disabled = false;
+            submitButton.textContent = defaultButtonText;
+            showError('Something went wrong. Open the demo directly at https://demo.vysible.io');
+          }
+        });
+      }
+    </script>
   </body>
 </html>
