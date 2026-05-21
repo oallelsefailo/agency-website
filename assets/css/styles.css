@@ -685,11 +685,16 @@ a:hover { color: var(--brand); }
 }
 
 .feature-grid,
-.pricing-grid,
 .testimonial-grid,
 .mini-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--space-5);
 }
 
