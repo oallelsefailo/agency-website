@@ -957,6 +957,11 @@ a:hover { color: var(--brand); }
   isolation: isolate;
 }
 
+.demo-hero {
+  min-height: auto;
+  padding-bottom: var(--space-6);
+}
+
 .page-copy-centered {
   text-align: center;
   max-width: 860px;
