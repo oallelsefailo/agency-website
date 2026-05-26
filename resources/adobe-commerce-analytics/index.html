@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Adobe Commerce Analytics – Filling the Gap | Vysible</title>
-    <meta name="description" content="Adobe Commerce's built-in analytics cover orders and customers, but not the full picture — here's where the gap is and how a Magento-native dashboard fills it with GA4, Search Console, and AI-driven review targets.">
+    <title>Adobe Commerce Analytics: What Native Reporting Misses | Vysible</title>
+    <meta name="description" content="Adobe Commerce analytics cover orders and customers, but operators still need GA4, Search Console, Magento revenue data, and review targets in one place.">
     <link rel="canonical" href="https://vysible.io/resources/adobe-commerce-analytics/">
-    <meta property="og:title" content="Adobe Commerce Analytics – Filling the Gap | Vysible">
-    <meta property="og:description" content="Adobe Commerce analytics covers orders and customers, but not the full picture — here's where the gap is and how to fill it.">
+    <meta property="og:title" content="Adobe Commerce Analytics: What Native Reporting Misses | Vysible">
+    <meta property="og:description" content="Adobe Commerce analytics covers orders and customers, but operators still need traffic, search, and revenue context in one place.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://vysible.io/resources/adobe-commerce-analytics/">
     <meta property="og:image" content="https://vysible.io/screenshots/Executive-Overview-Dark.png">
@@ -39,41 +39,37 @@
       <section class="legal-hero">
         <div class="container page-copy page-copy-centered reveal">
           <p class="eyebrow">Adobe Commerce</p>
-          <h1>Adobe Commerce Analytics – Filling the Gap</h1>
-          <p>Adobe Commerce ships with solid built-in reporting — but it stops at the store boundary. Here is where the analytics gap lives and how to close it without building a custom reporting stack.</p>
+          <h1>Adobe Commerce Analytics: What Native Reporting Misses</h1>
+          <p>Adobe Commerce has useful built-in reporting, especially for orders and customers. The hard part is seeing that store data next to traffic, search visibility, and the issues your team should review this week.</p>
         </div>
       </section>
       <section class="section compact">
         <article class="container legal-content reveal">
           <h2>What Adobe Commerce reporting does well</h2>
-          <p>Adobe Commerce (formerly Magento Commerce) includes a more advanced reporting layer than the open-source Magento edition. The built-in Business Intelligence tools — powered by the Magento BI dashboard — provide sales reports, customer segmentation, product performance, and some marketing attribution. For a merchant running Adobe Commerce with a dedicated analytics resource, the native tools cover the internal view of the business: what sold, who bought it, and what the margin looks like.</p>
-          <p>The reporting is database-native, which means order accuracy is strong — revenue, tax, refunds, and product-level sales pull directly from the source. The BI layer adds some visualization and scheduled report delivery, which saves the manual CSV-export workflow that open-source Magento users rely on.</p>
+          <p>Adobe Commerce, formerly Magento Commerce, includes a stronger reporting layer than the open-source Magento edition. Its Business Intelligence tools cover sales reports, customer segmentation, product performance, and some marketing attribution. For a merchant with a dedicated analytics person, those tools give a useful internal read on what sold, who bought it, and where margin landed.</p>
+          <p>The order data is a real strength. Revenue, tax, refunds, and product-level sales come from the commerce database, so the numbers are close to the source. The BI layer also helps with visualization and scheduled reports, which is a step up from the CSV exports many Magento teams still live with.</p>
 
           <h2>Where the gap opens up</h2>
-          <p>Adobe Commerce reporting has the same structural boundary that every store-native analytics tool has: it sees what happens inside the store, but it does not see how customers get there or what they do before they convert. This gap shows up in three specific ways.</p>
-          <p><strong>Traffic context is missing.</strong> The BI dashboard can tell you that revenue from a product line dropped 18% month-over-month. It cannot tell you whether organic search traffic to that product's landing page also dropped, whether paid search efficiency shifted, or whether direct traffic increased while organic declined — all of which point to different root causes and different fixes. Without GA4 data connected to order data, the operator is guessing at cause.</p>
-          <p><strong>Search visibility is disconnected.</strong> Adobe Commerce integrates with Google Shopping and some ad channels, but Google Search Console — the primary source for organic search performance — is not part of the native reporting surface. This means the operator needs to check Search Console separately to understand whether a page that lost revenue also lost impressions, dropped in average position, or saw a CTR decline. Each of those patterns calls for a different response: a technical SEO fix, a meta description rewrite, or acceptance of a seasonal demand shift. Diagnosing it without the paired data takes time that agencies and operators don't have.</p>
-          <p><strong>No cross-source intelligence layer.</strong> Adobe Commerce BI can show you reports. It cannot read across GA4, Search Console, and order data and tell you what changed and what to do about it. The operator still does all the synthesis work — opening each source, comparing numbers, writing notes, building the weekly review narrative from scratch.</p>
+          <p>Adobe Commerce reporting has the same built-in limit as most store reporting tools: it sees what happened inside the store. It does not show how shoppers got there, which pages are gaining or losing search demand, or what changed before the order happened. That creates a few familiar problems.</p>
+          <p><strong>Traffic context is missing.</strong> The BI dashboard can tell you a product line dropped 18% month over month. It cannot tell you whether organic traffic to that product page also fell, whether paid search got more expensive, or whether direct traffic rose while organic slipped. Those are different problems with different fixes. Without GA4 connected to order data, the cause is usually a guess.</p>
+          <p><strong>Search visibility is disconnected.</strong> Adobe Commerce connects with Google Shopping and some ad channels, but Google Search Console is not part of the native reporting surface. That means someone still has to check Search Console to see whether a page lost impressions, dropped in average position, or kept impressions but lost CTR. A technical SEO issue, a weaker search snippet, and seasonal demand all look different when the data is side by side.</p>
+          <p><strong>The weekly readout is still manual.</strong> Adobe Commerce BI can show reports. It does not read across GA4, Search Console, and order data and summarize what changed. The operator still opens each source, compares numbers, writes notes, and builds the review by hand.</p>
 
           <h2>How to fill the gap without building a custom stack</h2>
-          <p>The two most common paths are: build a custom reporting pipeline, or connect a pre-built Magento-native dashboard. The build path typically involves piping GA4 data into Looker Studio or a data warehouse, adding Search Console data through the API or a connector, and layering it on top of Adobe Commerce order exports. The result is a dashboard, but it requires ongoing maintenance — API changes, field drift, schema updates, and the person who built it becomes the single point of failure for weekly reporting.</p>
-          <p>The connect path — the approach Vysible takes — wires GA4, Search Console, and Adobe Commerce order data into one hosted dashboard without requiring a data warehouse, an ETL pipeline, or a dedicated analytics hire. Setup is handled by Vysible: you share Google Viewer access for GA4 and Search Console, run one SQL command to create a read-only database user in Adobe Commerce, and the dashboard goes live — typically within one business day.</p>
+          <p>Most teams either build a custom reporting pipeline or connect a Magento-native dashboard. The build path usually means sending GA4 into Looker Studio or a warehouse, pulling Search Console through an API or connector, and layering it over Adobe Commerce order exports. It can work, but it needs maintenance. APIs change, fields drift, schemas move, and the person who built the dashboard becomes the person everyone depends on.</p>
+          <p>Vysible takes the connect path. It brings GA4, Search Console, and Adobe Commerce order data into one hosted dashboard without a data warehouse, ETL pipeline, or dedicated analytics hire. You share Google Viewer access, create a read-only Adobe Commerce database user, and Vysible handles the dashboard setup. Most standard setups are live within one business day.</p>
 
           <h2>What the connected dashboard delivers</h2>
-          <p>Once connected, the dashboard surfaces the full picture that Adobe Commerce reporting alone cannot:</p>
-          <p><strong>Executive overview.</strong> Traffic, search visibility, merchandising movement, and revenue in one view — with prior-period comparisons built in. The first question in any weekly review is answered before the meeting starts.</p>
-          <p><strong>AI executive brief.</strong> A GPT-powered summary that reads across GA4, Search Console, and Adobe Commerce order data and writes a plain-English operating note. It cites specific evidence — which pages gained or lost traffic, which products moved, which categories shifted — and names the next targets to review.</p>
-          <p><strong>Priority review targets.</strong> Low-CTR pages, products with revenue declines, and categories outperforming or underperforming expectations are surfaced as a working queue — not another chart to interpret, but a list of decisions to make.</p>
-          <p><strong>White-label delivery.</strong> For agencies running Adobe Commerce clients, Vysible deploys under the agency's brand — their logo, their domain, their client relationship. The Agency tier at $499/month includes up to three client deployments with dedicated support and full GPT-4.1 AI. Agencies bill their clients directly for the analytics service; Vysible handles the dashboard infrastructure.</p>
+          <p>Once connected, the dashboard shows the traffic, search, and revenue data Adobe Commerce reporting misses:</p>
+          <p><strong>Executive overview.</strong> Traffic, search visibility, merchandising movement, and revenue sit in one view with prior-period comparisons built in. The review starts with a clear read on what changed.</p>
+          <p><strong>AI executive brief.</strong> The brief reads across GA4, Search Console, and Adobe Commerce order data, then writes a plain-English weekly summary. It points to specific evidence, including pages that gained or lost traffic, products that moved, and categories that shifted.</p>
+          <p><strong>Priority review targets.</strong> Low-CTR pages, products with revenue declines, and categories that beat or miss expectations become a review list. It is not another chart to interpret. It is a short list of things worth looking at.</p>
+          <p><strong>White-label delivery.</strong> Agencies can run Adobe Commerce analytics under their own brand, with their logo, their domain, and their client relationship. The Agency tier at $499/month includes up to three client deployments with dedicated support and full GPT-4.1 AI. Agencies bill clients directly; Vysible handles the dashboard infrastructure.</p>
 
           <h2>Does this replace Adobe Commerce BI?</h2>
-          <p>No — it extends it. Adobe Commerce BI remains useful for deep-dive customer segmentation, margin analysis, and scheduled report delivery to internal stakeholders. Vysible adds the layer that sits on top: a unified operating view that pulls in the external signals (traffic, search) and adds an AI layer that reads across sources so the weekly review starts with answers, not questions.</p>
+          <p>No. It extends it. Adobe Commerce BI remains useful for customer segmentation, margin analysis, and scheduled internal reporting. Vysible adds the weekly dashboard view on top: traffic, search, Magento revenue, and an AI summary in one place, so the weekly review starts with a point of view instead of a blank doc.</p>
           <p>For Adobe Commerce operators who already have a BI resource, Vysible reduces the time that person spends on assembly and increases the time they spend on strategy. For agencies, it turns reporting from a cost center into a retained service line that clients see under the agency's own brand.</p>
 
-          <div class="hero-actions" style="margin-top:var(--space-7);">
-            <a class="button button-primary button-large" href="/demo/">See the live demo</a>
-            <a class="button button-secondary button-large" href="/pricing/">Compare tiers</a>
-          </div>
         </article>
       </section>
       <section class="final-cta">
