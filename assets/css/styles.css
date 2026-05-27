@@ -457,6 +457,7 @@ a:hover { color: var(--brand); }
 }
 
 .section-heading .hero-actions,
+.page-copy-centered .hero-actions,
 .final-cta .hero-actions,
 .signal-strip .proof-row {
   justify-content: center;
