@@ -20,6 +20,7 @@
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
   --glow-brand: 0 0 44px rgba(115, 230, 196, 0.26);
   --glow-violet: 0 0 54px rgba(139, 124, 246, 0.2);
+  --badge-glow: linear-gradient(135deg, rgba(115,230,196,0.18), rgba(90,167,255,0.1));
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --space-1: 0.25rem;
@@ -56,6 +57,7 @@
   --shadow: 0 22px 64px rgba(15, 23, 42, 0.14);
   --glow-brand: 0 0 34px rgba(13, 159, 122, 0.18);
   --glow-violet: 0 0 34px rgba(98, 84, 217, 0.12);
+  --badge-glow: linear-gradient(135deg, rgba(13,159,122,0.12), rgba(36,109,217,0.08));
 }
 
 * { box-sizing: border-box; }
@@ -251,8 +253,10 @@ a:hover { color: var(--brand); }
   border: 1px solid var(--border);
   padding: 0 var(--space-4);
   font: inherit;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
@@ -389,6 +393,10 @@ a:hover { color: var(--brand); }
   font-weight: 760;
 }
 
+.hero-title {
+  text-wrap: balance;
+}
+
 .page-copy h1 {
   font-size: clamp(2.5rem, 6vw, 5rem);
   line-height: 1;
@@ -436,8 +444,7 @@ a:hover { color: var(--brand); }
 
 .proof-row span,
 .chip-list span,
-.metric-chip,
-.tier-label {
+.metric-chip {
   display: inline-flex;
   align-items: center;
   min-height: 32px;
@@ -447,6 +454,18 @@ a:hover { color: var(--brand); }
   color: var(--text-muted);
   padding: 0 var(--space-3);
   font: 700 0.8rem/1 var(--font-mono);
+}
+
+.tier-label {
+  display: block;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--text-muted);
+  padding: var(--space-1) var(--space-3);
+  font: 700 0.8rem/1 var(--font-mono);
+  margin-bottom: var(--space-3);
+  width: fit-content;
 }
 
 .hero-visual {
@@ -590,6 +609,11 @@ a:hover { color: var(--brand); }
   transform: translateY(-4px);
   border-color: var(--border-strong);
   box-shadow: var(--shadow), var(--glow-brand);
+}
+
+.showcase-card:hover .browser-frame {
+  transform: none;
+  box-shadow: none;
 }
 
 .showcase-card-large {
@@ -786,17 +810,37 @@ a:hover { color: var(--brand); }
   z-index: 1;
 }
 
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--badge-glow);
+  color: var(--brand);
+  font: 760 1.1rem/1 var(--font-mono);
+  margin-bottom: 1rem;
+}
+
 .step-card span {
   color: var(--brand);
   font: 760 0.9rem/1 var(--font-mono);
 }
 
 .gallery-grid,
-.page-hero-grid,
 .contact-grid,
 .legal-layout {
   display: grid;
   grid-template-columns: 0.58fr 1.42fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: 1.42fr 0.58fr;
   gap: var(--space-7);
   align-items: center;
 }
@@ -852,6 +896,12 @@ a:hover { color: var(--brand); }
 }
 
 .pricing-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-glass);
+  padding: var(--space-5);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.14);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
   display: flex;
   flex-direction: column;
 }
@@ -879,6 +929,11 @@ a:hover { color: var(--brand); }
   color: var(--text);
   font: 760 clamp(1.55rem, 3vw, 2.35rem)/1.05 var(--font-mono);
   overflow-wrap: anywhere;
+}
+
+.pricing-card .monthly-price:only-child,
+.pricing-card .monthly-price[data-custom] {
+  font-size: 1.6rem;
 }
 
 .plan-price {
@@ -936,7 +991,33 @@ a:hover { color: var(--brand); }
   box-shadow: var(--glow-brand);
 }
 
-.pricing-card .button { margin-top: auto; }
+.pricing-card .button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.pricing-card .button + .button {
+  margin-top: var(--space-3);
+}
+
+.pricing-card .check-list {
+  margin: var(--space-4) 0;
+  gap: var(--space-1);
+}
+
+.pricing-card h2,
+.pricing-card h3 {
+  margin-top: 0;
+}
+
+.pricing-card .plan-price {
+  margin-top: var(--space-3);
+}
+
+.pricing-card .monthly-price {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.1;
+}
 
 .final-cta {
   padding: var(--space-9) 0;
@@ -1361,9 +1442,16 @@ textarea:focus {
   .theme-toggle {
     width: 100%;
   }
+  .signal-strip {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
   .source-rail {
-    align-items: stretch;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row !important;
+    justify-content: flex-start;
+    width: max-content;
   }
   .source-rail i {
     width: 1px;
