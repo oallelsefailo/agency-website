@@ -1,6 +1,7 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vysible Demo | No-credential Magento analytics walkthrough</title>
@@ -13,7 +14,10 @@
     <meta property="og:image" content="https://vysible.io/screenshots/Executive-Overview-Dark.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -21,60 +25,123 @@
       gtag('js', new Date());
       gtag('config', 'G-1VKLX3BRJ3');
     </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header" data-header>
-      <nav class="nav-shell" aria-label="Primary navigation">
-        <a class="brand" href="/" aria-label="Vysible home"><img class="brand-logo" src="/screenshots/vysible.png" width="348" height="97" alt="Vysible"></a>
-        <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="primary-menu" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
-        <div class="nav-menu" id="primary-menu" data-nav-menu>
-          <a href="/#product">Product</a><a href="/#how-it-works">How it works</a><a href="/pricing/">Pricing</a><a href="/contact/">Contact</a>
-          <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false" data-theme-toggle><span class="theme-toggle__icon" aria-hidden="true"></span><span class="theme-toggle__text">Light</span></button>
-          <a class="button button-primary nav-cta" href="/demo/" aria-current="page">See Demo</a>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Vysible home">
+          <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22">
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a href="/#features">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/contact/">Contact</a>
         </div>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="page-hero demo-hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="container page-copy page-copy-centered reveal">
-          <p class="eyebrow">Demo mode</p>
-          <h1>Open the demo. Verify the PIN to get in.</h1>
-          <p>The demo uses sample ecommerce data and the same dashboard shell used for branded client workspaces. It is built for agency walkthroughs before GA4, Search Console, or Magento access exists.</p>
-          <p>You will be asked for your email on the next screen. Cloudflare sends a one-time PIN to verify it before opening the demo. Vysible does not receive or store your email - authentication is handled entirely by Cloudflare. Cloudflare's handling of your email is governed by their privacy policy.</p>
-          <div class="hero-actions">
-            <a class="button button-primary button-large" href="https://demo.vysible.io">Open Demo</a>
-            <a class="button button-secondary button-large" href="/contact/">Talk through a client rollout</a>
-          </div>
+        <div class="nav-actions">
+          <a href="/demo/" class="btn btn-primary">See Demo</a>
         </div>
-      </section>
-      <section class="section compact">
-        <div class="container">
-          <div class="browser-frame">
-            <div class="browser-bar"><span class="browser-dot red"></span><span class="browser-dot amber"></span><span class="browser-dot green"></span><span class="address-pill">demo.vysible.io</span></div>
-            <img class="theme-dark-media" src="../screenshots/Executive-Overview-Dark.png" width="1649" height="964" alt="Vysible demo dashboard showing executive ecommerce analytics overview in dark mode." decoding="async">
-            <img class="theme-light-media" src="../screenshots/Exec-Overview-Light.png" width="1633" height="850" alt="Vysible demo dashboard showing executive ecommerce analytics overview in light mode." decoding="async">
-          </div>
-        </div>
-      </section>
-      <section class="section section-muted compact">
-        <div class="container">
-          <div class="mini-grid">
-            <article class="feature-card reveal"><h2>Walk through real product behavior</h2><p>Sample data keeps the conversation focused on the dashboard, executive briefs, and review targets instead of onboarding logistics.</p></article>
-            <article class="feature-card reveal"><h2>Switch to live when ready</h2><p>Once the sources are ready, Vysible switches the dashboard from sample data to live GA4, Search Console, and Magento data.</p></article>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div><a class="brand" href="/"><img class="brand-logo" src="/screenshots/vysible.png" width="348" height="97" alt="Vysible"></a><p>White-label analytics for Magento revenue, search visibility, and executive review targets.</p></div>
-        <div><h2>Product</h2><a href="/#product">Overview</a><a href="/#how-it-works">How it works</a><a href="/demo/">See Demo</a><a href="/pricing/">Pricing</a></div>
-        <div><h2>Company</h2><a href="/contact/">Contact</a><a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+        <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <div class="container footer-bottom"><span>&copy; 2026 Vysible. All rights reserved.</span><a class="footer-demo" href="/demo/">See Demo</a></div>
-    </footer>
-    <script src="../assets/js/main.js" defer></script>
-  </body>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="doc-page">
+      <div class="container">
+        <div class="doc-inner demo-doc-inner">
+          <div class="doc-content demo-doc-content">
+            <div class="doc-meta">
+              <span class="eyebrow">Demo mode</span>
+              <h1>Open the demo. Verify the PIN to get in.</h1>
+            </div>
+            <p class="doc-lead">The demo uses sample ecommerce data and the same dashboard shell used for branded client workspaces. It is built for agency walkthroughs before GA4, Search Console, or Magento access exists.</p>
+            <p>You will be asked for your email on the next screen. Cloudflare sends a one-time PIN to verify it before opening the demo. Vysible does not receive or store your email - authentication is handled entirely by Cloudflare. Cloudflare's handling of your email is governed by their privacy policy.</p>
+            <div class="hero-actions">
+              <a href="https://demo.vysible.io" class="btn btn-primary">Open Demo</a>
+              <a href="/contact/" class="btn btn-secondary">Talk through a client rollout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="demo-preview">
+      <div class="container">
+        <button class="screenshot-panel feature-panel" type="button" data-lightbox-src="/screenshots/Exec-Overview-Light.png" data-lightbox-alt="Vysible demo dashboard showing executive ecommerce analytics overview">
+          <span class="screenshot-chrome" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="screenshot-viewport">
+            <img src="/screenshots/Exec-Overview-Light.png" alt="Vysible demo dashboard showing executive ecommerce analytics overview" class="feature-screenshot" loading="eager">
+          </span>
+          <span class="screenshot-expand">View full screenshot</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section-cta">
+      <div class="container demo-note-grid">
+        <div class="pricing-card">
+          <h2>Walk through real product behavior</h2>
+          <p>Sample data keeps the conversation focused on the dashboard, executive briefs, and review targets instead of onboarding logistics.</p>
+        </div>
+        <div class="pricing-card">
+          <h2>Switch to live when ready</h2>
+          <p>Once the sources are ready, Vysible switches the dashboard from sample data to live GA4, Search Console, and Magento data.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" aria-label="Vysible home">
+            <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22" loading="lazy">
+          </a>
+          <p class="footer-tagline">Ecommerce analytics for Magento 2 merchants and agencies.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-nav-group">
+            <h5>Product</h5>
+            <a href="/#features">Features</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/demo/">See Demo</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Company</h5>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="screenshot-modal" id="screenshot-modal" aria-hidden="true">
+    <div class="screenshot-modal-backdrop" data-lightbox-close></div>
+    <div class="screenshot-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="screenshot-modal-title">
+      <div class="screenshot-modal-topbar">
+        <h2 id="screenshot-modal-title">Product screenshot</h2>
+        <button class="screenshot-modal-close" type="button" data-lightbox-close aria-label="Close screenshot">Close</button>
+      </div>
+      <div class="screenshot-modal-body">
+        <img src="" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
 </html>

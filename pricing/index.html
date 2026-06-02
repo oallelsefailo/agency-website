@@ -1,6 +1,7 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vysible Pricing | AI insights and review targets</title>
@@ -13,7 +14,10 @@
     <meta property="og:image" content="https://vysible.io/screenshots/Executive-Overview-Dark.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -21,152 +25,615 @@
       gtag('js', new Date());
       gtag('config', 'G-1VKLX3BRJ3');
     </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header" data-header>
-      <nav class="nav-shell" aria-label="Primary navigation">
-        <a class="brand" href="/"><img class="brand-logo" src="/screenshots/vysible.png" width="348" height="97" alt="Vysible"></a>
-        <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="primary-menu" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
-        <div class="nav-menu" id="primary-menu" data-nav-menu>
-          <a href="/#product">Product</a><a href="/#how-it-works">How it works</a><a href="/pricing/" aria-current="page">Pricing</a><a href="/contact/">Contact</a>
-          <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false" data-theme-toggle><span class="theme-toggle__icon" aria-hidden="true"></span><span class="theme-toggle__text">Light</span></button>
-          <a class="button button-primary nav-cta" href="/demo/">See Demo</a>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Vysible home">
+          <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22">
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a href="/#features">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/contact/">Contact</a>
         </div>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="page-hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="container page-copy page-copy-centered reveal">
-          <p class="eyebrow">Pricing</p>
-          <h1>Pick the tier that fits your review cycle.</h1>
-          <p>Monthly service tiers include the hosted dashboard, connected source review, and a defined volume of executive insights and targets.</p>
-          <div class="hero-actions"><a class="button button-primary button-large" href="/demo/">See Demo</a><a class="button button-secondary button-large" href="/contact/">Discuss rollout</a></div>
+        <div class="nav-actions">
+          <a href="/demo/" class="btn btn-primary">See Demo</a>
         </div>
-      </section>
-      <section class="signal-strip" aria-label="Trust points">
-        <div class="container proof-row reveal">
-          <span>Magento 2 native</span>
-          <span>Read-only data access</span>
-          <span>Cancel anytime</span>
+        <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <div class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Pricing</span>
+        <h1>Clear pricing. No complexity.</h1>
+        <p>Monthly or annual billing. Setup fee quoted at rollout based on your deployment. Vysible handles maintenance at no extra charge.</p>
+      </div>
+    </div>
+
+    <!-- Pricing cards -->
+    <section class="pricing-section" aria-label="Pricing tiers">
+      <div class="container">
+        <div class="pricing-cards">
+
+          <!-- Starter -->
+          <div class="pricing-card">
+            <div class="card-tier-name">Starter</div>
+            <div class="card-price-main">$149<span class="mo">/mo</span></div>
+            <div class="card-price-annual">or $1,490/yr</div>
+            <div class="card-divider"></div>
+            <ul class="card-features-list">
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                GA4, Search Console, and Magento connected
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                AI model: gpt-4.1-mini
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                6 executive insights
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                6 review targets
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                20 AI refreshes per hour
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Email support, 24hr response
+              </li>
+            </ul>
+            <div class="card-cta">
+              <a href="/demo/" class="btn btn-secondary">See Demo</a>
+            </div>
+          </div>
+
+          <!-- Growth -->
+          <div class="pricing-card recommended">
+            <div class="rec-badge">Recommended</div>
+            <div class="card-tier-name">Growth</div>
+            <div class="card-price-main">$299<span class="mo">/mo</span></div>
+            <div class="card-price-annual">or $2,990/yr</div>
+            <div class="card-divider"></div>
+            <ul class="card-features-list">
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                GA4, Search Console, and Magento connected
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                AI model: gpt-4.1-mini
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                9 executive insights
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                9 review targets
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                50 AI refreshes per hour
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                White-label: your name and logo
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                AI Chat: 10 queries per hour
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Priority email support
+              </li>
+            </ul>
+            <div class="card-cta">
+              <a href="/demo/" class="btn btn-primary">See Demo</a>
+            </div>
+          </div>
+
+          <!-- Agency -->
+          <div class="pricing-card">
+            <div class="card-tier-name">Agency</div>
+            <div class="card-price-main">$499<span class="mo">/mo</span></div>
+            <div class="card-price-annual">or $4,990/yr</div>
+            <div class="card-divider"></div>
+            <ul class="card-features-list">
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                GA4, Search Console, and Magento connected
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                AI model: gpt-4.1 full
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                12 executive insights
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                12 review targets
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                100 AI refreshes per hour
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Full white-label with custom subdomain
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                AI Chat: 25 queries per hour, advanced model
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Up to 3 client deployments
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Dedicated email support
+              </li>
+            </ul>
+            <div class="card-cta">
+              <a href="/demo/" class="btn btn-secondary">See Demo</a>
+            </div>
+          </div>
+
+          <!-- Multi-Client -->
+          <div class="pricing-card">
+            <div class="card-tier-name">Multi-Client</div>
+            <div class="card-price-custom">Custom</div>
+            <div class="card-price-annual">Volume pricing by client count</div>
+            <div class="card-divider"></div>
+            <ul class="card-features-list">
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Everything in Agency
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Per-client deployments
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Per-client custom subdomain
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Volume pricing by client count
+              </li>
+              <li class="card-feature-item">
+                <svg class="check-icon" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Dedicated onboarding support
+              </li>
+            </ul>
+            <div class="card-cta">
+              <a href="/contact/" class="btn btn-secondary">Get in Touch</a>
+            </div>
+          </div>
+
         </div>
-      </section>
-      <section class="section compact">
-        <div class="container pricing-grid">
-          <article class="pricing-card reveal">
-            <h2>Starter</h2><div class="plan-price"><strong class="monthly-price">$149<span>/mo</span></strong><span class="annual-price">$1,490/yr billed annually</span></div><p>For a focused dashboard with essential AI review coverage.</p>
-            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1-mini (standard)</li><li>6 executive insights</li><li>6 review targets</li><li>20 AI refreshes per hour per dashboard</li><li>No white-label branding</li><li>Email support, 24-hour response</li><li>AI model updates: mini variants as released</li></ul>
-            <a class="button button-secondary" href="/contact/">Get started</a>
-          </article>
-          <article class="pricing-card pricing-card-featured reveal">
-            <span class="tier-label">Recommended for retained service</span><h2>Growth</h2><div class="plan-price"><strong class="monthly-price">$299<span>/mo</span></strong><span class="annual-price">$2,990/yr, save two months</span></div><p>A fuller operating readout with white-label delivery.</p>
-            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1-mini (standard)</li><li>9 executive insights per brief</li><li>9 priority review targets</li><li>50 AI refreshes per hour per dashboard</li><li>AI Chat (10 queries/hr)</li><li>White-label branding - your name and logo on the dashboard</li><li>Priority email support</li><li>AI model updates: mini variants as released</li></ul>
-            <a class="button button-primary" href="/demo/">See Demo</a>
-            <a class="button button-secondary" href="/contact/">Talk to Vysible</a>
-          </article>
-          <article class="pricing-card reveal">
-            <h2>Agency</h2><div class="plan-price"><strong class="monthly-price">$499<span>/mo</span></strong><span class="annual-price">$4,990/yr billed annually</span></div><p>For agencies delivering analytics under their own brand. Full AI depth, custom domain, and dedicated support.</p>
-            <ul class="check-list"><li>GA4, Search Console, and Magento connected</li><li>AI model: gpt-4.1 full (advanced reasoning)</li><li>12 executive insights per brief</li><li>12 priority review targets</li><li>100 AI refreshes per hour per dashboard</li><li>AI Chat, advanced model (25 queries/hr)</li><li>Custom subdomain - completely invisible to your clients</li><li>Dedicated email support</li><li>AI model updates: full models on release, always first</li><li>Up to 3 client deployments included - contact for more</li></ul>
-            <a class="button button-secondary" href="/contact/">Talk to Vysible</a>
-          </article>
-          <article class="pricing-card reveal">
-            <h2>Multi-Client</h2><div class="plan-price"><strong class="monthly-price">Custom pricing</strong></div><p>For agencies managing Magento analytics across multiple client sites. Everything in Agency, deployed per client.</p>
-            <ul class="check-list"><li>Everything in Agency included</li><li>Per-client dashboard deployments</li><li>Per-client custom subdomain and branding</li><li>Per-client access control</li><li>AI Chat included per deployment</li><li>Volume pricing based on client count</li><li>Dedicated onboarding support</li></ul>
-            <a class="button button-secondary" href="/contact/">Talk to Vysible</a>
-          </article>
-        </div>
-      </section>
-      <section class="section section-muted compact">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">Comparison</p>
-          <h2>Tier breakdown.</h2>
-        </div>
-        <div class="container table-wrap reveal" tabindex="0" aria-label="Pricing comparison table">
-          <table class="comparison-table tier-breakdown-table">
-            <thead><tr><th scope="col">Tier</th><th scope="col">Starter</th><th scope="col">Growth</th><th scope="col">Agency</th></tr></thead>
+      </div>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="comparison-section" aria-label="Plan comparison">
+      <div class="container">
+        <h2>Compare plans</h2>
+        <div class="table-scroll" role="region" aria-label="Pricing comparison table" tabindex="0">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Starter</th>
+                <th scope="col" class="col-rec">Growth</th>
+                <th scope="col">Agency</th>
+                <th scope="col">Multi-Client</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><th scope="row">AI Model</th><td>gpt-4.1-mini</td><td>gpt-4.1-mini</td><td>gpt-4.1 full</td></tr>
-              <tr><th scope="row">Executive Insights</th><td>6</td><td>9</td><td>12</td></tr>
-              <tr><th scope="row">Review Targets</th><td>6</td><td>9</td><td>12</td></tr>
-              <tr><th scope="row">AI refreshes/hour per dashboard</th><td>20</td><td>50</td><td>100</td></tr>
-              <tr><th scope="row">AI Chat</th><td>No</td><td>10 queries/hr</td><td>25 queries/hr</td></tr>
-              <tr><th scope="row">Sources</th><td>GA4 + GSC + Magento</td><td>GA4 + GSC + Magento</td><td>GA4 + GSC + Magento</td></tr>
-              <tr><th scope="row">White label</th><td>No</td><td>Yes</td><td>Yes</td></tr>
-              <tr><th scope="row">Custom domain</th><td>No</td><td>No</td><td>Yes</td></tr>
-              <tr><th scope="row">Support</th><td>Email, 24-hour response</td><td>Priority email</td><td>Dedicated email support</td></tr>
-              <tr><th scope="row">AI model updates</th><td>Mini variants when available</td><td>Mini variants when available</td><td>Full models on release</td></tr>
+              <tr>
+                <td>AI Model</td>
+                <td>gpt-4.1-mini</td>
+                <td class="col-rec">gpt-4.1-mini</td>
+                <td>gpt-4.1 full</td>
+                <td>gpt-4.1 full</td>
+              </tr>
+              <tr>
+                <td>Executive Insights</td>
+                <td>6</td>
+                <td class="col-rec">9</td>
+                <td>12</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <td>Review Targets</td>
+                <td>6</td>
+                <td class="col-rec">9</td>
+                <td>12</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <td>AI Refreshes per hour</td>
+                <td>20</td>
+                <td class="col-rec">50</td>
+                <td>100</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>AI Chat</td>
+                <td class="val-no">No</td>
+                <td class="col-rec">10 queries/hr</td>
+                <td>25 queries/hr</td>
+                <td>25 queries/hr</td>
+              </tr>
+              <tr>
+                <td>Sources</td>
+                <td>GA4 + GSC + Magento</td>
+                <td class="col-rec">GA4 + GSC + Magento</td>
+                <td>GA4 + GSC + Magento</td>
+                <td>GA4 + GSC + Magento</td>
+              </tr>
+              <tr>
+                <td>White label</td>
+                <td class="val-no">No</td>
+                <td class="col-rec val-yes">Yes</td>
+                <td class="val-yes">Yes</td>
+                <td class="val-yes">Yes</td>
+              </tr>
+              <tr>
+                <td>Custom subdomain</td>
+                <td class="val-no">No</td>
+                <td class="col-rec val-no">No</td>
+                <td class="val-yes">Yes</td>
+                <td class="val-yes">Per client</td>
+              </tr>
+              <tr>
+                <td>Client deployments</td>
+                <td>1</td>
+                <td class="col-rec">1</td>
+                <td>Up to 3</td>
+                <td>Volume</td>
+              </tr>
+              <tr>
+                <td>Support</td>
+                <td>Email, 24hr</td>
+                <td class="col-rec">Priority email</td>
+                <td>Dedicated email</td>
+                <td>Dedicated + onboarding</td>
+              </tr>
+              <tr>
+                <td>AI model updates</td>
+                <td>Mini variants</td>
+                <td class="col-rec">Mini variants</td>
+                <td>Full models, first</td>
+                <td>Full models, first</td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <div class="container table-wrap reveal" tabindex="0" aria-label="Monthly and annual pricing table">
-          <table class="comparison-table tier-breakdown-table">
-            <thead><tr><th scope="col">Tier</th><th scope="col">Monthly</th><th scope="col">Annual (save 2mo)</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Starter</th><td>$149</td><td>$1,490/yr</td></tr>
-              <tr><th scope="row">Growth</th><td>$299</td><td>$2,990/yr</td></tr>
-              <tr><th scope="row">Agency</th><td>$499</td><td>$4,990/yr</td></tr>
-            </tbody>
-          </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" aria-label="Frequently asked questions">
+      <div class="container">
+        <h2>Common rollout questions.</h2>
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Can this dashboard use our own branding?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                Yes. Vysible supports white-label presentation with store or agency branding, depending on how you want the dashboard delivered.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Is the login page fully white-labeled for Agency clients?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                The dashboard itself is fully white-labeled -- your client sees only your branding, your domain, and no mention of Vysible. The one exception is the authentication gate, which runs through Vysible's access control infrastructure at auth.vysible.io. This is a brief, one-time step per session (sessions last 24 hours) before your client lands on the fully branded dashboard. For most agency deployments this is a non-issue.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Does the Agency tier cover multiple client sites?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                Agency includes up to 3 client deployments, each with its own connected sources, custom domain, and access controls. For agencies managing more than 3 Magento clients, contact us to discuss volume pricing.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Can we see the demo before connecting sources?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                Yes. Demo mode uses sample ecommerce data so you can review the dashboard before connecting GA4, Search Console, or Magento access.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Who owns the data?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                You own your source data. Vysible uses connected data to operate the dashboard, briefs, and review targets for the service.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Do you replace GA4 or Magento reports?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                No. Vysible gives operators an executive view over those systems so weekly reviews do not depend on jumping between separate reporting surfaces.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              How is my store data protected?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                GA4 and Search Console are connected read-only via OAuth -- no passwords are stored and access can be revoked from your Google account at any time. The Magento connection uses a read-only database user with SELECT access only. The dashboard queries live sources on each load and does not store your data.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Does Vysible store my customer or order data?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                No. The dashboard pulls data on demand and returns it to your browser. No customer records, order details, or personally identifiable information are stored on Vysible infrastructure.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Does the AI brief use my customer data?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                No. The AI brief sends metric summaries -- numbers like revenue totals, session counts, and CTR percentages -- to OpenAI. No customer names, emails, or personally identifiable information are included.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              What is AI Chat?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                AI Chat is a built-in chat interface that lets you ask plain questions about your Magento store and get answers pulled directly from your live database. Ask about revenue, orders, products, or categories without writing SQL or exporting data. Available on Growth and Agency plans. Sessions are not saved and reset on refresh.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              How does the AI work? What does it actually see?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                <p>The AI powers two things in your dashboard: the Executive Brief and the Priority Review Targets.</p>
+                <p>For both, it only sees aggregated metrics for the selected period. Things like total sessions, revenue, conversion rate, search impressions, top pages, and product revenue movement. No customer names, no order details, and no personally identifiable information ever leaves your dashboard.</p>
+                <p>The Executive Brief takes those numbers and writes a plain-English summary of where things stand and what's moving. The Priority Review Targets use the same data to surface specific areas worth a closer look, whether that's a page with high impressions and low CTR, a product with dropping revenue, or a category that's outperforming everything else.</p>
+                <p>If the AI is unavailable for any reason, both fall back to a rule-based version built from the same data so you always get an output either way.</p>
+                <p>OpenAI's API does not train on API inputs, so your data is never used to improve their models.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              What happens if I want to disconnect?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                Revoke the GA4 and Search Console OAuth token from your Google account and drop the read-only Magento database user. Access is cut immediately. No connected source data, customer records, or order data is stored on Vysible infrastructure. Contact form submissions and deployment configuration are retained for a reasonable period following cancellation.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Will I get access to newer AI models?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                Yes. When OpenAI releases a new full model, Agency tier deployments are updated first. When a mini or efficiency variant of that model becomes available, Starter and Growth tier deployments are updated. Everyone moves forward -- Agency always stays one step ahead. You will be notified before any change is made to your deployment.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Can multiple team members use the dashboard at the same time?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                Yes. Multiple team members can use the dashboard simultaneously. AI refresh limits apply per dashboard deployment, so the full allowance is shared across your team rather than tracked per individual user. Dashboard access is managed at the subdomain level -- your account manager handles who gets access during onboarding.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">
+              Is there a setup fee?
+              <span class="faq-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="faq-body" role="region">
+              <div class="faq-body-inner">
+                Yes. A one-time setup fee applies to all tiers and is quoted at time of rollout based on your deployment complexity. It covers source configuration, validation, and go-live handoff. The fee is confirmed before any work begins.
+              </div>
+            </div>
+          </div>
+
         </div>
-      </section>
-      <section class="section compact">
-        <div class="container section-heading reveal"><p class="eyebrow">FAQ</p><h2>Common rollout questions.</h2></div>
-        <div class="container faq-list">
-          <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Can this dashboard use our own branding?</button><div class="faq-panel"><p>Yes. Vysible supports white-label presentation with store or agency branding, depending on how you want the dashboard delivered.</p></div></article>
-          <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Is the login page fully white-labeled for Agency clients?</button><div class="faq-panel"><p>The dashboard itself is fully white-labeled - your client sees only your branding, your domain, and no mention of Vysible. The one exception is the authentication gate, which runs through Vysible's access control infrastructure at auth.vysible.io. This is a brief, one-time step per session (sessions last 24 hours) before your client lands on the fully branded dashboard. For most agency deployments this is a non-issue.</p></div></article>
-          <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Does the Agency tier cover multiple client sites?</button><div class="faq-panel"><p>Agency includes up to 3 client deployments, each with its own connected sources, custom domain, and access controls. For agencies managing more than 3 Magento clients, contact us to discuss volume pricing.</p></div></article>
-          <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Can we see the demo before connecting sources?</button><div class="faq-panel"><p>Yes. Demo mode uses sample ecommerce data so you can review the dashboard before connecting GA4, Search Console, or Magento access.</p></div></article>
-          <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Who owns the data?</button><div class="faq-panel"><p>You own your source data. Vysible uses connected data to operate the dashboard, briefs, and review targets for the service.</p></div></article>
-          <article class="faq-item reveal"><button type="button" data-faq aria-expanded="false">Do you replace GA4 or Magento reports?</button><div class="faq-panel"><p>No. Vysible gives operators an executive view over those systems so weekly reviews do not depend on jumping between separate reporting surfaces.</p></div></article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">How is my store data protected?</button>
-            <div class="faq-panel"><p>GA4 and Search Console are connected read-only via OAuth - no passwords are stored and access can be revoked from your Google account at any time. The Magento connection uses a read-only database user with SELECT access only. The dashboard queries live sources on each load and does not store your data.</p></div>
-          </article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">Does Vysible store my customer or order data?</button>
-            <div class="faq-panel"><p>No. The dashboard pulls data on demand and returns it to your browser. No customer records, order details, or personally identifiable information are stored on Vysible infrastructure.</p></div>
-          </article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">Does the AI brief use my customer data?</button>
-            <div class="faq-panel"><p>No. The AI brief sends metric summaries - numbers like revenue totals, session counts, and CTR percentages - to OpenAI. No customer names, emails, or personally identifiable information are included.</p></div>
-          </article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">What is AI Chat?</button>
-            <div class="faq-panel"><p>AI Chat is a built-in chat interface that lets you ask plain questions about your Magento store and get answers pulled directly from your live database. Ask about revenue, orders, products, or categories without writing SQL or exporting data. Available on Growth and Agency plans. Sessions are not saved and reset on refresh.</p></div>
-          </article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">How does the AI work? What does it actually see?</button>
-            <div class="faq-panel"><p>The AI powers two things in your dashboard: the Executive Brief and the Priority Review Targets.
-            For both, it only sees aggregated metrics for the selected period. Things like total sessions, revenue, conversion rate, search impressions, top pages, and product revenue movement. No customer names, no order details, no personally identifiable information ever leaves your dashboard.</p>
-            <p>The Executive Brief takes those numbers and writes a plain English summary of where things stand and what's moving. The Priority Review Targets use the same data to surface specific areas worth a closer look, whether that's a page with high impressions and low CTR, a product with dropping revenue, or a category that's outperforming everything else.</p>
-            <p>If the AI is unavailable for any reason, both fall back to a rule-based version built from the same data so you always get an output either way.</p>
-            <p>OpenAI's API does not train on API inputs so your data is never used to improve their models.</p></div>
-          </article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">What happens if I want to disconnect?</button>
-            <div class="faq-panel"><p>Revoke the GA4 and Search Console OAuth token from your Google account and drop the read-only Magento database user. Access is cut immediately. No connected source data, customer records, or order data is stored on Vysible infrastructure. Contact form submissions and deployment configuration are retained for a reasonable period following cancellation.</p></div>
-          </article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">Will I get access to newer AI models?</button>
-            <div class="faq-panel"><p>Yes. When OpenAI releases a new full model, Agency tier deployments are updated first. When a mini or efficiency variant of that model becomes available, Starter and Growth tier deployments are updated. Everyone moves forward - Agency always stays one step ahead. You will be notified before any change is made to your deployment.</p></div>
-          </article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">Can multiple team members use the dashboard at the same time?</button>
-            <div class="faq-panel"><p>Yes. Multiple team members can use the dashboard simultaneously. AI refresh limits apply per dashboard deployment, so the full allowance is shared across your team rather than tracked per individual user. Dashboard access is managed at the subdomain level - your account manager handles who gets access during onboarding.</p></div>
-          </article>
-          <article class="faq-item reveal">
-            <button type="button" data-faq aria-expanded="false">Is there a setup fee?</button>
-            <div class="faq-panel"><p>Yes. A one-time setup fee applies to all tiers and is quoted at time of rollout based on your deployment complexity. It covers source configuration, validation, and go-live handoff. The fee is confirmed before any work begins.</p></div>
-          </article>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="pricing-cta-section section-cta">
+      <div class="container">
+        <div class="cta-inner">
+          <div class="cta-copy">
+            <h2>Start with the demo.</h2>
+            <p>Sample ecommerce data. No sources connected. See exactly what your team would see before committing to anything.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="/demo/" class="btn btn-primary">See Demo</a>
+            <a href="/contact/" class="btn btn-secondary">Contact</a>
+          </div>
         </div>
-      </section>
-      <section class="final-cta"><div class="container final-cta-inner reveal"><p class="eyebrow">Ready to compare the fit?</p><h2>Open the demo, then choose the service tier your review cycle needs.</h2><div class="hero-actions"><a class="button button-primary button-large" href="/demo/">See Demo</a><a class="button button-secondary button-large" href="/contact/">Contact Us</a></div></div></section>
-    </main>
-    <footer class="site-footer">
-      <div class="container footer-grid"><div><a class="brand" href="/"><img class="brand-logo" src="/screenshots/vysible.png" width="348" height="97" alt="Vysible"></a><p>White-label analytics for Magento revenue, search visibility, and executive review targets.</p></div><div><h2>Product</h2><a href="/#product">Overview</a><a href="/#how-it-works">How it works</a><a href="/demo/">See Demo</a><a href="/pricing/">Pricing</a></div><div><h2>Company</h2><a href="/contact/">Contact</a><a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div></div>
-      <div class="container footer-bottom"><span>&copy; 2026 Vysible. All rights reserved.</span><a class="footer-demo" href="/demo/">See Demo</a></div>
-    </footer>
-    <script src="../assets/js/main.js" defer></script>
-  </body>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" aria-label="Vysible home">
+            <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22" loading="lazy">
+          </a>
+          <p class="footer-tagline">Ecommerce analytics for Magento 2 merchants and agencies.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-nav-group">
+            <h5>Product</h5>
+            <a href="/#features">Features</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/demo/">See Demo</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Company</h5>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
 </html>

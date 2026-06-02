@@ -1,6 +1,7 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vysible | White-label Magento analytics dashboard</title>
@@ -13,7 +14,10 @@
     <meta property="og:image" content="https://vysible.io/screenshots/Executive-Overview-Dark.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -21,410 +25,465 @@
       gtag('js', new Date());
       gtag('config', 'G-1VKLX3BRJ3');
     </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header" data-header>
-      <nav class="nav-shell" aria-label="Primary navigation">
-        <a class="brand" href="/" aria-label="Vysible home">
-          <img class="brand-logo" src="/screenshots/vysible.png" width="348" height="97" alt="Vysible">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Vysible home">
+          <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22">
         </a>
-        <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="primary-menu" aria-expanded="false" data-nav-toggle>
-          <span></span><span></span><span></span>
+        <div class="nav-links" id="nav-links">
+          <a href="/#features">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/contact/">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <a href="/demo/" class="btn btn-primary">See Demo</a>
+        </div>
+        <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-        <div class="nav-menu" id="primary-menu" data-nav-menu>
-          <a href="/#product">Product</a>
-          <a href="/#how-it-works">How it works</a>
-          <a href="/pricing/">Pricing</a>
-          <a href="/contact/">Contact</a>
-          <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false" data-theme-toggle>
-            <span class="theme-toggle__icon" aria-hidden="true"></span>
-            <span class="theme-toggle__text">Light</span>
-          </button>
-          <a class="button button-primary nav-cta" href="/demo/">See Demo</a>
-        </div>
-      </nav>
-    </header>
+      </div>
+    </div>
+  </nav>
 
-    <main id="main">
-      <section class="hero section-grid">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="container hero-inner">
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
+      <div class="container">
+        <div class="hero-inner">
           <div class="hero-copy">
-            <p class="eyebrow reveal">GA4, Search Console, Magento. Same weekly scramble.</p>
-            <h1 class="hero-title">
-              <span>Stop jumping</span>
-              <span>between reporting</span>
-              <span>tabs.</span>
-            </h1>
-            <p class="hero-subtitle reveal">Magento merchants and agencies spend hours piecing together the same story from three different tools. Vysible connects them into one hosted dashboard with an AI brief that tells you what actually needs attention.</p>
-            <div class="hero-actions reveal">
-              <a class="button button-primary button-large" href="/demo/">See Demo</a>
-              <a class="button button-secondary button-large" href="/contact/">Contact Us</a>
+            <span class="eyebrow">Ecommerce analytics for Magento 2</span>
+            <h1>The reporting layer Magento has been missing.</h1>
+            <p>GA4, Search Console, and your live Magento order data in one hosted dashboard. Read an AI-generated brief, act on the priority targets, and ask your database anything. No exports. No tab switching.</p>
+            <div class="hero-actions">
+              <a href="/demo/" class="btn btn-primary">See Demo</a>
+              <a href="/pricing/" class="btn btn-secondary">View Pricing</a>
             </div>
           </div>
-          <div class="hero-visual reveal">
-            <div class="browser-frame browser-frame-large">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">demo.vysible.io/client/overview</span>
+          <div class="hero-visual">
+            <!-- Change: Hero now uses a different real dashboard screenshot so the overview image is not repeated immediately below. -->
+            <!-- Change: Light dashboard screenshot fits the muted marketing palette with less visual weight. -->
+            <button class="screenshot-panel hero-screenshot-panel" type="button" data-lightbox-src="/screenshots/Merchandising-Graph-light.png" data-lightbox-alt="Vysible merchandising analytics dashboard showing Magento product performance">
+              <span class="screenshot-chrome" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="screenshot-viewport">
+                <img
+                  src="/screenshots/Merchandising-Graph-light.png"
+                  alt="Vysible merchandising analytics dashboard showing Magento product performance"
+                  class="hero-screenshot"
+                  loading="eager"
+                >
+              </span>
+              <span class="screenshot-expand">View full screenshot</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section-problem" id="problem">
+      <div class="container">
+        <div class="problem-inner">
+          <div class="problem-headline">
+            <h2>Three tools. Three logins. One weekly review that still is not ready.</h2>
+            <div class="problem-rule"></div>
+          </div>
+          <div class="problem-copy">
+            <p>Every week, the same assembly: pull traffic numbers from GA4, check ranking movement in Search Console, cross-reference order volumes from the Magento admin. Then try to connect them. By the time you have a coherent picture, the meeting has already started.</p>
+            <p>The data was never the problem. The time lost moving between three separate systems was. Vysible connects GA4, Search Console, and your live Magento order data into one hosted dashboard. The AI brief arrives pre-written. The priority targets are already surfaced. The review that used to take an hour starts with context already on the page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connected sources -->
+    <section class="section-sources" id="sources">
+      <div class="container">
+        <!-- Change: Connected source copy and visuals now share one two-column layout to remove dead space. -->
+        <div class="sources-layout">
+          <div class="sources-head">
+            <span class="eyebrow">Connected sources</span>
+            <h2>Three sources. One connection point.</h2>
+            <p>Vysible reads from GA4, Search Console, and your Magento database on every load. No exports, no manual uploads, no scheduled syncs.</p>
+          </div>
+          <div class="sources-grid">
+            <!-- Change: Replaced progress bars with compact source-specific analytics previews. -->
+            <div class="source-row source-row-chart" data-source-chart>
+              <div class="source-label">
+                <strong>Google Analytics 4</strong>
+                <span>Traffic, sessions, conversions</span>
               </div>
-              <img class="theme-dark-media" src="screenshots/Executive-Overview-Dark.png" width="1649" height="964" alt="Vysible executive overview dashboard showing GA4, Search Console, and Magento revenue metrics." decoding="async">
-              <img class="theme-light-media" src="screenshots/Exec-Overview-Light.png" width="1633" height="850" alt="Vysible executive overview dashboard in light mode showing ecommerce analytics metrics." decoding="async">
+              <div class="source-chart source-chart-donut" role="img" aria-label="Google Analytics 4 traffic source preview showing organic, direct, referral, and paid traffic">
+                <div class="donut-chart">
+                  <div class="donut-chart-hole">
+                    <span>GA4</span>
+                  </div>
+                </div>
+                <div class="chart-legend">
+                  <span><i class="legend-dot legend-organic"></i>Organic</span>
+                  <span><i class="legend-dot legend-direct"></i>Direct</span>
+                  <span><i class="legend-dot legend-referral"></i>Referral</span>
+                  <span><i class="legend-dot legend-paid"></i>Paid</span>
+                </div>
+              </div>
+            </div>
+            <div class="source-row source-row-chart" data-source-chart>
+              <div class="source-label">
+                <strong>Search Console</strong>
+                <span>Impressions, clicks, ranking</span>
+              </div>
+              <div class="source-chart source-chart-scatter" role="img" aria-label="Search Console preview showing query impressions and click-through rate opportunities">
+                <div class="scatter-chart">
+                  <span class="scatter-axis-label scatter-axis-y">CTR</span>
+                  <span class="scatter-axis-label scatter-axis-x">Impressions</span>
+                  <i class="scatter-point point-a"></i>
+                  <i class="scatter-point point-b"></i>
+                  <i class="scatter-point point-c"></i>
+                  <i class="scatter-point point-d"></i>
+                  <i class="scatter-point point-e"></i>
+                  <i class="scatter-point point-f"></i>
+                  <i class="scatter-point point-g"></i>
+                  <span class="scatter-low-label">Low CTR opportunities</span>
+                </div>
+              </div>
+            </div>
+            <div class="source-row source-row-chart" data-source-chart>
+              <div class="source-label">
+                <strong>Magento Orders</strong>
+                <span>Revenue, products, categories</span>
+              </div>
+              <div class="source-chart source-chart-bars" role="img" aria-label="Magento orders preview showing relative revenue per SKU">
+                <div class="sales-chart">
+                  <span class="sales-bar sales-bar-a"><i></i></span>
+                  <span class="sales-bar sales-bar-b"><i></i></span>
+                  <span class="sales-bar sales-bar-c"><i></i></span>
+                  <span class="sales-bar sales-bar-d"><i></i></span>
+                  <span class="sales-bar sales-bar-e"><i></i></span>
+                  <span class="sales-bar sales-bar-f"><i></i></span>
+                  <span class="sales-bar sales-bar-g"><i></i></span>
+                  <span class="sales-bar sales-bar-h"><i></i></span>
+                  <span class="sales-bar sales-bar-i"><i></i></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section section-muted">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">AI Chat</p>
-          <h2>Ask your store anything.</h2>
-          <p>AI Chat connects directly to your Magento database. Ask about revenue, products, orders, or categories and get a plain-English answer in seconds. No SQL. No exports. No developer needed.</p>
-        </div>
-
-        <div class="container page-hero-grid">
-          <div class="browser-frame reveal">
-            <div class="browser-bar">
-              <span class="browser-dot red"></span>
-              <span class="browser-dot amber"></span>
-              <span class="browser-dot green"></span>
-              <span class="address-pill">ai-chat</span>
-            </div>
-            <img class="theme-dark-media" src="screenshots/AI-Chat-dark.gif" alt="AI Chat answering Magento store questions in the Vysible dashboard." loading="lazy">
-            <img class="theme-light-media" src="screenshots/AI-Chat-light.gif" alt="AI Chat answering Magento store questions in the Vysible dashboard in light mode." loading="lazy">
+    <!-- AI Chat moved directly after connected sources so the live database feature follows the three-source story. -->
+    <div class="feature-block ai-chat-feature">
+      <div class="container">
+        <div class="feature-inner ai-chat-inner">
+          <div class="feature-visual">
+            <!-- Change: Converted raw screenshot into a framed product panel with full-size modal access. -->
+            <!-- Change: Light AI Chat GIF returns the feature to the page's softer visual tone. -->
+            <button class="screenshot-panel feature-panel ai-chat-panel" type="button" data-lightbox-src="/screenshots/AI-Chat-light.gif" data-lightbox-alt="AI Chat feature showing plain-English queries answered from live Magento data">
+              <span class="screenshot-chrome" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="screenshot-viewport">
+                <img
+                  src="/screenshots/AI-Chat-light.gif"
+                  alt="AI Chat feature showing plain-English queries answered from live Magento data"
+                  class="feature-screenshot"
+                  loading="lazy"
+                >
+              </span>
+              <span class="screenshot-expand">View full screenshot</span>
+            </button>
           </div>
-          <div class="feature-card reveal">
-            <h3>Live Magento answers.</h3>
-            <ul class="check-list">
-              <li>Live answers from your Magento database</li>
-              <li>No SQL or technical knowledge required</li>
-              <li>Available on Growth and Agency plans</li>
-            </ul>
-            <a class="button button-secondary" href="/contact/">See a demo</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">AI brief</p>
-          <h2>Connecting the sources is not what makes Vysible different.</h2>
-          <p>Connecting the data is step one. The AI brief reads it and tells you what to actually look at. The priority targets turn that into a working queue.</p>
-        </div>
-
-        <div class="container showcase-grid">
-          <article class="showcase-card reveal">
-            <div class="browser-frame">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">executive-brief</span>
-              </div>
-              <img class="theme-dark-media" src="screenshots/Executive-Brief-AI-dark.png" width="1634" height="847" alt="Vysible executive brief showing AI-written operating notes and evidence." loading="lazy" decoding="async">
-              <img class="theme-light-media" src="screenshots/Executive-Brief-AI-light.png" width="1634" height="847" alt="Vysible executive brief showing AI-written operating notes and evidence." loading="lazy" decoding="async">
-            </div>
-            <div class="showcase-caption">
-              <span class="metric-chip violet">AI Executive Brief</span>
-              <h3>The brief explains what changed.</h3>
-              <p>It reads the connected sources together, names the evidence, and points the review toward the work that matters.</p>
-            </div>
-          </article>
-          <article class="showcase-card reveal">
-            <div class="browser-frame">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">priority-targets</span>
-              </div>
-              <img class="theme-dark-media" src="screenshots/Review-Targets-AI-dark.png" width="1639" height="906" alt="Priority review targets showing pages, products, and categories that need operator attention." loading="lazy" decoding="async">
-              <img class="theme-light-media" src="screenshots/Review-Targets-AI-light.png" width="1639" height="906" alt="Priority review targets showing pages, products, and categories that need operator attention." loading="lazy" decoding="async">
-            </div>
-            <div class="showcase-caption">
-              <span class="metric-chip amber">AI Driven Priority Review Targets</span>
-              <h3>The output is a working queue.</h3>
-              <p>Pages, products, categories, and revenue shifts become targets your team can review instead of another chart to interpret.</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="container hero-actions" style="margin-top:2.5rem; justify-content:center;">
-          <a class="button button-secondary" href="/demo/">See Demo</a>
-        </div>
-      </section>
-
-      <section class="section section-muted" id="product">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">What's included</p>
-          <h2>Every view your team opens in the weekly review.</h2>
-          <p>Seven connected data views, AI Chat, an AI brief, and a priority review queue packaged for the Magento operating rhythm.</p>
-          <div class="hero-actions">
-            <a class="button button-secondary" href="/demo/">See the live demo &rarr;</a>
+          <div class="feature-copy">
+            <span class="eyebrow">AI Chat</span>
+            <h3>Ask your Magento database in plain English.</h3>
+            <p>Ask about revenue, orders, products, or categories. Get answers pulled directly from your live database, no SQL required, no data exported. Growth and Agency plans.</p>
+            <p>Sessions are not saved and reset on refresh. Queries run against standard Magento 2 core tables using read-only access.</p>
           </div>
         </div>
-        <div class="container feature-grid">
-          <article class="showcase-card reveal">
-            <div class="browser-frame">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">traffic-revenue</span>
-              </div>
-              <img class="theme-dark-media" src="screenshots/Traffic-Rev-Feature1-dark.png" width="1049" height="561" alt="GA4 traffic and revenue dashboard showing sessions, conversion rate, engagement, and purchase revenue." loading="lazy" decoding="async">
-              <img class="theme-light-media" src="screenshots/Traffic-Rev-Feature1-light.png" width="1148" height="567" alt="GA4 traffic and revenue dashboard showing sessions, conversion rate, engagement, and purchase revenue in light mode." loading="lazy" decoding="async">
-            </div>
-            <div class="showcase-caption">
-              <h3>GA4 Traffic &amp; Revenue</h3>
-              <p>Sessions, conversion rate, engagement rate, and purchase revenue in a single executive view.</p>
-            </div>
-          </article>
-          <article class="showcase-card reveal">
-            <div class="browser-frame">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">search-console</span>
-              </div>
-              <img class="theme-dark-media" src="screenshots/Search-Console-Feature2-dark.png" width="1080" height="848" alt="Search Console intelligence dashboard with impressions, CTR, average position, and low-CTR page detection." loading="lazy" decoding="async">
-              <img class="theme-light-media" src="screenshots/Search-Console-Feature2-light.png" width="1157" height="812" alt="Search Console intelligence dashboard with impressions, CTR, average position, and low-CTR page detection in light mode." loading="lazy" decoding="async">
-            </div>
-            <div class="showcase-caption">
-              <h3>Search Console Intelligence</h3>
-              <p>Impressions, CTR, average position, and low-CTR page detection alongside revenue data.</p>
-            </div>
-          </article>
-          <article class="showcase-card reveal">
-            <div class="browser-frame">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">magento-orders</span>
-              </div>
-              <img class="theme-dark-media" src="screenshots/Merchandising-Feature3-dark.png" width="1077" height="906" alt="Magento order data dashboard showing order-line revenue, category movement, top products, and AOV." loading="lazy" decoding="async">
-              <img class="theme-light-media" src="screenshots/Merchandising-Feature3-light.png" width="1143" height="829" alt="Magento order data dashboard showing order-line revenue, category movement, top products, and AOV in light mode." loading="lazy" decoding="async">
-            </div>
-            <div class="showcase-caption">
-              <h3>Magento Order Data</h3>
-              <p>Order-line revenue, category movement, top products, and AOV pulled directly from your Magento database.</p>
-            </div>
-          </article>
-          <article class="showcase-card reveal">
-            <div class="browser-frame">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">executive-brief</span>
-              </div>
-              <img class="theme-dark-media" src="screenshots/Executive-Brief-Feature4-dark.png" width="1078" height="915" alt="AI executive brief generated from live Vysible source data." loading="lazy" decoding="async">
-              <img class="theme-light-media" src="screenshots/Executive-Brief-Feature4-light.png" width="1143" height="870" alt="AI executive brief generated from live Vysible source data in light mode." loading="lazy" decoding="async">
-            </div>
-            <div class="showcase-caption">
-              <h3>AI Executive Brief</h3>
-              <p>GPT-powered operating summary generated from your live source data, not generic templates.</p>
-            </div>
-          </article>
-          <article class="showcase-card reveal">
-            <div class="browser-frame">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">product-drop-off</span>
-              </div>
-              <img class="theme-dark-media" src="screenshots/Product-Drop-Off-Feature5-dark.png" width="1039" height="556" alt="Product drop-off detection dashboard flagging revenue declines against a prior period." loading="lazy" decoding="async">
-              <img class="theme-light-media" src="screenshots/Product-Drop-Off-Feature5-light.png" width="1148" height="547" alt="Product drop-off detection dashboard flagging revenue declines against a prior period in light mode." loading="lazy" decoding="async">
-            </div>
-            <div class="showcase-caption">
-              <h3>Product Drop-Off Detection</h3>
-              <p>Revenue declines flagged automatically with prior period comparison and reason surfaced.</p>
-            </div>
-          </article>
-          <article class="showcase-card reveal">
-            <div class="browser-frame">
-              <div class="browser-bar">
-                <span class="browser-dot red"></span>
-                <span class="browser-dot amber"></span>
-                <span class="browser-dot green"></span>
-                <span class="address-pill">white-label</span>
-              </div>
-              <img src="screenshots/white-list-feature6.png" width="1200" height="400" alt="White-label dashboard showing client branding instead of Vysible branding." loading="lazy" decoding="async" style="object-fit:cover; object-position:top left; max-height:260px;">
-            </div>
-            <div class="showcase-caption">
-              <h3>White-Label Ready</h3>
-              <p>Your name and branding on the dashboard, not ours.</p>
-            </div>
-          </article>
-        </div>
-      </section>
+      </div>
+    </div>
 
-      <section class="section" id="how-it-works">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">How it works</p>
-          <h2>No reporting rebuild. No new stack. Just your existing sources, connected.</h2>
+    <!-- Features -->
+    <section class="section-features" id="features" aria-label="Product features">
+      <!-- Change: Added one subtle scroll-driven analytics story behind the feature showcase. -->
+      <div class="analytics-scroll-art" data-analytics-scroll aria-hidden="true">
+        <div class="analytics-grid"></div>
+        <div class="analytics-side-bars">
+          <span class="analytics-side-bar bar-a"></span>
+          <span class="analytics-side-bar bar-b"></span>
+          <span class="analytics-side-bar bar-c"></span>
+          <span class="analytics-side-bar bar-d"></span>
         </div>
-        <div class="container" style="margin-top:-2rem; margin-bottom:2rem;">
-          <p style="color:var(--text-soft); font-size:0.9rem; text-align:center;">Setup typically takes 1-3 business days depending on source access.</p>
-        </div>
-        <div class="container steps">
-          <article class="step-card reveal">
-            <div class="step-badge">01</div>
-            <h3>You share access, we handle the rest</h3>
-            <p>Add your Google account as a Viewer on GA4 and Search Console. Run one SQL command to create a read-only Magento database user. That's the entire setup ask on your end.</p>
-          </article>
-          <article class="step-card reveal">
-            <div class="step-badge">02</div>
-            <h3>We connect and configure</h3>
-            <p>We wire GA4, Search Console, and Magento order data into your dashboard, validate the numbers against your admin reports, and flip it from demo data to live sources.</p>
-          </article>
-          <article class="step-card reveal">
-            <div class="step-badge">03</div>
-            <h3>Open it instead of building it</h3>
-            <p>Executive briefs, revenue movement, SEO priorities, and a weekly review queue ready the next time you or your client needs a read on what's happening.</p>
-          </article>
-        </div>
-        <div class="container hero-actions" style="margin-top:2.5rem; justify-content:center;">
-          <a class="button button-secondary" href="/demo/">See the live demo &rarr;</a>
-        </div>
-      </section>
+        <svg class="analytics-trend" viewBox="0 0 420 180" preserveAspectRatio="none">
+          <path class="analytics-trend-line" pathLength="1" d="M16 142 C74 116 104 130 152 92 S248 88 292 54 S362 44 404 20"></path>
+          <circle class="analytics-point point-a" cx="152" cy="92" r="4"></circle>
+          <circle class="analytics-point point-b" cx="292" cy="54" r="4"></circle>
+          <circle class="analytics-point point-c" cx="404" cy="20" r="4"></circle>
+        </svg>
+      </div>
 
-      <section class="section" id="pricing-preview">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">Pricing</p>
-          <h2>Pick the tier that fits your review cycle.</h2>
-          <p>Choose the review cadence and support level that fit the dashboard you want Vysible to run.</p>
-        </div>
-        <div class="container pricing-grid">
-          <article class="pricing-card reveal">
-            <h3>Starter</h3>
-            <div class="plan-price">
-              <strong class="monthly-price">$149<span>/mo</span></strong>
-              <span class="annual-price">$1,490/yr billed annually</span>
+      <!-- Feature 1: Overview -->
+      <div class="feature-block">
+        <div class="container">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <span class="eyebrow">Dashboard overview</span>
+              <h3>The full picture before you dig into anything specific.</h3>
+              <p>Traffic, revenue, conversion, and search performance alongside your live Magento order data. The overview gives you the shape of the business at a glance. No tab switching, no mental overhead assembling context from parts.</p>
+              <p>Date ranges are selectable. Periods compare automatically. Everything in one viewport.</p>
             </div>
-            <p>For a focused dashboard with essential AI review coverage.</p>
-            <ul class="check-list">
-              <li>GA4, Search Console, and Magento connected</li>
-              <li>AI model: gpt-4.1-mini (standard)</li>
-              <li>6 executive insights</li>
-              <li>6 review targets</li>
-              <li>20 AI refreshes per hour per dashboard</li>
-              <li>No white-label branding</li>
-              <li>Email support, 24-hour response</li>
-              <li>AI model updates: mini variants as released</li>
-            </ul>
-            <a class="button button-secondary" href="/contact/">Get started</a>
-          </article>
-          <article class="pricing-card pricing-card-featured reveal">
-            <span class="tier-label">Recommended for retained service</span>
-            <h3>Growth</h3>
-            <div class="plan-price">
-              <strong class="monthly-price">$299<span>/mo</span></strong>
-              <span class="annual-price">$2,990/yr, save two months</span>
+            <div class="feature-visual">
+              <!-- Change: Converted raw screenshot into a framed product panel with full-size modal access. -->
+              <button class="screenshot-panel feature-panel" type="button" data-lightbox-src="/screenshots/Exec-Overview-Light.png" data-lightbox-alt="Vysible dashboard overview showing traffic, revenue, and Magento order data">
+                <span class="screenshot-chrome" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span class="screenshot-viewport">
+                  <img
+                    src="/screenshots/Exec-Overview-Light.png"
+                    alt="Vysible dashboard overview showing traffic, revenue, and Magento order data"
+                    class="feature-screenshot"
+                    loading="lazy"
+                  >
+                </span>
+                <span class="screenshot-expand">View full screenshot</span>
+              </button>
             </div>
-            <p>A fuller operating readout with white-label delivery.</p>
-            <ul class="check-list">
-              <li>GA4, Search Console, and Magento connected</li>
-              <li>AI model: gpt-4.1-mini (standard)</li>
-              <li>9 executive insights per brief</li>
-              <li>9 priority review targets</li>
-              <li>50 AI refreshes per hour per dashboard</li>
-              <li>AI Chat (10 queries/hr)</li>
-              <li>White-label branding - your name and logo on the dashboard</li>
-              <li>Priority email support</li>
-              <li>AI model updates: mini variants as released</li>
-            </ul>
-            <a class="button button-primary" href="/demo/">See Demo</a>
-            <a class="button button-secondary" href="/contact/">Get started</a>
-          </article>
-          <article class="pricing-card reveal">
-            <h3>Agency</h3>
-            <div class="plan-price">
-              <strong class="monthly-price">$499<span>/mo</span></strong>
-              <span class="annual-price">$4,990/yr billed annually</span>
-            </div>
-            <p>For agencies delivering analytics under their own brand. Full AI depth, custom domain, and dedicated support.</p>
-            <ul class="check-list">
-              <li>GA4, Search Console, and Magento connected</li>
-              <li>AI model: gpt-4.1 full (advanced reasoning)</li>
-              <li>12 executive insights per brief</li>
-              <li>12 priority review targets</li>
-              <li>100 AI refreshes per hour per dashboard</li>
-              <li>AI Chat, advanced model (25 queries/hr)</li>
-              <li>Full white-label with custom domain - completely invisible to your clients</li>
-              <li>Dedicated email support</li>
-              <li>AI model updates: full models on release, always first</li>
-              <li>Up to 3 client deployments included - contact for more</li>
-            </ul>
-            <a class="button button-secondary" href="/contact/">Talk to Vysible</a>
-          </article>
-          <article class="pricing-card reveal">
-            <h3>Multi-Client</h3>
-            <div class="plan-price">
-              <strong class="monthly-price" style="font-size:1.6rem;line-height:1.2;">Custom pricing</strong>
-            </div>
-            <p>For agencies managing Magento analytics across multiple client sites. Everything in Agency, deployed per client.</p>
-            <ul class="check-list">
-              <li>Everything in Agency included</li>
-              <li>Per-client dashboard deployments</li>
-              <li>Per-client custom domain and branding</li>
-              <li>Per-client access control</li>
-              <li>AI Chat included per deployment</li>
-              <li>Volume pricing based on client count</li>
-              <li>Dedicated onboarding support</li>
-            </ul>
-            <a class="button button-secondary" href="/contact/">Talk to Vysible</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="final-cta">
-        <div class="container final-cta-inner reveal">
-          <p class="eyebrow">Demo mode is live</p>
-          <h2>Give your team a dashboard before the next reporting cycle.</h2>
-          <p>Open the demo now, then talk through the live-data path when the fit is clear.</p>
-          <div class="hero-actions">
-            <a class="button button-primary button-large" href="/demo/">See Demo</a>
-            <a class="button button-secondary button-large" href="/contact/">Contact Us</a>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="brand" href="/" aria-label="Vysible home">
-            <img class="brand-logo" src="/screenshots/vysible.png" width="348" height="97" alt="Vysible">
+      <!-- Feature 2: AI Briefs -->
+      <div class="feature-block">
+        <div class="container">
+          <div class="feature-inner flip">
+            <div class="feature-copy">
+              <span class="eyebrow">AI executive briefs</span>
+              <h3>The brief that was always supposed to exist.</h3>
+              <p>Each dashboard load generates a plain-English summary of what is moving: where traffic came from, what revenue did, which categories performed. Written from your actual data, not a template.</p>
+              <p>No customer names, no order details leave the dashboard. Aggregated metrics only. If the AI is unavailable, a rule-based version runs from the same data. You always get an output.</p>
+            </div>
+            <div class="feature-visual">
+              <!-- Change: Converted raw screenshot into a framed product panel with full-size modal access. -->
+              <button class="screenshot-panel feature-panel" type="button" data-lightbox-src="/screenshots/Executive-Brief-AI-light.png" data-lightbox-alt="AI-generated executive brief showing revenue summary and traffic insights">
+                <span class="screenshot-chrome" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span class="screenshot-viewport">
+                  <img
+                    src="/screenshots/Executive-Brief-AI-light.png"
+                    alt="AI-generated executive brief showing revenue summary and traffic insights"
+                    class="feature-screenshot"
+                    loading="lazy"
+                  >
+                </span>
+                <span class="screenshot-expand">View full screenshot</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Review Targets -->
+      <div class="feature-block">
+        <div class="container">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <span class="eyebrow">Priority review targets</span>
+              <h3>What to look at. Not a list of everything.</h3>
+              <p>The review targets surface specific items worth attention this period. A page with high impressions but low CTR. A product with a revenue drop. A category outperforming the rest.</p>
+              <p>Six to twelve targets depending on your plan, each pulled from actual signal in the data. Not a fixed checklist. Not generic suggestions.</p>
+            </div>
+            <div class="feature-visual">
+              <!-- Change: Converted raw screenshot into a framed product panel with full-size modal access. -->
+              <button class="screenshot-panel feature-panel" type="button" data-lightbox-src="/screenshots/Review-Targets-AI-light.png" data-lightbox-alt="Priority review targets showing actionable items surfaced from store data">
+                <span class="screenshot-chrome" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span class="screenshot-viewport">
+                  <img
+                    src="/screenshots/Review-Targets-AI-light.png"
+                    alt="Priority review targets showing actionable items surfaced from store data"
+                    class="feature-screenshot"
+                    loading="lazy"
+                  >
+                </span>
+                <span class="screenshot-expand">View full screenshot</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 4: White Label -->
+      <div class="feature-block white-label-feature">
+        <div class="container">
+          <div class="feature-inner">
+            <div class="feature-copy">
+              <span class="eyebrow">White label</span>
+              <h3>Your name. Your client. Your retainer.</h3>
+              <p>Vysible ships as a brandable reporting layer. Growth plans include your name and logo. Agency plans add a custom subdomain. Your client sees only your branding. Vysible is never mentioned.</p>
+              <p>For agencies, it becomes a monthly deliverable: a live dashboard your clients can open at any time, under your name, built on your client relationship.</p>
+            </div>
+            <div class="feature-visual">
+              <!-- Change: White-label image is small, so it stays as a framed preview without expand controls. -->
+              <div class="screenshot-panel feature-panel feature-panel-small" aria-label="White-label dashboard configuration preview">
+                <span class="screenshot-chrome" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span class="screenshot-viewport">
+                  <img
+                    src="/screenshots/white-list-feature6.png"
+                    alt="White-label dashboard configuration showing custom agency branding options"
+                    class="feature-screenshot"
+                    loading="lazy"
+                  >
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- How it works -->
+    <section class="section-how" id="how-it-works">
+      <div class="container">
+        <div class="how-head">
+          <span class="eyebrow">How it works</span>
+          <h2>From signed to live in days, not months.</h2>
+          <p>Vysible handles deployment and configuration. You show up for the handoff.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h4>Connect your sources</h4>
+            <p>One onboarding session to link GA4, Search Console, and Magento read-only access.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h4>Vysible deploys your dashboard</h4>
+            <p>Managed hosting, source configuration, and validation. You do not set anything up.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h4>Your team gets access</h4>
+            <p>A URL with your branding. Share it with anyone who needs the weekly review.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <h4>Open it. Read the brief. Act.</h4>
+            <p>The dashboard refreshes automatically. The AI brief is already written when you arrive.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing preview -->
+    <section class="section-pricing-preview" id="pricing-preview">
+      <div class="container">
+        <div class="pricing-preview-inner">
+          <div class="pricing-preview-copy">
+            <span class="eyebrow">Pricing</span>
+            <h2>Clear tiers. No hidden costs.</h2>
+            <p>Monthly or annual billing. Setup fee quoted at rollout based on deployment complexity. Vysible handles ongoing maintenance at no extra charge.</p>
+            <a href="/pricing/" class="btn btn-secondary">See full pricing and FAQ</a>
+          </div>
+          <div class="tier-rows">
+            <div class="tier-row">
+              <div class="tier-row-left">
+                <span class="tier-row-name">Starter</span>
+                <span class="tier-row-desc">GA4 + GSC + Magento, 6 insights</span>
+              </div>
+              <span class="tier-row-price">$149/mo</span>
+            </div>
+            <div class="tier-row featured">
+              <div class="tier-row-left">
+                <span class="tier-row-name">Growth</span>
+                <span class="tier-row-desc">White label, AI Chat, 9 insights</span>
+              </div>
+              <span class="tier-row-price">$299/mo</span>
+              <span class="tier-badge">Recommended</span>
+            </div>
+            <div class="tier-row">
+              <div class="tier-row-left">
+                <span class="tier-row-name">Agency</span>
+                <span class="tier-row-desc">gpt-4.1, 3 clients, custom subdomain</span>
+              </div>
+              <span class="tier-row-price">$499/mo</span>
+            </div>
+            <div class="tier-row">
+              <div class="tier-row-left">
+                <span class="tier-row-name">Multi-Client</span>
+                <span class="tier-row-desc">Per-client deployments, volume pricing</span>
+              </div>
+              <span class="tier-row-price">Custom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section-cta">
+      <div class="container">
+        <div class="cta-inner">
+          <div class="cta-copy">
+            <h2>Ready to see it with your data?</h2>
+            <p>Review the demo on sample ecommerce data before connecting anything. Or get in touch if you have questions about fit.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="/demo/" class="btn btn-primary">See Demo</a>
+            <a href="/contact/" class="btn btn-secondary">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" aria-label="Vysible home">
+            <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22" loading="lazy">
           </a>
-          <p>White-label analytics for Magento revenue, search visibility, and executive review targets.</p>
+          <p class="footer-tagline">Ecommerce analytics for Magento 2 merchants and agencies.</p>
         </div>
-        <div>
-          <h2>Product</h2>
-          <a href="/#product">Overview</a>
-          <a href="/#how-it-works">How it works</a>
-          <a href="/demo/">See Demo</a>
-          <a href="/pricing/">Pricing</a>
-        </div>
-        <div>
-          <h2>Company</h2>
-          <a href="/contact/">Contact</a>
-          <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>
-          <a href="/privacy/">Privacy</a>
-          <a href="/terms/">Terms</a>
-        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-nav-group">
+            <h5>Product</h5>
+            <a href="/#features">Features</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/demo/">See Demo</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Company</h5>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+        </nav>
       </div>
-      <div class="container footer-bottom">
-        <span>&copy; 2026 Vysible. All rights reserved.</span>
-        <a class="footer-demo" href="/demo/">See Demo</a>
+      <div class="footer-bottom">
+        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
       </div>
-    </footer>
-    <script src="assets/js/main.js" defer></script>
-  </body>
+    </div>
+  </footer>
+
+  <!-- Change: Added accessible lightbox so buyers can inspect full dashboard screenshots. -->
+  <div class="screenshot-modal" id="screenshot-modal" aria-hidden="true">
+    <div class="screenshot-modal-backdrop" data-lightbox-close></div>
+    <div class="screenshot-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="screenshot-modal-title">
+      <div class="screenshot-modal-topbar">
+        <h2 id="screenshot-modal-title">Product screenshot</h2>
+        <button class="screenshot-modal-close" type="button" data-lightbox-close aria-label="Close screenshot">Close</button>
+      </div>
+      <div class="screenshot-modal-body">
+        <img src="" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
 </html>

@@ -1,6 +1,7 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contact Vysible | Plan a Magento analytics rollout</title>
@@ -13,7 +14,10 @@
     <meta property="og:image" content="https://vysible.io/screenshots/Executive-Overview-Dark.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -21,85 +25,175 @@
       gtag('js', new Date());
       gtag('config', 'G-1VKLX3BRJ3');
     </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header" data-header>
-      <nav class="nav-shell" aria-label="Primary navigation">
-        <a class="brand" href="/"><img class="brand-logo" src="/screenshots/vysible.png" width="348" height="97" alt="Vysible"></a>
-        <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="primary-menu" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
-        <div class="nav-menu" id="primary-menu" data-nav-menu>
-          <a href="/#product">Product</a><a href="/#how-it-works">How it works</a><a href="/pricing/">Pricing</a><a href="/contact/" aria-current="page">Contact</a>
-          <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false" data-theme-toggle><span class="theme-toggle__icon" aria-hidden="true"></span><span class="theme-toggle__text">Light</span></button>
-          <a class="button button-primary nav-cta" href="/demo/">See Demo</a>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Vysible home">
+          <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22">
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a href="/#features">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/contact/">Contact</a>
         </div>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="page-hero contact-hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="container contact-grid">
-          <div class="page-copy reveal">
-            <p class="eyebrow">Contact</p>
-            <h1>Talk through a Vysible rollout.</h1>
-            <p>Tell us whether this is for your own Magento store or an agency package. We will respond with the fastest path to a demo or live workspace.</p>
-            <ul class="ideal-list">
-              <li>Magento 2 merchant or agency looking for executive reporting.</li>
-              <li>Needs GA4, Search Console, and Magento revenue in one view.</li>
-              <li>Wants a hosted dashboard instead of a custom reporting build.</li>
-            </ul>
-            <p class="fallback-note">Or reach us directly at <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>.</p>
-          </div>
-          <form class="contact-form reveal" method="POST" action="https://api.web3forms.com/submit" data-async-form>
-            <input type="hidden" name="access_key" value="a22c4fb4-464b-4135-8507-f5c6e50d4364">
-            <div class="form-row">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div class="form-row">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div class="form-row">
-              <label for="company">Company</label>
-              <input id="company" name="company" type="text" autocomplete="organization">
-            </div>
-            <div class="form-row">
-              <label for="website">Website</label>
-              <input id="website" name="website" type="url" autocomplete="url" placeholder="https://">
-            </div>
-            <div class="form-row">
-              <label for="tier">Interested tier</label>
-              <select id="tier" name="interested_tier">
-                <option>Starter</option>
-                <option>Growth</option>
-                <option>Agency</option>
-                <option>Not sure</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button class="button button-primary button-large" type="submit" data-submit-label="Send it - we reply within 1 business day" data-loading-label="Sending...">
-              Send it - we reply within 1 business day
-            </button>
-            <p class="contact-form-status" data-form-status role="alert" hidden></p>
-            <p class="form-note">We will reply from <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a>. Or email us directly if you prefer.</p>
-            <p class="form-note">No auto-email sequences. A real person reads every message.</p>
-          </form>
-          <div class="contact-form-success reveal" data-form-success role="status" hidden>
-            <p class="eyebrow">Message received</p>
-            <h2>We got it.</h2>
-            <p>Expect a reply from <a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a> within one business day.</p>
-          </div>
+        <div class="nav-actions">
+          <a href="/demo/" class="btn btn-primary">See Demo</a>
         </div>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <div class="container footer-grid"><div><a class="brand" href="/"><img class="brand-logo" src="/screenshots/vysible.png" width="348" height="97" alt="Vysible"></a><p>White-label analytics for Magento revenue, search visibility, and executive review targets.</p></div><div><h2>Product</h2><a href="/#product">Overview</a><a href="/#how-it-works">How it works</a><a href="/demo/">See Demo</a><a href="/pricing/">Pricing</a></div><div><h2>Company</h2><a href="/contact/">Contact</a><a href="mailto:vysiblesales@gmail.com">vysiblesales@gmail.com</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div></div>
-      <div class="container footer-bottom"><span>&copy; 2026 Vysible. All rights reserved.</span><a class="footer-demo" href="/demo/">See Demo</a></div>
-    </footer>
-    <script src="../assets/js/main.js"></script>
-  </body>
+        <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="contact-page">
+      <div class="container">
+        <div class="contact-inner">
+
+          <div class="contact-copy">
+            <span class="eyebrow">Contact</span>
+            <h1>Let us know what you are working with.</h1>
+            <p>Whether you are evaluating Vysible for a single store or scoping a white-label setup for your agency, send a message and we will get back to you within one business day.</p>
+            <p>The demo runs on sample ecommerce data. No account, no sources connected, nothing required. If you move forward, you will also get a preview of your own data before anything goes live.</p>
+            <dl class="contact-meta">
+              <dt>Response time</dt>
+              <dd>We reply within 24 hours on business days.</dd>
+              <dt>Email</dt>
+              <dd>vysiblesales@gmail.com</dd>
+              <dt>Demo</dt>
+              <dd><a href="/demo/" style="color: var(--accent);">See the demo before reaching out</a></dd>
+            </dl>
+          </div>
+
+          <div class="contact-form-wrap">
+            <form class="contact-form" method="POST" action="https://api.web3forms.com/submit" novalidate>
+              <input type="hidden" name="access_key" value="a22c4fb4-464b-4135-8507-f5c6e50d4364">
+              <input type="hidden" name="subject" value="Contact from Vysible Marketing Site">
+              <input type="hidden" name="redirect" value="false">
+              <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" aria-hidden="true">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name">Name</label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    aria-required="true"
+                    placeholder="Your name"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email</label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    aria-required="true"
+                    placeholder="you@company.com"
+                  >
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-company">Company</label>
+                  <input
+                    type="text"
+                    id="contact-company"
+                    name="company"
+                    autocomplete="organization"
+                    placeholder="Store or agency name"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="contact-website">Website</label>
+                  <input
+                    type="url"
+                    id="contact-website"
+                    name="website"
+                    autocomplete="url"
+                    placeholder="https://"
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-tier">Interested tier</label>
+                <select id="contact-tier" name="interested_tier">
+                  <option>Starter</option>
+                  <option>Growth</option>
+                  <option>Agency</option>
+                  <option>Not sure</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  aria-required="true"
+                  placeholder="Tell us what you are working with. What platform, how many stores, what you are trying to solve."
+                ></textarea>
+              </div>
+
+              <div class="form-submit">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+
+              <div class="form-status" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" aria-label="Vysible home">
+            <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22" loading="lazy">
+          </a>
+          <p class="footer-tagline">Ecommerce analytics for Magento 2 merchants and agencies.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-nav-group">
+            <h5>Product</h5>
+            <a href="/#features">Features</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/demo/">See Demo</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Company</h5>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
 </html>
