@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vysible.io/sitemap.xml
