@@ -44,37 +44,182 @@
     els.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ---- Connected source mini charts ---- */
+  /* ---- Overview metrics strip ---- */
   (function () {
-    var sourceCharts = document.querySelectorAll('[data-source-chart]');
-    if (!sourceCharts.length) return;
+    var overviewMetrics = document.querySelector('.overview-metrics');
+    if (!overviewMetrics) return;
 
-    if (prefersReducedMotion) {
-      sourceCharts.forEach(function (chart) {
-        chart.classList.add('visible');
-      });
-      return;
+    var counters = overviewMetrics.querySelectorAll('[data-count]');
+
+    function formatValue(el, value) {
+      var prefix = el.getAttribute('data-prefix') || '';
+      var suffix = el.getAttribute('data-suffix') || '';
+      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+
+      return prefix + value.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      }) + suffix;
     }
 
-    if (!('IntersectionObserver' in window)) {
-      sourceCharts.forEach(function (chart) {
-        chart.classList.add('visible');
-      });
-      return;
-    }
-
-    var observer = new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
+    function renderFinal() {
+      counters.forEach(function (el) {
+        var target = parseFloat(el.getAttribute('data-count'));
+        if (!Number.isNaN(target)) {
+          el.textContent = formatValue(el, target);
         }
       });
-    }, { threshold: 0.35 });
+      overviewMetrics.classList.add('is-visible');
+    }
 
-    sourceCharts.forEach(function (chart) {
-      observer.observe(chart);
-    });
+    function animateCounter(el, duration) {
+      var target = parseFloat(el.getAttribute('data-count'));
+      if (Number.isNaN(target)) return;
+
+      var start = null;
+      el.textContent = formatValue(el, 0);
+
+      function tick(timestamp) {
+        if (!start) start = timestamp;
+        var progress = Math.min((timestamp - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = formatValue(el, target * eased);
+
+        if (progress < 1) {
+          window.requestAnimationFrame(tick);
+        } else {
+          el.textContent = formatValue(el, target);
+        }
+      }
+
+      window.requestAnimationFrame(tick);
+    }
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      renderFinal();
+      return;
+    }
+
+    overviewMetrics.classList.add('is-motion-ready');
+
+    observeOnce('.overview-metrics', function () {
+      overviewMetrics.classList.add('is-visible');
+      counters.forEach(function (el) {
+        animateCounter(el, 1450);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -10px 0px' });
+  }());
+
+  /* ---- Connected source beam sequence ---- */
+  (function () {
+    var stage = document.querySelector('.sources-stage');
+    if (!stage) return;
+
+    var sourceNodes = Array.prototype.slice.call(stage.querySelectorAll('.source-node'));
+    var dashMetrics = Array.prototype.slice.call(stage.querySelectorAll('.dash-metric'));
+    var dash = stage.querySelector('.dash-node');
+    var desktopBeams = Array.prototype.slice.call(stage.querySelectorAll('.beam-desktop .beam-line'));
+    var mobileBeam = stage.querySelector('[data-beam-mobile]');
+    var allBeams = desktopBeams.concat(mobileBeam ? [mobileBeam] : []);
+
+    function prepareBeam(path) {
+      if (!path || typeof path.getTotalLength !== 'function') return;
+
+      var length = path.getTotalLength();
+      path.style.strokeDasharray = length;
+      path.style.strokeDashoffset = length;
+      path.setAttribute('data-length', String(length));
+    }
+
+    function completeStage() {
+      sourceNodes.forEach(function (node) {
+        node.classList.add('is-active', 'is-viz-on');
+      });
+      dashMetrics.forEach(function (metric) {
+        metric.classList.add('is-on');
+      });
+      allBeams.forEach(function (path) {
+        if (path) path.style.strokeDashoffset = '0';
+      });
+      if (dash) dash.classList.add('is-active');
+      stage.classList.add('is-sequence-complete');
+    }
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      completeStage();
+      return;
+    }
+
+    allBeams.forEach(prepareBeam);
+    stage.classList.add('is-motion-ready');
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function segment(progress, start, end) {
+      return clamp((progress - start) / (end - start), 0, 1);
+    }
+
+    function setBeamProgress(path, progress) {
+      if (!path) return;
+      var length = parseFloat(path.getAttribute('data-length') || '0');
+      if (!length) return;
+      path.style.strokeDashoffset = String(length * (1 - progress));
+    }
+
+    function setProgress(progress) {
+      sourceNodes.forEach(function (node, index) {
+        var activeAt = [0.03, 0.36, 0.69][index];
+        var vizAt = [0.08, 0.41, 0.74][index];
+        node.classList.toggle('is-active', progress >= activeAt);
+        node.classList.toggle('is-viz-on', progress >= vizAt);
+      });
+
+      var beamProgress = [
+        segment(progress, 0.14, 0.32),
+        segment(progress, 0.47, 0.65),
+        segment(progress, 0.79, 0.94)
+      ];
+
+      desktopBeams.forEach(function (beam, index) {
+        setBeamProgress(beam, beamProgress[index] || 0);
+      });
+
+      if (mobileBeam) {
+        setBeamProgress(mobileBeam, segment(progress, 0.14, 0.94));
+      }
+
+      dashMetrics.forEach(function (metric, index) {
+        metric.classList.toggle('is-on', progress >= [0.34, 0.67, 0.95][index]);
+      });
+
+      if (dash) dash.classList.toggle('is-active', progress >= 0.96);
+      stage.classList.toggle('is-sequence-complete', progress >= 0.96);
+    }
+
+    function render() {
+      var rect = stage.getBoundingClientRect();
+      var viewport = window.innerHeight || document.documentElement.clientHeight;
+      var start = viewport * 0.86;
+      var end = viewport * 0.22;
+      var progress = clamp((start - rect.top) / (start - end), 0, 1);
+      setProgress(progress);
+    }
+
+    var ticking = false;
+    function requestRender() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        render();
+        ticking = false;
+      });
+    }
+
+    render();
+    window.addEventListener('scroll', requestRender, { passive: true });
+    window.addEventListener('resize', requestRender);
   }());
 
   /* ---- Scroll-driven analytics decoration ---- */
@@ -288,20 +433,74 @@
     observer.observe(tierRows);
   }());
 
+  /* ---- Autoplay product videos ---- */
+  (function () {
+    var videos = document.querySelectorAll('video[autoplay]');
+    if (!videos.length) return;
+
+    function playVideo(video) {
+      video.muted = true;
+      video.play().catch(function () {});
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach(playVideo);
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var video = entry.target;
+        if (entry.isIntersecting) {
+          playVideo(video);
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    videos.forEach(function (video) {
+      observer.observe(video);
+    });
+  }());
+
   /* ---- Screenshot lightbox ---- */
   (function () {
     var modal = document.getElementById('screenshot-modal');
     if (!modal) return;
 
     var modalImg = modal.querySelector('.screenshot-modal-body img');
+    var modalVideo = modal.querySelector('.screenshot-modal-body video');
     var closeButtons = modal.querySelectorAll('[data-lightbox-close]');
     var triggers = document.querySelectorAll('[data-lightbox-src]');
     var previousFocus = null;
 
     function openModal(trigger) {
+      var src = trigger.getAttribute('data-lightbox-src');
+      var alt = trigger.getAttribute('data-lightbox-alt') || '';
+      var type = trigger.getAttribute('data-lightbox-type') || '';
       previousFocus = document.activeElement;
-      modalImg.src = trigger.getAttribute('data-lightbox-src');
-      modalImg.alt = trigger.getAttribute('data-lightbox-alt') || '';
+
+      if (type === 'video' && modalVideo) {
+        modalImg.hidden = true;
+        modalImg.removeAttribute('src');
+        modalVideo.hidden = false;
+        modalVideo.src = src;
+        modalVideo.setAttribute('aria-label', alt);
+        modalVideo.play().catch(function () {});
+      } else {
+        if (modalVideo) {
+          modalVideo.pause();
+          modalVideo.hidden = true;
+          modalVideo.removeAttribute('src');
+          modalVideo.removeAttribute('aria-label');
+          modalVideo.load();
+        }
+        modalImg.hidden = false;
+        modalImg.src = src;
+        modalImg.alt = alt;
+      }
+
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('lightbox-open');
@@ -314,6 +513,14 @@
       modal.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('lightbox-open');
       modalImg.removeAttribute('src');
+      modalImg.hidden = false;
+      if (modalVideo) {
+        modalVideo.pause();
+        modalVideo.hidden = true;
+        modalVideo.removeAttribute('src');
+        modalVideo.removeAttribute('aria-label');
+        modalVideo.load();
+      }
       if (previousFocus && typeof previousFocus.focus === 'function') {
         previousFocus.focus();
       }

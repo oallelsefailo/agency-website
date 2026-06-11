@@ -37,7 +37,7 @@
           <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22">
         </a>
         <div class="nav-links" id="nav-links">
-          <a href="/#features">Features</a>
+          <a href="/#ai-chat">Features</a>
           <a href="/pricing/">Pricing</a>
           <a href="/contact/">Contact</a>
         </div>
@@ -91,6 +91,64 @@
       </div>
     </section>
 
+    <!-- Overview metrics -->
+    <div class="overview-metrics" aria-label="Demo dataset metrics">
+      <div class="metric-chip">
+        <span class="label">Revenue</span>
+        <span class="val">
+          <span data-count="128941" data-prefix="$">$128,941</span>
+          <span class="delta">+12.4%</span>
+        </span>
+      </div>
+
+      <div class="metric-chip">
+        <span class="label">Sessions</span>
+        <span class="val">
+          <span data-count="18420">18,420</span>
+          <span class="delta">+8.7%</span>
+        </span>
+      </div>
+
+      <div class="metric-chip">
+        <span class="label">Orders</span>
+        <span class="val">
+          <span data-count="592">592</span>
+          <span class="delta">+9.1%</span>
+        </span>
+      </div>
+
+      <div class="metric-chip">
+        <span class="label">Conversion</span>
+        <span class="val">
+          <span data-count="3.2" data-suffix="%" data-decimals="1">3.2%</span>
+          <span class="delta neg">&minus;0.4%</span>
+        </span>
+      </div>
+
+      <div class="metric-chip">
+        <span class="label">AOV</span>
+        <span class="val">
+          <span data-count="218" data-prefix="$">$218</span>
+          <span class="delta">+3.0%</span>
+        </span>
+      </div>
+
+      <div class="metric-chip metric-chip--trend" aria-hidden="true">
+        <span class="label">Trend</span>
+        <svg class="overview-bars" viewBox="0 0 200 44" focusable="false">
+          <rect x="2" y="24" width="14" height="20" rx="1.5"></rect>
+          <rect x="24" y="17" width="14" height="27" rx="1.5"></rect>
+          <rect x="46" y="27" width="14" height="17" rx="1.5"></rect>
+          <rect x="68" y="12" width="14" height="32" rx="1.5"></rect>
+          <rect x="90" y="20" width="14" height="24" rx="1.5"></rect>
+          <rect x="112" y="8" width="14" height="36" rx="1.5"></rect>
+          <rect x="134" y="15" width="14" height="29" rx="1.5"></rect>
+          <rect x="156" y="5" width="14" height="39" rx="1.5"></rect>
+          <rect x="178" y="11" width="14" height="33" rx="1.5"></rect>
+        </svg>
+      </div>
+    </div>
+
     <!-- Problem -->
     <section class="section-problem" id="problem">
       <div class="container">
@@ -112,92 +170,157 @@
       <div class="container">
         <!-- Change: Connected source copy and visuals now share one two-column layout to remove dead space. -->
         <div class="sources-layout">
+          <div class="sources-stage">
+            <div class="source-col">
+              <div class="source-node" data-source-node="magento">
+                <h3>Magento</h3>
+                <p>Orders, products, categories</p>
+                <div class="mini-viz-slot mini-viz-slot--magento" aria-hidden="true">
+                  <div class="source-chart source-chart-bars">
+                    <div class="sales-chart">
+                      <span class="sales-bar sales-bar-a"><i></i></span>
+                      <span class="sales-bar sales-bar-b"><i></i></span>
+                      <span class="sales-bar sales-bar-c"><i></i></span>
+                      <span class="sales-bar sales-bar-d"><i></i></span>
+                      <span class="sales-bar sales-bar-e"><i></i></span>
+                      <span class="sales-bar sales-bar-f"><i></i></span>
+                      <span class="sales-bar sales-bar-g"><i></i></span>
+                      <span class="sales-bar sales-bar-h"><i></i></span>
+                      <span class="sales-bar sales-bar-i"><i></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="source-node" data-source-node="ga4">
+                <h3>GA4</h3>
+                <p>Sessions, conversion, channels</p>
+                <div class="mini-viz-slot mini-viz-slot--ga4" aria-hidden="true">
+                  <div class="source-chart source-chart-donut">
+                    <div class="donut-chart">
+                      <div class="donut-chart-hole">
+                        <span>GA4</span>
+                      </div>
+                    </div>
+                    <div class="chart-legend">
+                      <span><i class="legend-dot legend-organic"></i>Organic</span>
+                      <span><i class="legend-dot legend-direct"></i>Direct</span>
+                      <span><i class="legend-dot legend-referral"></i>Referral</span>
+                      <span><i class="legend-dot legend-paid"></i>Paid</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="source-node" data-source-node="search-console">
+                <h3>Search Console</h3>
+                <p>Queries, clicks, impressions</p>
+                <div class="mini-viz-slot mini-viz-slot--search-console" aria-hidden="true">
+                  <div class="source-chart source-chart-scatter">
+                    <div class="scatter-chart">
+                      <span class="scatter-axis-label scatter-axis-y">CTR</span>
+                      <span class="scatter-axis-label scatter-axis-x">Impressions</span>
+                      <i class="scatter-point point-a"></i>
+                      <i class="scatter-point point-b"></i>
+                      <i class="scatter-point point-c"></i>
+                      <i class="scatter-point point-d"></i>
+                      <i class="scatter-point point-e"></i>
+                      <i class="scatter-point point-f"></i>
+                      <i class="scatter-point point-g"></i>
+                      <span class="scatter-low-label">Low CTR opportunities</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="beam-cell" aria-hidden="true">
+              <svg class="beam-svg beam-desktop" viewBox="0 0 220 320" preserveAspectRatio="none" focusable="false">
+                <path class="beam-track" d="M0 50 C 90 50, 130 160, 220 160" fill="none" stroke-width="1.5"></path>
+                <path class="beam-track" d="M0 160 C 90 160, 130 160, 220 160" fill="none" stroke-width="1.5"></path>
+                <path class="beam-track" d="M0 270 C 90 270, 130 160, 220 160" fill="none" stroke-width="1.5"></path>
+
+                <path class="beam-line" data-beam-index="0" d="M0 50 C 90 50, 130 160, 220 160" fill="none" stroke-width="2.5" stroke-linecap="round"></path>
+                <path class="beam-line" data-beam-index="1" d="M0 160 C 90 160, 130 160, 220 160" fill="none" stroke-width="2.5" stroke-linecap="round"></path>
+                <path class="beam-line" data-beam-index="2" d="M0 270 C 90 270, 130 160, 220 160" fill="none" stroke-width="2.5" stroke-linecap="round"></path>
+              </svg>
+
+              <svg class="beam-svg beam-mobile" viewBox="0 0 60 110" preserveAspectRatio="xMidYMid meet" focusable="false">
+                <path class="beam-track" d="M30 0 V110" fill="none" stroke-width="1.5"></path>
+                <path class="beam-line" data-beam-mobile d="M30 0 V110" fill="none" stroke-width="2.5" stroke-linecap="round"></path>
+              </svg>
+            </div>
+
+            <div class="dash-node">
+              <div class="dash-node__bar">
+                <b>Vysible</b>
+                <span>Executive view</span>
+              </div>
+
+              <div class="dash-node__body">
+                <div class="dash-metric">
+                  <span class="label">Revenue</span>
+                  <span class="val">$128,941 <span class="chip">+12.4%</span></span>
+                </div>
+
+                <div class="dash-metric">
+                  <span class="label">Sessions</span>
+                  <span class="val">18,420 <span class="chip">+8.7%</span></span>
+                </div>
+
+                <div class="dash-metric">
+                  <span class="label">Search CTR</span>
+                  <span class="val">2.9% <span class="chip">+0.2%</span></span>
+                </div>
+              </div>
+
+              <div class="dash-node__spark" aria-hidden="true">
+                <svg viewBox="0 0 220 40" focusable="false">
+                  <g class="bars">
+                    <rect x="4" y="22" width="18" height="18" rx="1.5"></rect>
+                    <rect x="32" y="16" width="18" height="24" rx="1.5"></rect>
+                    <rect x="60" y="25" width="18" height="15" rx="1.5"></rect>
+                    <rect x="88" y="10" width="18" height="30" rx="1.5"></rect>
+                    <rect x="116" y="18" width="18" height="22" rx="1.5"></rect>
+                    <rect x="144" y="6" width="18" height="34" rx="1.5"></rect>
+                    <rect x="172" y="14" width="18" height="26" rx="1.5"></rect>
+                    <rect x="200" y="9" width="18" height="31" rx="1.5"></rect>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
           <div class="sources-head">
             <span class="eyebrow">Connected sources</span>
             <h2>Three sources. One connection point.</h2>
             <p>Vysible reads from GA4, Search Console, and your Magento database on every load. No exports, no manual uploads, no scheduled syncs.</p>
-          </div>
-          <div class="sources-grid">
-            <!-- Change: Replaced progress bars with compact source-specific analytics previews. -->
-            <div class="source-row source-row-chart" data-source-chart>
-              <div class="source-label">
-                <strong>Google Analytics 4</strong>
-                <span>Traffic, sessions, conversions</span>
-              </div>
-              <div class="source-chart source-chart-donut" role="img" aria-label="Google Analytics 4 traffic source preview showing organic, direct, referral, and paid traffic">
-                <div class="donut-chart">
-                  <div class="donut-chart-hole">
-                    <span>GA4</span>
-                  </div>
-                </div>
-                <div class="chart-legend">
-                  <span><i class="legend-dot legend-organic"></i>Organic</span>
-                  <span><i class="legend-dot legend-direct"></i>Direct</span>
-                  <span><i class="legend-dot legend-referral"></i>Referral</span>
-                  <span><i class="legend-dot legend-paid"></i>Paid</span>
-                </div>
-              </div>
-            </div>
-            <div class="source-row source-row-chart" data-source-chart>
-              <div class="source-label">
-                <strong>Search Console</strong>
-                <span>Impressions, clicks, ranking</span>
-              </div>
-              <div class="source-chart source-chart-scatter" role="img" aria-label="Search Console preview showing query impressions and click-through rate opportunities">
-                <div class="scatter-chart">
-                  <span class="scatter-axis-label scatter-axis-y">CTR</span>
-                  <span class="scatter-axis-label scatter-axis-x">Impressions</span>
-                  <i class="scatter-point point-a"></i>
-                  <i class="scatter-point point-b"></i>
-                  <i class="scatter-point point-c"></i>
-                  <i class="scatter-point point-d"></i>
-                  <i class="scatter-point point-e"></i>
-                  <i class="scatter-point point-f"></i>
-                  <i class="scatter-point point-g"></i>
-                  <span class="scatter-low-label">Low CTR opportunities</span>
-                </div>
-              </div>
-            </div>
-            <div class="source-row source-row-chart" data-source-chart>
-              <div class="source-label">
-                <strong>Magento Orders</strong>
-                <span>Revenue, products, categories</span>
-              </div>
-              <div class="source-chart source-chart-bars" role="img" aria-label="Magento orders preview showing relative revenue per SKU">
-                <div class="sales-chart">
-                  <span class="sales-bar sales-bar-a"><i></i></span>
-                  <span class="sales-bar sales-bar-b"><i></i></span>
-                  <span class="sales-bar sales-bar-c"><i></i></span>
-                  <span class="sales-bar sales-bar-d"><i></i></span>
-                  <span class="sales-bar sales-bar-e"><i></i></span>
-                  <span class="sales-bar sales-bar-f"><i></i></span>
-                  <span class="sales-bar sales-bar-g"><i></i></span>
-                  <span class="sales-bar sales-bar-h"><i></i></span>
-                  <span class="sales-bar sales-bar-i"><i></i></span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- AI Chat moved directly after connected sources so the live database feature follows the three-source story. -->
-    <div class="feature-block ai-chat-feature">
+    <div class="feature-block ai-chat-feature" id="ai-chat">
       <div class="container">
         <div class="feature-inner ai-chat-inner">
           <div class="feature-visual">
             <!-- Change: Converted raw screenshot into a framed product panel with full-size modal access. -->
-            <!-- Change: Light AI Chat GIF returns the feature to the page's softer visual tone. -->
-            <button class="screenshot-panel feature-panel ai-chat-panel" type="button" data-lightbox-src="/screenshots/AI-Chat-light.gif" data-lightbox-alt="AI Chat feature showing plain-English queries answered from live Magento data">
+            <!-- Change: MP4 keeps the AI Chat walkthrough sharper than the compressed GIF at responsive sizes. -->
+            <button class="screenshot-panel feature-panel ai-chat-panel" type="button" data-lightbox-src="/screenshots/AI-Chat-Light-mp4.mp4" data-lightbox-type="video" data-lightbox-alt="AI Chat feature showing plain-English queries answered from live Magento data">
               <span class="screenshot-chrome" aria-hidden="true"><span></span><span></span><span></span></span>
               <span class="screenshot-viewport">
-                <img
-                  src="/screenshots/AI-Chat-light.gif"
-                  alt="AI Chat feature showing plain-English queries answered from live Magento data"
+                <video
                   class="feature-screenshot"
-                  loading="lazy"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="AI Chat feature showing plain-English queries answered from live Magento data"
                 >
+                  <source src="/screenshots/AI-Chat-Light-mp4.mp4" type="video/mp4">
+                  AI Chat feature showing plain-English queries answered from live Magento data.
+                </video>
               </span>
               <span class="screenshot-expand">View full screenshot</span>
             </button>
@@ -214,27 +337,10 @@
 
     <!-- Features -->
     <section class="section-features" id="features" aria-label="Product features">
-      <!-- Change: Added one subtle scroll-driven analytics story behind the feature showcase. -->
-      <div class="analytics-scroll-art" data-analytics-scroll aria-hidden="true">
-        <div class="analytics-grid"></div>
-        <div class="analytics-side-bars">
-          <span class="analytics-side-bar bar-a"></span>
-          <span class="analytics-side-bar bar-b"></span>
-          <span class="analytics-side-bar bar-c"></span>
-          <span class="analytics-side-bar bar-d"></span>
-        </div>
-        <svg class="analytics-trend" viewBox="0 0 420 180" preserveAspectRatio="none">
-          <path class="analytics-trend-line" pathLength="1" d="M16 142 C74 116 104 130 152 92 S248 88 292 54 S362 44 404 20"></path>
-          <circle class="analytics-point point-a" cx="152" cy="92" r="4"></circle>
-          <circle class="analytics-point point-b" cx="292" cy="54" r="4"></circle>
-          <circle class="analytics-point point-c" cx="404" cy="20" r="4"></circle>
-        </svg>
-      </div>
-
       <!-- Feature 1: Overview -->
       <div class="feature-block">
         <div class="container">
-          <div class="feature-inner">
+          <div class="feature-inner flip">
             <div class="feature-copy">
               <span class="eyebrow">Dashboard overview</span>
               <h3>The full picture before you dig into anything specific.</h3>
@@ -263,7 +369,7 @@
       <!-- Feature 2: AI Briefs -->
       <div class="feature-block">
         <div class="container">
-          <div class="feature-inner flip">
+          <div class="feature-inner">
             <div class="feature-copy">
               <span class="eyebrow">AI executive briefs</span>
               <h3>The brief that was always supposed to exist.</h3>
@@ -292,7 +398,7 @@
       <!-- Feature 3: Review Targets -->
       <div class="feature-block">
         <div class="container">
-          <div class="feature-inner">
+          <div class="feature-inner flip">
             <div class="feature-copy">
               <span class="eyebrow">Priority review targets</span>
               <h3>What to look at. Not a list of everything.</h3>
@@ -456,7 +562,7 @@
         <nav class="footer-nav" aria-label="Footer navigation">
           <div class="footer-nav-group">
             <h5>Product</h5>
-            <a href="/#features">Features</a>
+            <a href="/#ai-chat">Features</a>
             <a href="/pricing/">Pricing</a>
             <a href="/demo/">See Demo</a>
           </div>
@@ -484,10 +590,11 @@
       </div>
       <div class="screenshot-modal-body">
         <img src="" alt="">
+        <video muted loop playsinline controls hidden></video>
       </div>
     </div>
   </div>
 
-  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/main.js?v=ai-chat-mp4" defer></script>
 </body>
 </html>
