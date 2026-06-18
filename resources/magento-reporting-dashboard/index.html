@@ -63,35 +63,35 @@
               <h1>Magento 2 Reporting Dashboard: What to Track</h1>
             </div>
 
-            <p class="doc-lead">The KPIs that belong in every Magento reporting dashboard, and why the default reporting tools rarely give you the full picture in one place.</p>
+                          <p class="doc-lead">The KPIs worth putting in a Magento reporting dashboard, and why the default tools rarely line them up in one place.</p>
 
-            <h2>Why the default Magento reporting falls short</h2>
-          <p>Magento 2 ships with a functional reporting suite: sales, products, customers, abandoned carts, and search terms. For a merchant checking yesterday's orders, it does the job. The limits show up when a team needs one weekly view across traffic, search, and revenue.</p>
-          <p>First, the reports are siloed. Magento reports know about orders and products. They do not show where traffic came from, which pages are gaining or losing search visibility, or whether a revenue dip lines up with a CTR decline on a key landing page. You need GA4 and Search Console for that context, and those are separate tools with separate tabs.</p>
-          <p>Second, they are passive. Every chart still needs someone to read it, explain it, and decide what to do next. There is no built-in summary that compares the data and calls out what changed.</p>
-          <p>Third, they do not scale cleanly across clients. An agency managing three Magento stores can end up with three reporting stacks, three spreadsheet workflows, and three separate weekly reviews.</p>
+              <h2>Why the default Magento reporting falls short</h2>
+              <p>Magento 2 ships a working reporting suite: sales, products, customers, abandoned carts, search terms. For checking yesterday's orders, it does the job. The strain shows when a team wants a single weekly view spanning traffic, search, and revenue.</p>
+              <p>The reports are siloed. They know orders and products, but not where the traffic came from, which pages are gaining or losing search visibility, or whether a revenue dip lines up with a CTR drop on an important landing page. That context lives in GA4 and Search Console, off in their own tabs.</p>
+              <p>They are also passive. Every chart still needs a person to read it and decide what to do next, because nothing on the screen compares the data or calls out what changed.</p>
+              <p>And they don't scale across clients. An agency running three Magento stores ends up with three reporting stacks, three spreadsheet routines, and three separate weekly reviews.</p>
 
-          <h2>The five KPIs every Magento reporting dashboard should surface</h2>
+              <h2>The five KPIs every Magento reporting dashboard should surface</h2>
 
-          <h3>1. Traffic and conversion: sessions, engagement rate, purchase revenue</h3>
-          <p>A reporting dashboard should open with the top-line GA4 metrics that tell you whether the store is healthy: sessions, engaged sessions, conversion rate, and purchase revenue. These four numbers, shown together with a prior-period comparison, answer the first question in any weekly review: are we up, down, or flat? Without this view, the review starts with guesswork.</p>
+              <h3>1. Traffic and conversion: sessions, engagement rate, purchase revenue</h3>
+              <p>The dashboard should open on the top-line GA4 numbers that say whether the store is healthy: sessions, engaged sessions, conversion rate, and purchase revenue, each shown against the prior period. That is the first thing anyone wants to know in a weekly review, whether the trend is up, down, or holding. Skip it and the review starts on guesswork.</p>
 
-          <h3>2. Search visibility: impressions, CTR, average position</h3>
-          <p>Search Console data belongs next to revenue data, not in a separate tab. When a product page loses revenue, the dashboard should show whether organic impressions dropped, whether average position shifted, or whether CTR declined while impressions held steady. Each pattern points to a different fix: a ranking issue, a snippet problem, or a seasonal demand shift. Without the paired data, diagnosis takes longer than it should.</p>
+              <h3>2. Search visibility: impressions, CTR, average position</h3>
+              <p>Search Console belongs next to revenue, not in a tab of its own. When a product page loses revenue, you want to see in the same place whether impressions dropped, average position moved, or CTR fell while impressions held. Each pattern points somewhere different, a ranking issue, a weak snippet, or a seasonal swing, and pairing the data is what keeps the diagnosis quick.</p>
 
-          <h3>3. Order-line revenue and product movement</h3>
-          <p>Magento order data should be pulled at the line-item level, not flattened into vague totals. A dashboard that shows only total revenue hides the fact that one product dropped 40% while another doubled. Category-level revenue movement, average order value trends, top products by revenue, and product drop-off detection should all be visible in one view.</p>
+              <h3>3. Order-line revenue and product movement</h3>
+              <p>Magento order data is worth pulling at the line-item level rather than as one rolled-up figure, because a single total hides the product that dropped 40% while another doubled. Category revenue movement, average order value over time, top products by revenue, and product drop-off detection should all sit in the same view.</p>
 
-          <h3>4. Priority review targets</h3>
-          <p>A good reporting dashboard should do more than show charts. It should point out the pages, products, and categories worth reviewing. Low-CTR pages with impressions but no clicks. Products with revenue declines against the prior period. Categories that are outperforming or underperforming expectations. With the evidence attached, the weekly review becomes a decision-making session instead of a data-reading exercise.</p>
+              <h3>4. Priority review targets</h3>
+              <p>A dashboard should do more than draw charts; it should point at what to look at. Pages pulling impressions but no clicks. Products sliding against the prior period. Categories running hot or cold against expectation. With the evidence attached, the weekly review becomes a decision session rather than a reading exercise.</p>
 
-          <h3>5. An AI brief that reads across sources</h3>
-          <p>An AI executive brief should read GA4, Search Console, and Magento order data together, then write a plain-English weekly summary. It should cite specific evidence: "Sessions are up 12% week over week, led by the Accessories category. The product page for SKU-4821 lost 34% of organic impressions. Check whether a competitor launched a replacement." This is not a generic template. It is a summary based on the connected sources.</p>
+              <h3>5. An AI brief that reads across sources</h3>
+              <p>An executive brief should read GA4, Search Console, and Magento order data together and write the week up in plain English, with specifics: "Sessions are up 12% week over week, led by the Accessories category. The product page for SKU-4821 lost 34% of its organic impressions, worth checking whether a competitor launched a replacement." That comes from the connected data, not a fill-in-the-blank template.</p>
 
-          <h2>How Vysible packages these KPIs into one dashboard</h2>
-          <p>Vysible connects GA4, Google Search Console, and Magento order data into a single hosted dashboard built for weekly Magento reporting. The executive overview brings traffic, search visibility, revenue, and merchandising movement into one view. The AI executive brief summarizes the evidence. The priority review targets list pages, products, and categories that need attention this week.</p>
-          <p>Setup takes one business day for most standard deployments. You share Google Viewer access for GA4 and Search Console, run one SQL command to create a read-only Magento database user, and Vysible handles the rest. The dashboard pulls live data on every load, with no data warehouse, ETL pipeline, or dashboard maintenance.</p>
-          <p>For agencies, Vysible deploys under your brand with your logo, your domain, and your client relationship. The Agency tier ($499/month) includes up to three client deployments with dedicated support, full GPT-4.1 AI, and custom domains.</p>
+              <h2>How Vysible packages these KPIs into one dashboard</h2>
+              <p>Vysible connects GA4, Google Search Console, and Magento order data into one hosted dashboard built for the weekly Magento review. The executive overview gathers traffic, search visibility, revenue, and merchandising movement; the AI brief summarizes the evidence; the priority targets name the pages, products, and categories that need attention this week.</p>
+              <p>Setup runs about a business day for a standard deployment. You grant Google Viewer access for GA4 and Search Console, run one SQL command to create a read-only Magento user, and Vysible handles the rest. The dashboard pulls live data on every load, with no warehouse, ETL, or maintenance to own.</p>
+              <p>For agencies, it runs under your brand, your logo, and your domain. The Agency tier at $499/month includes up to three client deployments with dedicated support, the full GPT-4.1 model, and custom domains.</p>
           </article>
         </div>
       </div>
@@ -136,6 +136,12 @@
             <a href="/contact/">Contact</a>
             <a href="/privacy/">Privacy Policy</a>
             <a href="/terms/">Terms of Service</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Resources</h5>
+            <a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics</a>
+            <a href="/resources/magento-analytics-tools/">Magento Analytics Tools</a>
+            <a href="/resources/magento-reporting-dashboard/">Magento Reporting Dashboard</a>
           </div>
         </nav>
       </div>
