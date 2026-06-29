@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What manual reporting costs you | Vysible</title>
+    <link rel="canonical" href="https://vysible.io/roi-calculator/">
+    <meta name="description" content="Your analytics tools are free. The hours spent stitching GA4, Search Console, and Magento into one report each week are not. Estimate the labor cost with your own numbers.">
+    <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Vysible home">
+          <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22">
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a href="/#ai-chat">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/contact/">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <a href="/demo/" class="btn btn-primary">See Demo</a>
+        </div>
+        <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="container" style="max-width:720px;padding:64px 20px 40px;">
+      <span class="eyebrow">Calculator</span>
+      <h1 style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(30px,5vw,46px);line-height:1.1;margin:8px 0 16px;">What is manual reporting actually costing you?</h1>
+      <p style="font-size:17px;line-height:1.6;color:var(--muted,#6b7280);">Your tools are free, and you will still open GA4, Search Console, and the Magento admin for the deep dives. What costs money is the repetitive part: pulling the same numbers out of all three every week and reconciling them into one view for your review. That recurring assembly is the job Vysible removes, not the analysis itself. Put in your own numbers below.</p>
+    </section>
+
+    <section class="container" style="max-width:720px;padding:0 20px 80px;">
+      <div style="display:grid;grid-template-columns:1fr;gap:18px;background:rgba(127,127,127,0.06);border:1px solid rgba(127,127,127,0.16);border-radius:14px;padding:24px;">
+
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;color:var(--text);">
+          Hours per week spent pulling these sources into your weekly review
+          <input id="hours" type="number" min="0" step="0.5" value="3"
+            style="font-size:16px;padding:10px 12px;border:1px solid rgba(127,127,127,0.3);border-radius:8px;background:var(--white,#fff);color:var(--text);">
+        </label>
+
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;color:var(--text);">
+          What an hour of that time is worth ($)
+          <input id="rate" type="number" min="0" step="5" value="50"
+            style="font-size:16px;padding:10px 12px;border:1px solid rgba(127,127,127,0.3);border-radius:8px;background:var(--white,#fff);color:var(--text);">
+        </label>
+
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;color:var(--text);">
+          Number of stores you report on
+          <input id="stores" type="number" min="1" step="1" value="1"
+            style="font-size:16px;padding:10px 12px;border:1px solid rgba(127,127,127,0.3);border-radius:8px;background:var(--white,#fff);color:var(--text);">
+        </label>
+      </div>
+
+      <div id="result" style="margin-top:24px;padding:28px;border-radius:14px;background:rgba(79,70,229,0.06);border:1px solid rgba(79,70,229,0.18);"></div>
+
+      <p style="font-size:13px;color:var(--muted,#9ca3af);margin-top:16px;line-height:1.5;">
+        Nothing here is guessed, the hours are yours. We turn your weekly hours into a monthly number (a month is about 4.3 weeks), then multiply by your hourly rate and the number of stores. This counts only the recurring time spent combining the sources, not the deep analysis you would still do inside the tools.
+      </p>
+
+      <div style="margin-top:36px;text-align:center;">
+        <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(24px,4vw,34px);line-height:1.15;margin-bottom:8px;">That time goes away when the sources are already connected.</h2>
+        <p style="color:var(--muted,#6b7280);margin-bottom:20px;">Vysible pulls GA4, Search Console, and your Magento data into one dashboard, with a plain English brief on what changed and where to look.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="/demo/" class="btn btn-primary">See the demo</a>
+          <a href="/pricing/" class="btn btn-secondary">View pricing</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" aria-label="Vysible home">
+            <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22" loading="lazy">
+          </a>
+          <p class="footer-tagline">Ecommerce analytics for Magento 2 merchants and agencies.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-nav-group">
+            <h5>Product</h5>
+            <a href="/#ai-chat">Features</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/demo/">See Demo</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Company</h5>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Resources</h5>
+            <a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics</a>
+            <a href="/resources/magento-analytics-tools/">Magento Analytics Tools</a>
+            <a href="/resources/magento-reporting-dashboard/">Magento Reporting Dashboard</a>
+            <a href="/resources/magento-business-intelligence/">Magento Business Intelligence</a>
+            <a href="/roi-calculator/">ROI Calculator</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var fmt = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
+      function calc() {
+        var hours = Math.max(0, parseFloat(document.getElementById("hours").value) || 0);
+        var rate = Math.max(0, parseFloat(document.getElementById("rate").value) || 0);
+        var stores = Math.max(1, parseInt(document.getElementById("stores").value, 10) || 1);
+        var monthlyHours = hours * 4.3 * stores;
+        var monthlyLabor = monthlyHours * rate;
+        var annualLabor = monthlyLabor * 12;
+
+        var price = null, tier = "Multi-Client";
+        if (stores <= 1) { price = 149; tier = "Starter"; }
+        else if (stores <= 3) { price = 499; tier = "Agency"; }
+
+        var hoursTxt = monthlyHours.toFixed(monthlyHours < 10 ? 1 : 0);
+        var html = "";
+        html += '<div style="font-size:14px;color:var(--muted,#6b7280);margin-bottom:6px;">Doing it by hand costs you about</div>';
+        html += '<div style="font-size:40px;font-weight:700;line-height:1;color:var(--text);">' + fmt(monthlyLabor) + ' <span style="font-size:18px;font-weight:500;color:var(--muted,#6b7280);">/ month</span></div>';
+        html += '<div style="font-size:15px;color:var(--muted,#6b7280);margin-top:8px;">That is about ' + hoursTxt + ' hours a month, or ' + fmt(annualLabor) + ' a year of time.</div>';
+
+        var note = "";
+        if (price !== null) {
+          var net = monthlyLabor - price;
+          if (net > 0) {
+            note = "Vysible " + tier + " is $" + price + "/mo, so you would free up roughly " + fmt(net) + "/month of that time for work that actually moves revenue.";
+          } else {
+            note = "At this volume your reporting time (" + fmt(monthlyLabor) + "/mo) is close to the " + tier + " price ($" + price + "/mo). The bigger win then is what the dashboard catches for you, like revenue gaps and tracking issues, not just the hours.";
+          }
+        } else {
+          note = "Across " + stores + " stores that is " + fmt(monthlyLabor) + "/month in reporting time. The Agency and Multi-Client tiers are built for exactly this, so reach out for volume pricing.";
+        }
+        html += '<div style="font-size:15px;line-height:1.55;margin-top:16px;padding-top:16px;border-top:1px solid rgba(127,127,127,0.18);color:var(--text);">' + note + '</div>';
+        document.getElementById("result").innerHTML = html;
+      }
+      ["hours", "rate", "stores"].forEach(function (id) {
+        document.getElementById(id).addEventListener("input", calc);
+      });
+      calc();
+    })();
+  </script>
+</body>
+</html>
