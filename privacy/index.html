@@ -16,14 +16,22 @@
     <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=synthesis-warm">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw3">
+    <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1VKLX3BRJ3');
+      window.vysLoadGA = function () {
+        if (document.getElementById('ga-js')) return;
+        var s = document.createElement('script');
+        s.id = 'ga-js'; s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'G-1VKLX3BRJ3');
+      };
+      try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
 </head>
 <body>
@@ -39,6 +47,7 @@
         <div class="nav-links" id="nav-links">
           <a href="/#what">Features</a>
           <a href="/pricing/">Pricing</a>
+          <a href="/resources/">Resources</a>
           <a href="/contact/">Contact</a>
         </div>
         <div class="nav-actions">
@@ -131,7 +140,7 @@
                 <li>Cloud hosting, network security, and DNS providers</li>
                 <li>A contact-form processing provider</li>
               </ul>
-              <p>Cloudflare processes email addresses entered during demo access authentication.</p>
+              <p>Cloudflare provides hosting, network security, and access-control infrastructure for the dashboard. The public demo requires no account or email address. Where access authentication is used for live client deployments, Cloudflare processes the email addresses entered at sign-in.</p>
               <p>These providers process information only as needed to support Vysible operations and do not receive data beyond what is required for their specific function.</p>
               <p>OpenAI does not train on API inputs submitted through Vysible.</p>
               <p>AI Chat answers questions about a store's own Magento data. To generate a response, aggregated query results may be sent to OpenAI. Customer personal information - names, email addresses, postal addresses, and phone numbers - is never queried or sent to OpenAI. Individual customers are referenced only by an internal customer ID.</p>
@@ -212,11 +221,11 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
+        <span class="footer-legal">&copy; 2026 Vysible. All rights reserved.</span>
       </div>
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=synthesis-warm" defer></script>
+  <script src="/assets/js/main.js?v=sw3" defer></script>
 </body>
 </html>

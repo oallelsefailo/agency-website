@@ -16,14 +16,22 @@
     <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=synthesis-warm">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw3">
+    <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1VKLX3BRJ3');
+      window.vysLoadGA = function () {
+        if (document.getElementById('ga-js')) return;
+        var s = document.createElement('script');
+        s.id = 'ga-js'; s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'G-1VKLX3BRJ3');
+      };
+      try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
 </head>
 <body>
@@ -39,6 +47,7 @@
         <div class="nav-links" id="nav-links">
           <a href="/#what">Features</a>
           <a href="/pricing/">Pricing</a>
+          <a href="/resources/">Resources</a>
           <a href="/contact/">Contact</a>
         </div>
         <div class="nav-actions">
@@ -91,7 +100,15 @@
               <h2>How Vysible packages these KPIs into one dashboard</h2>
               <p>Vysible connects GA4, Google Search Console, and Magento order data into one hosted dashboard built for the weekly Magento review. The executive overview gathers traffic, search visibility, revenue, and merchandising movement; the AI brief summarizes the evidence; the priority targets name the pages, products, and categories that need attention this week.</p>
               <p>Setup runs about a business day for a standard deployment. You grant Google Viewer access for GA4 and Search Console, run one SQL command to create a read-only Magento user, and Vysible handles the rest. The dashboard pulls live data on every load, with no warehouse, ETL, or maintenance to own.</p>
-              <p>For agencies, it runs under your brand, your logo, and your domain. The Agency tier at $499/month includes up to three client deployments with dedicated support, the full GPT-4.1 model, and custom domains.</p>
+              <p>For agencies, it runs under your brand, your logo, and your domain. The Agency tier at $499/month includes up to three client deployments with dedicated support, the full gpt-5.4 model, and custom domains.</p>
+
+              <h2>More Magento analytics resources</h2>
+              <ul>
+                <li><a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics: What Native Reporting Misses</a></li>
+                <li><a href="/resources/magento-analytics-tools/">Best Magento Analytics Tools in 2026</a></li>
+                <li><a href="/resources/magento-business-intelligence/">Magento Business Intelligence: What It Covers and What It Misses</a></li>
+                <li><a href="/roi-calculator/">ROI Calculator: what manual reporting costs you</a></li>
+              </ul>
           </article>
         </div>
       </div>
@@ -148,11 +165,11 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
+        <span class="footer-legal">&copy; 2026 Vysible. All rights reserved.</span>
       </div>
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=synthesis-warm" defer></script>
+  <script src="/assets/js/main.js?v=sw3" defer></script>
 </body>
 </html>

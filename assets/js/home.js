@@ -5,6 +5,29 @@
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var wait = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
 
+  /* Run a canvas rAF loop only while the canvas is on-screen and the tab is visible. */
+  function pausableLoop(cv, drawFrame) {
+    var running = false, visible = false;
+    function active() { return visible && !document.hidden; }
+    function tick(ts) {
+      if (!active()) { running = false; return; }
+      drawFrame(ts);
+      requestAnimationFrame(tick);
+    }
+    function maybeStart() {
+      if (active() && !running) { running = true; requestAnimationFrame(tick); }
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { visible = e.isIntersecting; });
+        maybeStart();
+      }, { threshold: 0 }).observe(cv);
+    } else {
+      visible = true; maybeStart();
+    }
+    document.addEventListener('visibilitychange', maybeStart);
+  }
+
   /* ============ typed "store says" line ============ */
   (function () {
     var says = document.getElementById('says');
@@ -92,7 +115,7 @@
     fit(); addEventListener('resize', fit);
     var P = [];
     for (var i = 0; i < 50; i++) P.push({ x: Math.random(), y: Math.random(), dx: (Math.random() - .5) * .0004, dy: (Math.random() - .5) * .0003, sz: 1.4 + Math.random() * 2.4, c: ['#ef5b3b', '#17a08b', '#f2a93b', '#e0709a'][i % 4], o: .1 + Math.random() * .18 });
-    (function draw() {
+    pausableLoop(cv, function () {
       ctx.clearRect(0, 0, cv.width, cv.height);
       P.forEach(function (p) {
         p.x = (p.x + p.dx + 1) % 1; p.y = (p.y + p.dy + 1) % 1;
@@ -101,8 +124,7 @@
         ctx.fillStyle = p.c; ctx.fill();
       });
       ctx.globalAlpha = 1;
-      requestAnimationFrame(draw);
-    })();
+    });
   })();
 
   /* ============ PARTICLE FORMATIONS in "How it thinks" ============ */
@@ -175,7 +197,7 @@
         if (lab) { lab.textContent = SCENES[scene].lab; lab.classList.remove('fade'); }
       }
     })();
-    (function draw(ts) {
+    pausableLoop(cv, function (ts) {
       ctx.clearRect(0, 0, cv.width, cv.height);
       parts.forEach(function (p, i) {
         p.x += (p.tx - p.x) * .09; p.y += (p.ty - p.y) * .09;
@@ -184,8 +206,7 @@
         ctx.fillStyle = p.c; ctx.fill();
       });
       ctx.globalAlpha = 1;
-      requestAnimationFrame(draw);
-    })(0);
+    });
   })();
 
   /* ============ stage animations (brief / targets / search) ============ */
@@ -252,7 +273,7 @@
       var r = SR8[i];
       var d = document.createElement('div');
       d.className = 'srow8';
-      d.innerHTML = '<span class="u8">' + r[0] + '</span><span style="color:#847a6d">' + r[1] + '</span><span class="c8 ' + r[2][1] + '">' + r[2][0] + '</span>';
+      d.innerHTML = '<span class="u8">' + r[0] + '</span><span style="color:#6d6355">' + r[1] + '</span><span class="c8 ' + r[2][1] + '">' + r[2][0] + '</span>';
       rows.appendChild(d);
       requestAnimationFrame(function () { requestAnimationFrame(function () { d.classList.add('on'); }); });
       await wait(260);
@@ -338,7 +359,7 @@
       }
       return TP[TP.length - 1][1];
     }
-    (function draw(ts) {
+    pausableLoop(cv, function (ts) {
       var W = cv.width, H = cv.height;
       ctx.clearRect(0, 0, W, H);
       ctx.strokeStyle = 'rgba(160,120,80,.14)'; ctx.lineWidth = 1;
@@ -364,8 +385,7 @@
         ctx.fillStyle = p.c; ctx.fill();
       });
       ctx.globalAlpha = 1;
-      requestAnimationFrame(draw);
-    })(0);
+    });
   })();
 
   /* ============ finale typed line ============ */

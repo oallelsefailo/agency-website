@@ -106,44 +106,12 @@
     observer.observe(tierRows);
   }());
 
-  /* ---- Autoplay product videos ---- */
-  (function () {
-    var videos = document.querySelectorAll('video[autoplay]');
-    if (!videos.length) return;
-
-    function playVideo(video) {
-      video.muted = true;
-      video.play().catch(function () {});
-    }
-
-    if (!('IntersectionObserver' in window)) {
-      videos.forEach(playVideo);
-      return;
-    }
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var video = entry.target;
-        if (entry.isIntersecting) {
-          playVideo(video);
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.2 });
-
-    videos.forEach(function (video) {
-      observer.observe(video);
-    });
-  }());
-
   /* ---- Screenshot lightbox ---- */
   (function () {
     var modal = document.getElementById('screenshot-modal');
     if (!modal) return;
 
     var modalImg = modal.querySelector('.screenshot-modal-body img');
-    var modalVideo = modal.querySelector('.screenshot-modal-body video');
     var closeButtons = modal.querySelectorAll('[data-lightbox-close]');
     var triggers = document.querySelectorAll('[data-lightbox-src]');
     var previousFocus = null;
@@ -151,28 +119,11 @@
     function openModal(trigger) {
       var src = trigger.getAttribute('data-lightbox-src');
       var alt = trigger.getAttribute('data-lightbox-alt') || '';
-      var type = trigger.getAttribute('data-lightbox-type') || '';
       previousFocus = document.activeElement;
 
-      if (type === 'video' && modalVideo) {
-        modalImg.hidden = true;
-        modalImg.removeAttribute('src');
-        modalVideo.hidden = false;
-        modalVideo.src = src;
-        modalVideo.setAttribute('aria-label', alt);
-        modalVideo.play().catch(function () {});
-      } else {
-        if (modalVideo) {
-          modalVideo.pause();
-          modalVideo.hidden = true;
-          modalVideo.removeAttribute('src');
-          modalVideo.removeAttribute('aria-label');
-          modalVideo.load();
-        }
-        modalImg.hidden = false;
-        modalImg.src = src;
-        modalImg.alt = alt;
-      }
+      modalImg.hidden = false;
+      modalImg.src = src;
+      modalImg.alt = alt;
 
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
@@ -187,13 +138,6 @@
       document.body.classList.remove('lightbox-open');
       modalImg.removeAttribute('src');
       modalImg.hidden = false;
-      if (modalVideo) {
-        modalVideo.pause();
-        modalVideo.hidden = true;
-        modalVideo.removeAttribute('src');
-        modalVideo.removeAttribute('aria-label');
-        modalVideo.load();
-      }
       if (previousFocus && typeof previousFocus.focus === 'function') {
         previousFocus.focus();
       }
@@ -271,6 +215,38 @@
     });
   }());
 
+  /* ---- Cookie consent banner (gates Google Analytics) ---- */
+  (function () {
+    var KEY = 'vys-consent';
+    var choice = null;
+    try { choice = localStorage.getItem(KEY); } catch (e) { return; }
+    if (choice === 'granted' || choice === 'denied') return;
+
+    var banner = document.createElement('div');
+    banner.className = 'consent-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML =
+      '<p>We use Google Analytics to understand how visitors use this site. No analytics cookies are set unless you accept. See our <a href="/privacy/">privacy policy</a>.</p>' +
+      '<div class="consent-actions">' +
+      '<button type="button" class="btn btn-primary" data-consent="granted">Accept</button>' +
+      '<button type="button" class="btn btn-secondary" data-consent="denied">Decline</button>' +
+      '</div>';
+    document.body.appendChild(banner);
+    requestAnimationFrame(function () { banner.classList.add('show'); });
+
+    banner.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-consent]');
+      if (!btn) return;
+      var value = btn.getAttribute('data-consent');
+      try { localStorage.setItem(KEY, value); } catch (e2) {}
+      if (value === 'granted' && typeof window.vysLoadGA === 'function') {
+        window.vysLoadGA();
+      }
+      banner.remove();
+    });
+  }());
+
   /* ---- Contact form (Web3Forms) ---- */
   (function () {
     var form   = document.querySelector('.contact-form');
@@ -299,7 +275,7 @@
         .then(function (json) {
           if (json.success) {
             status.className = 'form-status visible success';
-            status.textContent = 'Message sent. We will get back to you within 24 hours.';
+            status.textContent = 'Message sent. We will get back to you within one business day.';
             form.reset();
           } else {
             throw new Error('Submission failed');
@@ -307,7 +283,7 @@
         })
         .catch(function () {
           status.className = 'form-status visible error';
-          status.textContent = 'Something went wrong. Please try again or email vysiblesales@gmail.com directly.';
+          status.textContent = 'Something went wrong. Please try again or email hello@vysible.io directly.';
         })
         .finally(function () {
           if (submitBtn) {

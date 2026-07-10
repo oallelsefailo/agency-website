@@ -5,18 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>What manual reporting costs you | Vysible</title>
     <link rel="canonical" href="https://vysible.io/roi-calculator/">
+    <meta property="og:title" content="Vysible ROI Calculator | What manual Magento reporting costs">
+    <meta property="og:description" content="Put in your own hours and rate to see what assembling GA4, Search Console, and Magento reports by hand costs each month.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vysible.io/roi-calculator/">
+    <meta property="og:image" content="https://vysible.io/screenshots/Exec-Overview-Light.png">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="description" content="Your analytics tools are free. The hours spent stitching GA4, Search Console, and Magento into one report each week are not. Estimate the labor cost with your own numbers.">
     <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=synthesis-warm">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw3">
+    <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1VKLX3BRJ3');
+      window.vysLoadGA = function () {
+        if (document.getElementById('ga-js')) return;
+        var s = document.createElement('script');
+        s.id = 'ga-js'; s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'G-1VKLX3BRJ3');
+      };
+      try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
 </head>
 <body>
@@ -32,6 +46,7 @@
         <div class="nav-links" id="nav-links">
           <a href="/#what">Features</a>
           <a href="/pricing/">Pricing</a>
+          <a href="/resources/">Resources</a>
           <a href="/contact/">Contact</a>
         </div>
         <div class="nav-actions">
@@ -123,7 +138,7 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
+        <span class="footer-legal">&copy; 2026 Vysible. All rights reserved.</span>
       </div>
     </div>
   </footer>
@@ -140,7 +155,10 @@
         var annualLabor = monthlyLabor * 12;
 
         var price = null, tier = "Multi-Client";
-        if (stores <= 1) { price = 149; tier = "Starter"; }
+        if (stores <= 1) {
+          if (monthlyLabor >= 299) { price = 299; tier = "Growth"; }
+          else { price = 149; tier = "Starter"; }
+        }
         else if (stores <= 3) { price = 499; tier = "Agency"; }
 
         var hoursTxt = monthlyHours.toFixed(monthlyHours < 10 ? 1 : 0);
@@ -169,5 +187,6 @@
       calc();
     })();
   </script>
+  <script src="/assets/js/main.js?v=sw3" defer></script>
 </body>
 </html>

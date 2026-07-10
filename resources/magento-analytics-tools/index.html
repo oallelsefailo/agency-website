@@ -16,14 +16,22 @@
     <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=synthesis-warm">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw3">
+    <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1VKLX3BRJ3');
+      window.vysLoadGA = function () {
+        if (document.getElementById('ga-js')) return;
+        var s = document.createElement('script');
+        s.id = 'ga-js'; s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'G-1VKLX3BRJ3');
+      };
+      try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
 </head>
 <body>
@@ -39,6 +47,7 @@
         <div class="nav-links" id="nav-links">
           <a href="/#what">Features</a>
           <a href="/pricing/">Pricing</a>
+          <a href="/resources/">Resources</a>
           <a href="/contact/">Contact</a>
         </div>
         <div class="nav-actions">
@@ -93,6 +102,14 @@
               <h2>Which approach fits your operation</h2>
               <p>If you run a single store and have someone who can keep a GA4-to-Looker pipeline healthy every week, the DIY stack is fine. If you run an agency, or your reporting has outgrown manual assembly, a Magento-native dashboard takes the recurring build time off your plate and gives you a steady weekly review.</p>
               <p>Vysible's Starter tier is $149/month with GA4, Search Console, and Magento connected, six AI insights per brief, and six review targets. Growth and Agency add white-label delivery, deeper AI coverage, and dedicated support. Setup is on us: you grant Google Viewer access and run one SQL command for the Magento connection, and the dashboard is usually live within a business day.</p>
+
+              <h2>More Magento analytics resources</h2>
+              <ul>
+                <li><a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics: What Native Reporting Misses</a></li>
+                <li><a href="/resources/magento-business-intelligence/">Magento Business Intelligence: What It Covers and What It Misses</a></li>
+                <li><a href="/resources/magento-reporting-dashboard/">Magento 2 Reporting Dashboard: What to Track</a></li>
+                <li><a href="/roi-calculator/">ROI Calculator: what manual reporting costs you</a></li>
+              </ul>
           </article>
         </div>
       </div>
@@ -149,11 +166,11 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <span class="footer-legal">2026 Vysible. All rights reserved.</span>
+        <span class="footer-legal">&copy; 2026 Vysible. All rights reserved.</span>
       </div>
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=synthesis-warm" defer></script>
+  <script src="/assets/js/main.js?v=sw3" defer></script>
 </body>
 </html>
