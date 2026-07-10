@@ -447,6 +447,8 @@ body.lightbox-open{overflow:hidden}
   .feat8 .fgrid{grid-template-columns:1fr;gap:30px}
   .feat8.rev .fgrid{grid-template-columns:1fr}
   .feat8.rev .fgrid .stage8{order:0}
+  /* cap stage cards in single-column mode so ~480px-wide screenshots don't upscale and pixelate */
+  .feat8 .fgrid .stage8{width:100%;max-width:480px;margin:0 auto}
   #thinks .cgrid{grid-template-columns:1fr;gap:34px}
   .formcard .stagewrap{height:300px}
   .specgrid{grid-template-columns:1fr 1fr}
@@ -459,9 +461,4 @@ body.lightbox-open{overflow:hidden}
 }
 @media(max-width:620px){
   .plans{grid-template-columns:1fr}
-  .specgrid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  .demo-note-grid{grid-template-columns:1fr}
-  .cta-inner{padding:40px 26px}
-  .fincard{padding:70px 24px 84px}
-}
+  .specgrid{grid-template-
