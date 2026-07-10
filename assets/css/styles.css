@@ -461,4 +461,9 @@ body.lightbox-open{overflow:hidden}
 }
 @media(max-width:620px){
   .plans{grid-template-columns:1fr}
-  .specgrid{grid-template-
+  .specgrid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .demo-note-grid{grid-template-columns:1fr}
+  .cta-inner{padding:40px 26px}
+  .fincard{padding:70px 24px 84px}
+}
