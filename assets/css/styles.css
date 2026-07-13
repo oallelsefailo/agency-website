@@ -283,8 +283,13 @@ button{font-family:var(--font-body)}
 .formcard .lab{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#b09a80;z-index:5}
 
 /* A1 — reconcile beams */
-#a1 .srcrow{position:absolute;left:20px;top:26px;bottom:60px;display:flex;flex-direction:column;justify-content:space-around;z-index:3}
-#a1 .src{background:#fdfaf5;border:1.5px solid var(--line);border-radius:11px;padding:9px 15px;font-size:12px;font-weight:800}
+#a1 .srcrow{position:absolute;inset:0;z-index:3;pointer-events:none}
+/* cards sit at the same fractional coordinates as the stretched SVG beam endpoints
+   (right edge 29.5% = viewBox x177/600; centers 62/170/278 of 340 high) */
+#a1 .src{position:absolute;left:3.5%;width:26%;transform:translateY(-50%);background:#fdfaf5;border:1.5px solid var(--line);border-radius:11px;padding:9px 6px;font-size:12px;font-weight:800;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#a1 .src:nth-child(1){top:18.24%}
+#a1 .src:nth-child(2){top:50%}
+#a1 .src:nth-child(3){top:81.76%}
 #a1 svg{position:absolute;inset:0;width:100%;height:100%}
 #a1 .beam{fill:none;stroke-width:2.5;stroke-dasharray:7 7;animation:beamflow 1.1s linear infinite}
 @keyframes beamflow{to{stroke-dashoffset:-14}}
@@ -317,6 +322,10 @@ button{font-family:var(--font-body)}
 #b3 .mb2.b2m{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;color:#584f42;margin-top:10px}
 #b3 .mb2.b2m b{color:var(--coral-deep)}
 
+@media(max-width:620px){
+  #a1 .hub{width:72px;height:72px;font-size:12px}
+  #a1 .out{width:150px;right:10px}
+}
 @media(prefers-reduced-motion:reduce){
   #a1 .beam,#a1 .hub::after,#a1 .out .cur,#b1 .sky i,#b3 .mb2.u2 .cur3{animation:none}
   #a2 .sb{transition:none}
