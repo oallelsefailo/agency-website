@@ -17,7 +17,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=sw3">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw4">
+    <!-- A/B variant: resolved from the ab_variant cookie (set by the Cloudflare Worker)
+         or a ?ab=N query param for local testing. Must run before the GA loader so the
+         pageview itself carries the ab_variant property. -->
+    <script>
+      (function () {
+        var v = 0;
+        try {
+          var m = location.search.match(/[?&]ab=([0-2])\b/);
+          if (m) { v = +m[1]; }
+          else {
+            var c = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+            if (c) { v = +c[1]; }
+          }
+        } catch (e) {}
+        window.__AB_VARIANT = v;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('set', { 'ab_variant': String(v) });
+      })();
+    </script>
     <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
       window.vysLoadGA = function () {
@@ -222,10 +242,44 @@
           </div>
           <div style="margin-top:26px"><a class="btn btn-primary" href="/demo/">See Demo</a></div>
         </div>
-        <div class="formcard rv d1">
-          <div class="stagewrap">
-            <canvas id="stagecv" aria-hidden="true"></canvas>
-            <div class="actlabel" id="actlabel">RAW DATA POINTS</div>
+        <div class="rv d1" id="ab-thinks">
+          <!-- A/B TEST ZONE A: variant 0 = particle formations (control),
+               1 = A1 reconcile beams, 2 = A2 self-sorting bars -->
+          <div class="ab-variant" data-variant="0">
+            <div class="formcard">
+              <div class="stagewrap">
+                <canvas id="stagecv" aria-hidden="true"></canvas>
+                <div class="actlabel" id="actlabel">RAW DATA POINTS</div>
+              </div>
+            </div>
+          </div>
+          <div class="ab-variant" data-variant="1" hidden>
+            <div class="formcard" id="a1">
+              <div class="stg">
+                <svg viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="beam" stroke="#ef5b3b" d="M120 62 C 200 62, 210 170, 250 170"/>
+                  <path class="beam" stroke="#17a08b" d="M120 170 L 250 170" style="animation-delay:-.4s"/>
+                  <path class="beam" stroke="#f2a93b" d="M120 278 C 200 278, 210 170, 250 170" style="animation-delay:-.8s"/>
+                  <path class="beam" stroke="#e0709a" d="M330 170 L 380 170" style="animation-delay:-.2s"/>
+                </svg>
+                <div class="srcrow">
+                  <span class="src">GA4</span>
+                  <span class="src">Search Console</span>
+                  <span class="src">Magento</span>
+                </div>
+                <div class="hub">BRIEF</div>
+                <div class="out"><b id="a1grade">HEALTHY</b><span id="a1txt"></span><span class="cur" aria-hidden="true"></span></div>
+                <div class="lab">THREE SOURCES IN &middot; ONE READ OUT</div>
+              </div>
+            </div>
+          </div>
+          <div class="ab-variant" data-variant="2" hidden>
+            <div class="formcard" id="a2">
+              <div class="stg">
+                <div class="barfield" id="a2field"></div>
+                <div class="lab" id="a2lab">RANKING BY LEVERAGE&hellip;</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -293,16 +347,47 @@
       </div>
     </section>
 
-    <!-- FINALE -->
+    <!-- FINALE / A/B TEST ZONE B: variant 0 = living scatter (control),
+         1 = B1 breathing skyline, 2 = B3 chat sign-off -->
     <div id="finale">
-      <div class="fincard">
-        <canvas id="finalecv" aria-hidden="true"></canvas>
-        <div class="in">
-          <h2>Your data already knows the shape.<br>Come watch it form.</h2>
-          <div class="typed"><span id="fintype"></span><span class="cur" aria-hidden="true"></span></div>
-          <div class="ctas">
-            <a class="btn btn-primary" href="/demo/">See Demo</a>
-            <a class="btn btn-secondary" href="/contact/">Contact us</a>
+      <div class="cta-variant ab-variant" data-variant="0">
+        <div class="fincard">
+          <canvas id="finalecv" aria-hidden="true"></canvas>
+          <div class="in">
+            <h2>Your data already knows the shape.<br>Come watch it form.</h2>
+            <div class="typed"><span id="fintype"></span><span class="cur" aria-hidden="true"></span></div>
+            <div class="ctas">
+              <a class="btn btn-primary" href="/demo/">See Demo</a>
+              <a class="btn btn-secondary" href="/contact/">Contact us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-variant ab-variant" data-variant="1" hidden>
+        <div class="fincard" id="b1">
+          <div class="in">
+            <h2>Your data already knows the shape.<br>Come watch it form.</h2>
+            <div class="typed"><span id="b1type"></span><span class="cur" aria-hidden="true"></span></div>
+            <div class="ctas">
+              <a class="btn btn-primary" href="/demo/">See Demo</a>
+              <a class="btn btn-secondary" href="/contact/">Contact us</a>
+            </div>
+          </div>
+          <div class="sky" id="b1sky" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="cta-variant ab-variant" data-variant="2" hidden>
+        <div class="fincard" id="b3">
+          <div class="in">
+            <h2>One more question before you go.</h2>
+            <div class="minichat">
+              <div class="mb2 u2" id="b3q"><span class="tx"></span><span class="cur3" aria-hidden="true"></span></div>
+              <div class="mb2 b2m" id="b3a">In the demo. <b>Staged store, real product</b> - no signup needed.</div>
+            </div>
+            <div class="ctas">
+              <a class="btn btn-primary" href="/demo/">See Demo</a>
+              <a class="btn btn-secondary" href="/contact/">Contact us</a>
+            </div>
           </div>
         </div>
       </div>
@@ -348,7 +433,7 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=sw3" defer></script>
-  <script src="/assets/js/home.js?v=sw3" defer></script>
+  <script src="/assets/js/main.js?v=sw4" defer></script>
+  <script src="/assets/js/home.js?v=sw4" defer></script>
 </body>
 </html>

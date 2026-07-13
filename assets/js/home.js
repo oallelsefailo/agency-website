@@ -28,6 +28,30 @@
     document.addEventListener('visibilitychange', maybeStart);
   }
 
+  /* ============ A/B variant resolution ============ */
+  /* window.__AB_VARIANT is set by the inline head script (cookie ab_variant / ?ab=N). */
+  var AB = 0;
+  try { AB = parseInt(window.__AB_VARIANT, 10) || 0; } catch (e) {}
+  if (AB < 0 || AB > 2) AB = 0;
+  document.querySelectorAll('.ab-variant').forEach(function (el) {
+    el.hidden = el.dataset.variant !== String(AB);
+  });
+
+  /* generic looping type-writer (shared by CTA variants) */
+  function typeLoop(el, lines) {
+    if (!el) return;
+    if (prefersReducedMotion) { el.textContent = lines[0]; return; }
+    var i = 0, c = 0, d = false;
+    (function type() {
+      var w = lines[i];
+      el.textContent = w.slice(0, c);
+      if (!d && c < w.length) { c++; setTimeout(type, 40); }
+      else if (!d) { d = true; setTimeout(type, 2000); }
+      else if (c > 0) { c--; setTimeout(type, 13); }
+      else { d = false; i = (i + 1) % lines.length; setTimeout(type, 300); }
+    })();
+  }
+
   /* ============ typed "store says" line ============ */
   (function () {
     var says = document.getElementById('says');
@@ -130,7 +154,7 @@
   /* ============ PARTICLE FORMATIONS in "How it thinks" ============ */
   (function () {
     var cv = document.getElementById('stagecv');
-    if (!cv || prefersReducedMotion) return;
+    if (!cv || prefersReducedMotion || AB !== 0) return;
     var ctx = cv.getContext('2d');
     if (!ctx) return;
     function fit() { cv.width = cv.offsetWidth * 2; cv.height = cv.offsetHeight * 2; }
@@ -336,7 +360,7 @@
   /* ============ finale: warm living scatter w/ jagged trend ============ */
   (function () {
     var cv = document.getElementById('finalecv');
-    if (!cv || prefersReducedMotion) return;
+    if (!cv || prefersReducedMotion || AB !== 0) return;
     var ctx = cv.getContext('2d');
     if (!ctx) return;
     function fit() { cv.width = cv.offsetWidth * 2; cv.height = cv.offsetHeight * 2; }
@@ -391,7 +415,7 @@
   /* ============ finale typed line ============ */
   (function () {
     var fintype = document.getElementById('fintype');
-    if (!fintype) return;
+    if (!fintype || AB !== 0) return;
     var finL = ['free demo, staged store data - poke around all you like.', 'no signup. no sales deck. just the product.', 'your store has more to say. see the demo.'];
     if (prefersReducedMotion) { fintype.textContent = finL[0]; return; }
     var fi = 0, fc = 0, fd = false;
@@ -404,5 +428,116 @@
       else { fd = false; fi = (fi + 1) % finL.length; setTimeout(type, 300); }
     })();
   })();
+
+  /* ============ A/B variant animations (zones A and B) ============ */
+  var FINL = ['free demo, staged store data - poke around all you like.', 'no signup. no sales deck. just the product.', 'your store has more to say. see the demo.'];
+
+  if (AB === 1) {
+    /* A1: reconcile beams — graded insight types out */
+    (async function () {
+      var grade = document.getElementById('a1grade'), txt = document.getElementById('a1txt');
+      if (!grade || !txt) return;
+      var OUT = [
+        ['HEALTHY', 'var(--okd)', 'Revenue +12.4% vs prior - sources agree.'],
+        ['WATCH', '#8f610b', 'Conversion slipped 0.4 pts - traffic quality flagged.'],
+        ['HEALTHY', 'var(--okd)', 'AOV steady at $224 - mix is holding.']
+      ];
+      if (prefersReducedMotion) { txt.textContent = OUT[0][2]; return; }
+      var i = 0;
+      while (true) {
+        var o = OUT[i];
+        grade.textContent = o[0]; grade.style.color = o[1];
+        txt.textContent = '';
+        for (var c = 1; c <= o[2].length; c++) { txt.textContent = o[2].slice(0, c); await wait(26); }
+        await wait(2600);
+        i = (i + 1) % OUT.length;
+      }
+    })();
+
+    /* B1: breathing skyline + typed CTA line */
+    (function () {
+      var sky = document.getElementById('b1sky');
+      if (sky) {
+        var cols = ['#ef5b3b', '#f2a93b', '#17a08b', '#e0709a'];
+        for (var i = 0; i < 22; i++) {
+          var b = document.createElement('i');
+          b.style.cssText = 'height:' + Math.round(20 + Math.random() * 75) + '%;--lo:' + (.35 + Math.random() * .45).toFixed(2) + ';background:' + cols[i % 4] + ';animation-duration:' + (2.2 + Math.random() * 2).toFixed(2) + 's;animation-delay:-' + (Math.random() * 3).toFixed(2) + 's';
+          sky.appendChild(b);
+        }
+      }
+      typeLoop(document.getElementById('b1type'), FINL);
+    })();
+  }
+
+  if (AB === 2) {
+    /* A2: self-sorting bars — priorities reorder, top one flagged */
+    (async function () {
+      var field = document.getElementById('a2field'), lab = document.getElementById('a2lab');
+      if (!field || !lab) return;
+      var COLORS = ['#ef5b3b', '#f2a93b', '#17a08b', '#e0709a', '#c8401f', '#f2c94c'];
+      var bars = [];
+      for (var i = 0; i < 6; i++) {
+        var b = document.createElement('div');
+        b.className = 'sb';
+        b.style.background = COLORS[i];
+        b.innerHTML = '<span class="v"></span><span class="flag">TOP TARGET</span>';
+        field.appendChild(b); bars.push(b);
+      }
+      function setBars(vals) {
+        bars.forEach(function (b, i) {
+          b.style.height = vals[i] + '%';
+          b.querySelector('.v').textContent = vals[i];
+        });
+      }
+      if (prefersReducedMotion) {
+        setBars([82, 66, 51, 43, 31, 22]);
+        bars[0].querySelector('.flag').classList.add('on');
+        lab.textContent = 'TOP TARGET FLAGGED \u00B7 NEXT STEP ATTACHED';
+        return;
+      }
+      while (true) {
+        lab.textContent = 'NEW SIGNALS ARRIVING\u2026';
+        var vals = bars.map(function () { return 15 + Math.floor(Math.random() * 80); });
+        bars.forEach(function (b) { b.querySelector('.flag').classList.remove('on'); });
+        setBars(vals);
+        await wait(1900);
+        lab.textContent = 'RANKING BY LEVERAGE\u2026';
+        setBars(vals.slice().sort(function (a, b) { return b - a; }));
+        await wait(1300);
+        bars[0].querySelector('.flag').classList.add('on');
+        lab.textContent = 'TOP TARGET FLAGGED \u00B7 NEXT STEP ATTACHED';
+        await wait(2600);
+      }
+    })();
+
+    /* B3: chat sign-off loop */
+    (async function () {
+      var q = document.getElementById('b3q'), a = document.getElementById('b3a');
+      if (!q || !a) return;
+      var tx = q.querySelector('.tx');
+      var QS = ['Can I try it without signing up?', 'Is the demo really free?', 'What data does the demo use?'];
+      var AS = ['In the demo. <b>Staged store, real product</b> - no signup needed.',
+                'Completely. <b>No card, no signup</b> - just open it.',
+                'A <b>staged store</b> with realistic numbers - so you can click everything safely.'];
+      if (prefersReducedMotion) {
+        tx.textContent = QS[0];
+        q.classList.add('show'); a.classList.add('show');
+        return;
+      }
+      var i = 0;
+      while (true) {
+        a.classList.remove('show');
+        tx.textContent = '';
+        q.classList.add('show');
+        var w = QS[i];
+        for (var c = 1; c <= w.length; c++) { tx.textContent = w.slice(0, c); await wait(38); }
+        await wait(500);
+        a.innerHTML = AS[i];
+        a.classList.add('show');
+        await wait(3400);
+        i = (i + 1) % QS.length;
+      }
+    })();
+  }
 
 }());
