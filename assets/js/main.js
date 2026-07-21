@@ -277,6 +277,17 @@
             status.className = 'form-status visible success';
             status.textContent = 'Message sent. We will get back to you within one business day.';
             form.reset();
+            /* GA4 conversion event. ab_variant rides on the event payload itself
+               (read from the cookie at submit time) so A/B attribution works on
+               every page, independent of the homepage gtag('set') call. Only
+               fires when GA loaded, i.e. after cookie consent. */
+            if (window.gtag) {
+              var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+              window.gtag('event', 'generate_lead', {
+                form_page: location.pathname,
+                ab_variant: abm ? abm[1] : '0'
+              });
+            }
           } else {
             throw new Error('Submission failed');
           }
