@@ -97,6 +97,18 @@
               <h3>5. An AI brief that reads across sources</h3>
               <p>An executive brief should read GA4, Search Console, and Magento order data together and write the week up in plain English, with specifics: "Sessions are up 12% week over week, led by the Accessories category. The product page for SKU-4821 lost 34% of its organic impressions, worth checking whether a competitor launched a replacement." That comes from the connected data, not a fill-in-the-blank template.</p>
 
+              <h2>What about custom reports?</h2>
+              <p>When people search for custom Magento reports or a report builder, they usually mean one of two things. Either a developer writes a query or a module for a report the admin does not have, or someone exports CSVs and rebuilds the numbers in a spreadsheet every week. Both work. Both cost time every single time you need the answer.</p>
+              <p>This is most of what the chat in Vysible exists for. You type the report you want, like "revenue by category last quarter" or "orders over $500 this month", and it answers from your live order database. No SQL, no export, no ticket to a developer. One-off questions stop needing a build.</p>
+
+              <h2>Inventory and stock reporting</h2>
+              <p>Magento's admin will tell you the stock level of a product if you go look it up. What it is thin on is movement: which products are selling down toward zero, and which have not moved in months. Those are the two inventory questions that actually cost money when nobody asks them.</p>
+              <p>Because Vysible reads stock levels alongside order lines, the chat handles both. "Which products are low on stock" and "what has not sold in 90 days" are one-line questions instead of a spreadsheet exercise.</p>
+
+              <h2>Profit reporting</h2>
+              <p>Honest answer first: real profit reporting needs cost data, and that is where most Magento profit reports quietly fall apart. Magento has a cost field on products, but plenty of stores never fill it in, and no tool can report margin on costs that are not there.</p>
+              <p>If your cost data exists, revenue minus cost by product or category is a question the chat can answer. If it does not, the useful proxies are the revenue-side numbers the dashboard already tracks: average order value, discount rates, and refund rates. Fixing the cost data is worth it, but that is a catalog job, not a dashboard feature.</p>
+
               <h2>How Vysible packages these KPIs into one dashboard</h2>
               <p>Vysible connects GA4, Google Search Console, and Magento order data into one hosted dashboard built for the weekly Magento review. The executive overview gathers traffic, search visibility, revenue, and merchandising movement; the AI brief summarizes the evidence; the priority targets name the pages, products, and categories that need attention this week.</p>
               <p>Setup runs about a business day for a standard deployment. You grant Google Viewer access for GA4 and Search Console, run one SQL command to create a read-only Magento user, and Vysible handles the rest. The dashboard pulls live data on every load, with no warehouse, ETL, or maintenance to own.</p>
@@ -104,7 +116,8 @@
 
               <h2>More Magento analytics resources</h2>
               <ul>
-                <li><a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics: What Native Reporting Misses</a></li>
+                                <li><a href="/resources/adobe-commerce-intelligence-pricing/">Adobe Commerce Intelligence Pricing: What It Costs and When It Makes Sense</a></li>
+<li><a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics: What Native Reporting Misses</a></li>
                 <li><a href="/resources/magento-analytics-tools/">Best Magento Analytics Tools in 2026</a></li>
                 <li><a href="/resources/magento-business-intelligence/">Magento Business Intelligence: What It Covers and What It Misses</a></li>
                 <li><a href="/roi-calculator/">ROI Calculator: what manual reporting costs you</a></li>
@@ -156,11 +169,11 @@
           </div>
           <div class="footer-nav-group">
             <h5>Resources</h5>
+            <a href="/roi-calculator/">ROI Calculator</a>
             <a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics</a>
             <a href="/resources/magento-analytics-tools/">Magento Analytics Tools</a>
             <a href="/resources/magento-reporting-dashboard/">Magento Reporting Dashboard</a>
             <a href="/resources/magento-business-intelligence/">Magento Business Intelligence</a>
-            <a href="/roi-calculator/">ROI Calculator</a>
           </div>
         </nav>
       </div>
