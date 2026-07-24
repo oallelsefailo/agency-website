@@ -29,10 +29,33 @@
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
-        gtag('config', 'G-1VKLX3BRJ3');
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
       };
       try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Magento Reporting Dashboard",
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-24",
+    "author": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "publisher": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://vysible.io/resources/magento-reporting-dashboard/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://vysible.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://vysible.io/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Magento Reporting Dashboard", "item": "https://vysible.io/resources/magento-reporting-dashboard/" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -111,7 +134,7 @@
 
               <h2>How Vysible packages these KPIs into one dashboard</h2>
               <p>Vysible connects GA4, Google Search Console, and Magento order data into one hosted dashboard built for the weekly Magento review. The executive overview gathers traffic, search visibility, revenue, and merchandising movement; the AI brief summarizes the evidence; the priority targets name the pages, products, and categories that need attention this week.</p>
-              <p>Setup runs about a couple of business days for a standard deployment. You grant Google Viewer access for GA4 and Search Console, run one SQL command to create a read-only Magento user, and Vysible handles the rest. The dashboard pulls live data on every load, with no warehouse, ETL, or maintenance to own.</p>
+              <p>Setup runs about a business day for a standard deployment. You grant Google Viewer access for GA4 and Search Console, run one SQL command to create a read-only Magento user, and Vysible handles the rest. The dashboard pulls live data on every load, with no warehouse, ETL, or maintenance to own.</p>
               <p>For agencies, it runs under your brand, your logo, and your domain. The Agency tier at $499/month includes up to three client deployments with dedicated support, the full gpt-5.4 model, and custom domains.</p>
 
               <h2>More Magento analytics resources</h2>
@@ -186,5 +209,23 @@
   </footer>
 
   <script src="/assets/js/main.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
 </body>
 </html>

@@ -28,7 +28,7 @@
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
-        gtag('config', 'G-1VKLX3BRJ3');
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
       };
       try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
@@ -71,19 +71,19 @@
 
         <label style="display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;color:var(--text);">
           Hours per week spent pulling these sources into your weekly review
-          <input id="hours" type="number" min="0" step="0.5" value="3"
+          <input id="hours" type="number" min="0" max="40" step="0.5" value="3"
             style="font-size:16px;padding:10px 12px;border:1.5px solid var(--line,#efe4d7);border-radius:8px;background:var(--white,#fff);color:var(--text);">
         </label>
 
         <label style="display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;color:var(--text);">
           What an hour of that time is worth ($)
-          <input id="rate" type="number" min="0" step="5" value="50"
+          <input id="rate" type="number" min="0" max="500" step="5" value="50"
             style="font-size:16px;padding:10px 12px;border:1.5px solid var(--line,#efe4d7);border-radius:8px;background:var(--white,#fff);color:var(--text);">
         </label>
 
         <label style="display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;color:var(--text);">
           Number of stores you report on
-          <input id="stores" type="number" min="1" step="1" value="1"
+          <input id="stores" type="number" min="1" max="50" step="1" value="1"
             style="font-size:16px;padding:10px 12px;border:1.5px solid var(--line,#efe4d7);border-radius:8px;background:var(--white,#fff);color:var(--text);">
         </label>
       </div>
@@ -91,7 +91,7 @@
       <div id="result" style="margin-top:24px;padding:28px;border-radius:14px;background:rgba(239,91,59,0.06);border:1px solid rgba(239,91,59,0.22);"></div>
 
       <p style="font-size:13px;color:var(--muted,#9ca3af);margin-top:16px;line-height:1.5;">
-        Nothing here is guessed, the hours are yours. We turn your weekly hours into a monthly number (a month is about 4.3 weeks), then multiply by your hourly rate and the number of stores. This counts only the recurring time spent combining the sources, not the deep analysis you would still do inside the tools.
+        This is an estimate, not a quote. The hours and the hourly rate are yours; everything else is an assumption we have written down so you can argue with it. We treat a month as 4.3 weeks, assume a dashboard removes about 70% of the recurring time spent combining sources (you still have to read the thing), and include a typical $400 one-time setup fee in the year-one figure. It counts only that recurring assembly time, not the deeper analysis you would still do. Your own numbers will differ, and if the result looks too good it probably is.
       </p>
 
       <div style="margin-top:36px;text-align:center;">
@@ -147,20 +147,46 @@
 
   <script>
     (function () {
-      var fmt = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
+      // Assumptions, stated here and disclosed on the page. Changing one here
+      // must change the copy below the calculator too.
+      var WEEKS_PER_MONTH = 4.3;   // 52 / 12
+      var CAPTURE_RATE = 0.7;      // share of reporting time a dashboard removes
+      var SETUP_FEE = 400;         // typical one-time setup, spread over year one
+      var MAX_HOURS = 40, MAX_RATE = 500, MAX_STORES = 50;
+
+      var fmt = function (n) {
+        return (n < 0 ? "-$" : "$") + Math.round(Math.abs(n)).toLocaleString("en-US");
+      };
+
+      function clamp(id, lo, hi, isInt) {
+        var el = document.getElementById(id);
+        var raw = isInt ? parseInt(el.value, 10) : parseFloat(el.value);
+        if (isNaN(raw)) raw = lo;
+        var v = Math.min(hi, Math.max(lo, raw));
+        if (String(v) !== el.value && document.activeElement !== el) el.value = v;
+        return v;
+      }
+
+      var tracked = false;
+      function trackOnce() {
+        if (tracked || !window.gtag) return;
+        tracked = true;
+        window.gtag('event', 'roi_calculator_used', { form_page: location.pathname });
+      }
+
       function calc() {
-        var hours = Math.max(0, parseFloat(document.getElementById("hours").value) || 0);
-        var rate = Math.max(0, parseFloat(document.getElementById("rate").value) || 0);
-        var stores = Math.max(1, parseInt(document.getElementById("stores").value, 10) || 1);
-        var monthlyHours = hours * 4.3 * stores;
+        var hours = clamp("hours", 0, MAX_HOURS, false);
+        var rate = clamp("rate", 0, MAX_RATE, false);
+        var stores = clamp("stores", 1, MAX_STORES, true);
+        var monthlyHours = hours * WEEKS_PER_MONTH * stores;
         var monthlyLabor = monthlyHours * rate;
         var annualLabor = monthlyLabor * 12;
+        // Not all reporting time disappears. You still read the dashboard.
+        var recovered = monthlyLabor * CAPTURE_RATE;
 
-        var price = null, tier = "Multi-Client";
-        if (stores <= 1) {
-          if (monthlyLabor >= 299) { price = 299; tier = "Growth"; }
-          else { price = 149; tier = "Starter"; }
-        }
+        // Tier follows what you need, not what makes the number look good.
+        var price = null, tier = null;
+        if (stores <= 1) { price = 299; tier = "Growth"; }
         else if (stores <= 3) { price = 499; tier = "Agency"; }
 
         var hoursTxt = monthlyHours.toFixed(monthlyHours < 10 ? 1 : 0);
@@ -171,24 +197,56 @@
 
         var note = "";
         if (price !== null) {
-          var net = monthlyLabor - price;
-          if (net > 0) {
-            note = "Vysible " + tier + " is $" + price + "/mo, so you would free up roughly " + fmt(net) + "/month of that time for work that actually moves revenue.";
-          } else {
-            note = "At this volume your reporting time (" + fmt(monthlyLabor) + "/mo) is close to the " + tier + " price ($" + price + "/mo). The bigger win then is what the dashboard catches for you, like revenue gaps and tracking issues, not just the hours.";
+          // Year one includes the one-time setup fee. Month-by-month after that.
+          var yearOneCost = price * 12 + SETUP_FEE;
+          var yearOneRecovered = recovered * 12;
+          var net = yearOneRecovered - yearOneCost;
+          note = "Vysible " + tier + " is $" + price + "/mo. Assuming a dashboard removes about "
+               + Math.round(CAPTURE_RATE * 100) + "% of that recurring time (you still have to read it), "
+               + "you would recover roughly " + fmt(recovered) + "/month.";
+          note += "<br><br>Year one, including a typical " + fmt(SETUP_FEE) + " setup fee, that is "
+               + fmt(yearOneRecovered) + " recovered against " + fmt(yearOneCost) + " paid: "
+               + "<strong>" + fmt(net) + "</strong>.";
+          if (net <= 0) {
+            note += " On these numbers the time saving alone does not pay for it. "
+                 + "The case would have to rest on what the dashboard catches, like tracking "
+                 + "gaps or revenue drops you would otherwise miss, and that is not something "
+                 + "this calculator can put a number on.";
           }
         } else {
-          note = "Across " + stores + " stores that is " + fmt(monthlyLabor) + "/month in reporting time. The Agency and Multi-Client tiers are built for exactly this, so reach out for volume pricing.";
+          note = "Across " + stores + " stores that is " + fmt(monthlyLabor) + "/month in reporting time. "
+               + "Above three stores we quote per deployment, so get in touch and we will work it "
+               + "through with your actual numbers.";
         }
         html += '<div style="font-size:15px;line-height:1.55;margin-top:16px;padding-top:16px;border-top:1px solid var(--line,#efe4d7);color:var(--text);">' + note + '</div>';
         document.getElementById("result").innerHTML = html;
       }
       ["hours", "rate", "stores"].forEach(function (id) {
-        document.getElementById(id).addEventListener("input", calc);
+        var el = document.getElementById(id);
+        el.addEventListener("input", function () { calc(); trackOnce(); });
+        el.addEventListener("blur", calc);
       });
       calc();
     })();
   </script>
   <script src="/assets/js/main.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
 </body>
 </html>

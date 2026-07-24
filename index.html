@@ -49,7 +49,7 @@
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
-        gtag('config', 'G-1VKLX3BRJ3');
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
       };
       try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
@@ -133,9 +133,9 @@
       <div class="wrap">
         <span class="eyebrow rv">WHAT YOU'RE BUYING</span>
         <h2 class="rv">Three tools' worth of clarity, one login</h2>
-        <p class="lead rv">Hosted by us, connected read-only to your sources and usually live within a couple of business days. Nothing to install, nothing to maintain.</p>
+        <p class="lead rv">Hosted by us, connected read-only to your sources and usually live within a business day. Nothing to install, nothing to maintain.</p>
         <div class="trio7">
-          <div class="tc7 rv"><div class="n8" style="background:var(--coral)">1</div><b>Connect your three sources</b><p>GA4 and Search Console link in minutes. Magento needs a read-only database user from your host or developer, which is usually same day.</p><div class="spec8">Live within a couple of business days</div></div>
+          <div class="tc7 rv"><div class="n8" style="background:var(--coral)">1</div><b>Connect your three sources</b><p>GA4 and Search Console link in minutes. Magento needs a read-only database user from your host or developer, which is usually same day.</p><div class="spec8">Live within a business day</div></div>
           <div class="tc7 rv d1"><div class="n8" style="background:var(--teal)">2</div><b>Get briefed every morning</b><p>Up to 12 insights graded healthy / watch / act, each citing the exact metric behind it, with a suggested next review.</p><div class="spec8">Refresh on demand, up to 100&times;/hour</div></div>
           <div class="tc7 rv d2"><div class="n8" style="background:var(--amber)">3</div><b>Act and ask</b><p>Work a ranked target queue with next steps included, then ask the chat anything your database knows.</p><div class="spec8">Answers in seconds, not CSVs</div></div>
         </div>
@@ -437,5 +437,23 @@
 
   <script src="/assets/js/main.js?v=sw5" defer></script>
   <script src="/assets/js/home.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
 </body>
 </html>

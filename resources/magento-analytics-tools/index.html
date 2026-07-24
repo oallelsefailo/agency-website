@@ -29,10 +29,33 @@
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
-        gtag('config', 'G-1VKLX3BRJ3');
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
       };
       try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Magento Analytics Tools",
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-24",
+    "author": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "publisher": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://vysible.io/resources/magento-analytics-tools/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://vysible.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://vysible.io/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Magento Analytics Tools", "item": "https://vysible.io/resources/magento-analytics-tools/" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -101,7 +124,7 @@
 
               <h2>Which approach fits your operation</h2>
               <p>If you run a single store and have someone who can keep a GA4-to-Looker pipeline healthy every week, the DIY stack is fine. If you run an agency, or your reporting has outgrown manual assembly, a Magento-native dashboard takes the recurring build time off your plate and gives you a steady weekly review.</p>
-              <p>Vysible's Starter tier is $149/month with GA4, Search Console, and Magento connected, six AI insights per brief, and six review targets. Growth and Agency add white-label delivery, deeper AI coverage, and dedicated support. Setup is on us: you grant Google Viewer access and run one SQL command for the Magento connection, and the dashboard is usually live within a couple of business days.</p>
+              <p>Vysible's Starter tier is $149/month with GA4, Search Console, and Magento connected, six AI insights per brief, and six review targets. Growth and Agency add white-label delivery, deeper AI coverage, and dedicated support. Setup is on us: you grant Google Viewer access and run one SQL command for the Magento connection, and the dashboard is usually live within a business day.</p>
 
               <h2>More Magento analytics resources</h2>
               <ul>
@@ -175,5 +198,23 @@
   </footer>
 
   <script src="/assets/js/main.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
 </body>
 </html>

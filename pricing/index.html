@@ -29,7 +29,7 @@
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
-        gtag('config', 'G-1VKLX3BRJ3');
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
       };
       try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
@@ -161,6 +161,20 @@
   ]
 }
     </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Vysible",
+    "description": "Hosted analytics dashboard for Magento and Adobe Commerce stores, blending GA4, Search Console and live order data with an AI executive brief.",
+    "brand": { "@type": "Brand", "name": "Vysible" },
+    "offers": [
+      { "@type": "Offer", "name": "Starter", "price": "149", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://vysible.io/pricing/" },
+      { "@type": "Offer", "name": "Growth", "price": "299", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://vysible.io/pricing/" },
+      { "@type": "Offer", "name": "Agency", "price": "499", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://vysible.io/pricing/" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -353,9 +367,9 @@
               </tr>
               <tr>
                 <td>Support</td>
-                <td>Email, 2 business days</td>
-                <td class="col-rec">Priority email, 1 business day</td>
-                <td>Dedicated email, 1 business day</td>
+                <td>Email, 1 business day</td>
+                <td class="col-rec">Priority email</td>
+                <td>Dedicated email</td>
                 <td>Dedicated + onboarding</td>
               </tr>
               <tr>
@@ -625,5 +639,23 @@
   </footer>
 
   <script src="/assets/js/main.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
 </body>
 </html>

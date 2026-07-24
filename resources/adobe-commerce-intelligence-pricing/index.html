@@ -29,10 +29,33 @@
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
-        gtag('config', 'G-1VKLX3BRJ3');
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
       };
       try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Adobe Commerce Intelligence Pricing",
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-24",
+    "author": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "publisher": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://vysible.io/resources/adobe-commerce-intelligence-pricing/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://vysible.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://vysible.io/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Adobe Commerce Intelligence Pricing", "item": "https://vysible.io/resources/adobe-commerce-intelligence-pricing/" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -96,7 +119,7 @@
               <h2>Alternatives worth knowing about</h2>
               <p><strong>Build it yourself.</strong> GA4 plus Looker Studio costs nothing in licenses. You own the plumbing, the connectors, and the maintenance, and getting order-line detail out of your Magento database into it is its own project. The licenses cost nothing. Your time is another story.</p>
               <p><strong>General BI tools.</strong> Power BI or Metabase pointed at a read replica of your database. Cheaper licenses than Adobe, very flexible, and still needs someone to build the dashboards and keep them honest.</p>
-              <p><strong>Vysible.</strong> Our tool, so weigh this paragraph accordingly. It connects GA4, Search Console, and your Magento order database into one hosted dashboard, writes a plain English brief on what changed each week, and has a chat where you type questions like "top products last month" and get answers from your live data. Plans run $149 to $499 a month, setup takes about a couple of business days, and there is nothing to build or maintain. It is not a warehouse and it does not try to be. It is the weekly operating view.</p>
+              <p><strong>Vysible.</strong> Our tool, so weigh this paragraph accordingly. It connects GA4, Search Console, and your Magento order database into one hosted dashboard, writes a plain English brief on what changed each week, and has a chat where you type questions like "top products last month" and get answers from your live data. Plans run $149 to $499 a month, setup takes about a business day, and there is nothing to build or maintain. It is not a warehouse and it does not try to be. It is the weekly operating view.</p>
 
               <h2>The short version</h2>
               <p>If you have the analyst and the enterprise budget, Adobe Commerce Intelligence is a legitimate tool and you should get the quote and evaluate it properly. If what you actually want is to open one page on Monday and know how the store is doing and what needs attention, you can get that without a sales cycle, for a price that is on a public pricing page.</p>
@@ -173,5 +196,23 @@
   </footer>
 
   <script src="/assets/js/main.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
 </body>
 </html>

@@ -29,10 +29,33 @@
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
-        gtag('config', 'G-1VKLX3BRJ3');
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
       };
       try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Adobe Commerce Analytics",
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-24",
+    "author": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "publisher": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://vysible.io/resources/adobe-commerce-analytics/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://vysible.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://vysible.io/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Adobe Commerce Analytics", "item": "https://vysible.io/resources/adobe-commerce-analytics/" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -86,7 +109,7 @@
 
               <h2>How to fill the gap without building a custom stack</h2>
               <p>Most teams go one of two ways: build a custom pipeline, or connect a Magento-native dashboard. The build route means piping GA4 into Looker Studio or a warehouse, pulling Search Console through a connector, and layering all of it over Adobe Commerce order exports. It works, until it doesn't. APIs change, fields drift, schemas move, and whoever built the thing quietly becomes the person everyone depends on.</p>
-              <p>Vysible is the connect route. It brings GA4, Search Console, and Adobe Commerce order data into one hosted dashboard with no warehouse, no ETL, and no analytics hire. You grant Google Viewer access, create a read-only database user, and we handle the setup. Most standard deployments are live within a couple of business days.</p>
+              <p>Vysible is the connect route. It brings GA4, Search Console, and Adobe Commerce order data into one hosted dashboard with no warehouse, no ETL, and no analytics hire. You grant Google Viewer access, create a read-only database user, and we handle the setup. Most standard deployments are live within a business day.</p>
 
               <h2>What the connected dashboard delivers</h2>
               <p>Once it is connected, you get the traffic, search, and revenue context the native reporting leaves out.</p>
@@ -171,5 +194,23 @@
   </footer>
 
   <script src="/assets/js/main.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
 </body>
 </html>

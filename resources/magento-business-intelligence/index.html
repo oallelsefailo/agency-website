@@ -29,10 +29,33 @@
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
-        gtag('config', 'G-1VKLX3BRJ3');
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
       };
       try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
     </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Magento Business Intelligence",
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-24",
+    "author": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "publisher": { "@type": "Organization", "name": "Vysible", "url": "https://vysible.io/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://vysible.io/resources/magento-business-intelligence/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://vysible.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://vysible.io/resources/" },
+      { "@type": "ListItem", "position": 3, "name": "Magento Business Intelligence", "item": "https://vysible.io/resources/magento-business-intelligence/" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -91,7 +114,7 @@
               <p><strong>A weekly read.</strong> One summary that connects traffic, search, and revenue, instead of three tools you check separately and stitch together by hand before every review.</p>
 
               <h2>Getting BI plus the rest in one view</h2>
-              <p>Vysible connects GA4, Search Console, and your Magento order data into one hosted dashboard. It is not built to replace deep cohort or margin analysis, that is what a full BI tool is for. It is the weekly operating view that sits on top, so your review starts with traffic, search, revenue, and a plain English brief in one place, plus a short list of pages and products worth a closer look. The connection is read-only and most stores are live within a couple of business days.</p>
+              <p>Vysible connects GA4, Search Console, and your Magento order data into one hosted dashboard. It is not built to replace deep cohort or margin analysis, that is what a full BI tool is for. It is the weekly operating view that sits on top, so your review starts with traffic, search, revenue, and a plain English brief in one place, plus a short list of pages and products worth a closer look. The connection is read-only and most stores are live within a business day.</p>
 
               <h2>Does this replace Adobe Commerce Intelligence?</h2>
               <p>No, it complements it. Keep your BI tool for the deep customer and margin work it is good at. Vysible covers the weekly cross-source view it was never meant to handle, so you are not bouncing between BI, GA4, and Search Console to figure out how the week actually went.</p>
@@ -168,5 +191,23 @@
   </footer>
 
   <script src="/assets/js/main.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
 </body>
 </html>
