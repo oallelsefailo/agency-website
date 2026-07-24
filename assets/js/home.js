@@ -1,4 +1,4 @@
-/* Vysible homepage animations — ported from option-47-synthesis-warm */
+/* Vysible homepage animations */
 (function () {
   'use strict';
 
@@ -76,7 +76,7 @@
     var HC = [
       { q: 'How did we do yesterday?', a: 'Yesterday looked solid overall.<br>Revenue: <b>$4,870</b> · Orders: <b>22</b> · AOV: <b>$221</b><br>Top seller: <b>Canvas Travel Tote</b>.<br>Want it broken down by products, coupons, or refunds?' },
       { q: 'What should I fix first?', a: "One thing: <b>conversion on your top product pages</b>. You're pulling <b>18,420 sessions</b> but converting <b>3.2%</b> - improving browse &rarr; cart &rarr; checkout lifts revenue fastest." },
-      { q: "What's my AOV?", a: 'Your average order value is about <b>$223</b>.' }
+      { q: "What's my AOV?", a: 'Your average order value is about <b>$221</b>.' }
     ];
 
     if (prefersReducedMotion) {
@@ -258,7 +258,7 @@
     }
   }
   var TK8 = [
-    ['Review /collections/sale — title & meta', 'hi'],
+    ['Review /collections/sale title & meta', 'hi'],
     ['Check DEMO-CARDIGAN placement', 'hi'],
     ['Compare paid landing pages', 'md'],
     ['Confirm AOV vs promo calendar', 'md']
@@ -433,7 +433,7 @@
   var FINL = ['free demo, staged store data - poke around all you like.', 'no signup. no sales deck. just the product.', 'your store has more to say. see the demo.'];
 
   if (AB === 1) {
-    /* A1: reconcile beams — graded insight types out */
+    /* A1: reconcile beams, graded insight types out */
     (async function () {
       var grade = document.getElementById('a1grade'), txt = document.getElementById('a1txt');
       if (!grade || !txt) return;
@@ -470,7 +470,7 @@
   }
 
   if (AB === 2) {
-    /* A2: self-sorting bars — priorities reorder, top one flagged */
+    /* A2: self-sorting bars, priorities reorder, top one flagged */
     (async function () {
       var field = document.getElementById('a2field'), lab = document.getElementById('a2lab');
       if (!field || !lab) return;

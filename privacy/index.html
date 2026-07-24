@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=sw6">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw7">
     <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
       window.vysLoadGA = function () {
@@ -143,7 +143,7 @@
               <p>Cloudflare provides hosting, network security, and access-control infrastructure for the dashboard. The public demo requires no account or email address. Where access authentication is used for live client deployments, Cloudflare processes the email addresses entered at sign-in.</p>
               <p>These providers process information only as needed to support Vysible operations and do not receive data beyond what is required for their specific function.</p>
               <p>OpenAI does not train on API inputs submitted through Vysible.</p>
-              <p>AI Chat answers questions about a store's own Magento data. To generate a response, aggregated query results may be sent to OpenAI. Customer personal information - names, email addresses, postal addresses, and phone numbers - is never queried or sent to OpenAI. Individual customers are referenced only by an internal customer ID.</p>
+              <p>AI Chat answers questions about a store's own Magento data. To generate a response, the dashboard runs a read-only query against the store's database and sends the results of that query to OpenAI. Chat is restricted to reporting tables, and queries that name customer contact fields such as email addresses, names, or telephone numbers are rejected. Order records can still contain customer fields, so query results sent to OpenAI may include them. Vysible does not use customer contact information to produce any report, and OpenAI does not train on data submitted through the API.</p>
             </div>
 
             <div class="doc-section" id="data-retention">
@@ -214,9 +214,11 @@
             <h5>Resources</h5>
             <a href="/roi-calculator/">ROI Calculator</a>
             <a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics</a>
+            <a href="/resources/adobe-commerce-intelligence-pricing/">Adobe Commerce Intelligence Pricing</a>
             <a href="/resources/magento-analytics-tools/">Magento Analytics Tools</a>
             <a href="/resources/magento-reporting-dashboard/">Magento Reporting Dashboard</a>
             <a href="/resources/magento-business-intelligence/">Magento Business Intelligence</a>
+            <a href="/resources/">All resources</a>
           </div>
         </nav>
       </div>
@@ -226,6 +228,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=sw4" defer></script>
+  <script src="/assets/js/main.js?v=sw5" defer></script>
 </body>
 </html>
