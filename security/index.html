@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Security and Data Handling | Vysible</title>
+    <meta name="description" content="How Vysible connects to your Magento store, what it reads, what it never touches, and what leaves your systems. Written for the person who has to approve it.">
+    <link rel="canonical" href="https://vysible.io/security/">
+    <meta property="og:title" content="Security and Data Handling | Vysible">
+    <meta property="og:description" content="Read-only access, what we query, what is blocked, and what leaves your systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vysible.io/security/">
+    <meta property="og:image" content="https://vysible.io/screenshots/Exec-Overview-Light.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/screenshots/vysible-favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw9">
+    <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
+    <script>
+      window.vysLoadGA = function () {
+        if (document.getElementById('ga-js')) return;
+        var s = document.createElement('script');
+        s.id = 'ga-js'; s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1VKLX3BRJ3';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'G-1VKLX3BRJ3', { linker: { domains: ['vysible.io', 'demo.vysible.io', 'getvysible.com'] } });
+      };
+      try { if (localStorage.getItem('vys-consent') === 'granted') window.vysLoadGA(); } catch (e) {}
+    </script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Vysible home">
+          <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22">
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a href="/#what">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/resources/">Resources</a>
+          <a href="/contact/">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <a href="https://demo.vysible.io" class="btn btn-primary">See Demo</a>
+        </div>
+        <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="doc-page">
+      <div class="container">
+        <div class="doc-inner">
+
+          <!-- FIX 9: TOC updated to match privacy policy sections from index.txt -->
+          <aside class="doc-toc" aria-label="Table of contents">
+            <div class="doc-toc-label">On this page</div>
+            <nav>
+              <a href="#what-we-connect-to">What We Connect To</a>
+              <a href="#read-only">Read Only, Enforced Twice</a>
+              <a href="#what-we-query">What We Query</a>
+              <a href="#load">Load On Your Store</a>
+              <a href="#what-leaves">What Leaves Your Systems</a>
+              <a href="#where-it-lives">Where Your Deployment Lives</a>
+              <a href="#who-can-see">Who Can See The Dashboard</a>
+              <a href="#how-we-operate">How We Operate</a>
+              <a href="#what-we-do-not-have">What We Do Not Have</a>
+              <a href="#questions">Questions</a>
+            </nav>
+          </aside>
+
+          <!-- FIX 9: content replaced to match privacy policy copy from index.txt -->
+          <div class="doc-content">
+                        <div class="doc-meta">
+              <h1>Security and Data Handling</h1>
+              <span class="doc-updated">Updated July 27, 2026</span>
+            </div>
+
+            <p class="doc-lead">Vysible asks for read access to your commerce database. That is a bigger ask than most tools make, so this page explains exactly what that access does and does not allow, in enough detail that your developer or hosting provider can check it rather than take our word for it.</p>
+
+            <div class="doc-section" id="what-we-connect-to">
+              <div class="doc-section-title">What We Connect To</div>
+              <p>Three read-only connections, all of which you create and can revoke:</p>
+              <ul>
+                <li><strong>Your Magento database.</strong> A MySQL user with SELECT and nothing else, created by you or your host, on your Magento schema only.</li>
+                <li><strong>Google Analytics 4.</strong> Viewer access to one property, granted from your GA4 admin panel.</li>
+                <li><strong>Google Search Console.</strong> Read access to one property, granted from your Search Console settings.</li>
+              </ul>
+              <p>Nothing is installed on your store. There is no Magento extension, no module, no Composer package and no code running inside your application. Nothing to conflict with another extension, nothing to break during your next upgrade, and nothing to uninstall if you leave. You revoke access by dropping the database user and removing our Google access.</p>
+            </div>
+
+            <div class="doc-section" id="read-only">
+              <div class="doc-section-title">Read Only, Enforced Twice</div>
+              <p>The database account you create is granted SELECT and nothing else. That is the primary boundary and it is yours to verify. Running <code>SHOW GRANTS FOR 'dashboard'@'%';</code> should return only a GRANT SELECT line.</p>
+              <p>Independently of that, every connection Vysible opens begins with <code>SET SESSION TRANSACTION READ ONLY</code>, which means the MySQL engine itself rejects any INSERT, UPDATE, DELETE or schema change for the life of that connection. If the account were ever granted more than SELECT by mistake, writes would still fail.</p>
+              <p>We have no mechanism to write to your store. Not a disabled one. There is no code path in the product that issues a write.</p>
+            </div>
+
+            <div class="doc-section" id="what-we-query">
+              <div class="doc-section-title">What We Query, And What Is Blocked</div>
+              <p>Queries are restricted to Magento reporting tables: orders, order items, credit memos, products, categories, stock and reviews. Anything outside that set is refused.</p>
+              <p>Magento system and authentication tables are explicitly blocked, including admin_user, admin_passwords, core_config_data and the OAuth tables. A query naming any of them is rejected before it reaches your database.</p>
+              <p>Customer contact fields are blocked at the query layer. Names, email addresses, postal addresses, telephone numbers, dates of birth and tax identifiers cannot be selected. Against the two customer tables we go further and permit only an explicit list of non-personal columns, so a column added by a future Magento version or a third-party extension is refused by default rather than allowed by default.</p>
+              <p>Wildcard selects are refused entirely. A query cannot ask for every column and receive personal data it never named.</p>
+              <p>Individual customers appear only as an internal ID, and only where a count or an aggregate requires it.</p>
+            </div>
+
+            <div class="doc-section" id="load">
+              <div class="doc-section-title">Load On Your Store</div>
+              <p>A cold dashboard load runs a small number of aggregate queries over a single connection. Repeat views inside the cache window are served from memory and do not touch your database at all. The most expensive query, which resolves category revenue, is cached for an hour because category structure rarely changes.</p>
+              <p>Every query is bounded by a timeout, so a slow statement cannot sit holding a connection open on your server.</p>
+              <p>In practice a store with several people watching the dashboard generates a handful of aggregate queries every few minutes, not per click.</p>
+            </div>
+
+            <div class="doc-section" id="what-leaves">
+              <div class="doc-section-title">What Leaves Your Systems</div>
+              <p>We would rather be precise than reassuring here.</p>
+              <p>The AI executive brief and the priority review targets send aggregated metrics to OpenAI. Revenue totals, session counts, click through rates, category and product level revenue. No customer records.</p>
+              <p>AI Chat, on the Growth and Agency tiers, runs a read-only query against your database and sends the result to OpenAI so it can phrase the answer. Those results are subject to every restriction above, so they contain no customer contact information.</p>
+              <p>OpenAI does not train on data submitted through their API.</p>
+              <p>If the AI is unavailable, both the brief and the review targets fall back to a rule-based version built from the same numbers, so the dashboard still works.</p>
+              <p>Your Google and Magento credentials are never sent anywhere. They exist only in a configuration file on your deployment's server.</p>
+            </div>
+
+            <div class="doc-section" id="where-it-lives">
+              <div class="doc-section-title">Where Your Deployment Lives</div>
+              <p>Each client gets a separate deployment: its own process, its own service account on the operating system, its own configuration file and its own user database. One client's deployment cannot read another's configuration or data. Configuration files containing credentials are readable only by the service account for that one deployment.</p>
+              <p>Servers are hosted with Hetzner in Hillsboro, Oregon, United States. If you are in the EU or UK and need a data transfer agreement, ask and we will put one in place before go live.</p>
+              <p>Traffic is HTTPS only, with HSTS, a content security policy, and standard protective headers on every response.</p>
+              <p><strong>We do not store your commerce data.</strong> Orders are queried live and held in memory only long enough to render a view, then discarded. There is no copy of your database on our infrastructure and no historical archive of your orders. What we keep on disk is limited to your deployment's configuration and the list of email addresses authorised to sign in.</p>
+              <p>Disks are not encrypted at rest. We would rather tell you that than imply otherwise. The practical exposure is small because of what is not stored, described above.</p>
+            </div>
+
+            <div class="doc-section" id="who-can-see">
+              <div class="doc-section-title">Who Can See The Dashboard</div>
+              <p>Access is by one-time link sent to an email address you have authorised. There is no password to leak or reuse. Links expire after fifteen minutes and work once. Sessions last twenty four hours.</p>
+              <p>You control the seat list. Adding or removing a person, or changing their role, takes effect immediately and is recorded in an audit log visible to your administrators.</p>
+              <p>Each deployment answers only on its own hostname. A request for an unknown host is refused rather than served.</p>
+            </div>
+
+            <div class="doc-section" id="how-we-operate">
+              <div class="doc-section-title">How We Operate</div>
+              <p>Server access is by SSH key only. Password authentication is disabled. Failed attempts are rate limited and repeat offenders are blocked automatically.</p>
+              <p>Only the ports needed to serve the dashboard are open. Your database is never reachable from the internet through us. The connection runs outbound from our server to yours.</p>
+              <p>Security updates are applied automatically. Dependencies are pinned to exact versions and audited for known vulnerabilities before every release.</p>
+              <p>Deployment databases are backed up daily. Each backup is verified readable before it is kept, and encrypted with a key that does not exist on the server, so a copy of the disk yields nothing usable.</p>
+              <p>Every release runs an automated test suite covering the query restrictions described above, including specific tests for each way those restrictions have previously been bypassed.</p>
+            </div>
+
+            <div class="doc-section" id="what-we-do-not-have">
+              <div class="doc-section-title">What We Do Not Have</div>
+              <p>Vysible is a small operation and it would be strange to pretend otherwise.</p>
+              <p>We are not SOC 2 certified. If that is a hard requirement for you, we are not the right fit today and we would rather say so now.</p>
+              <p>A data processing agreement is available on request. We do not publish one because the terms depend on your jurisdiction.</p>
+              <p>We run on a single server with daily backups. There is no automatic failover. We do not offer an uptime guarantee, and our terms say so plainly.</p>
+              <p>If any of the above is a blocker, tell us. We would rather lose the deal than misrepresent what we run.</p>
+            </div>
+
+            <div class="doc-section" id="questions">
+              <div class="doc-section-title">Questions</div>
+              <p>If your security reviewer needs something not covered here, write to <a href="mailto:hello@vysible.io">hello@vysible.io</a> and we will answer it directly rather than send a form.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" aria-label="Vysible home">
+            <img src="/screenshots/vysible.png" alt="Vysible" width="78" height="22" loading="lazy">
+          </a>
+          <p class="footer-tagline">Ecommerce analytics for Magento 2 merchants and agencies.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-nav-group">
+            <h5>Product</h5>
+            <a href="/#what">Features</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="https://demo.vysible.io">See Demo</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Company</h5>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
+            <a href="/security/">Security</a>
+          </div>
+          <div class="footer-nav-group">
+            <h5>Resources</h5>
+            <a href="/roi-calculator/">ROI Calculator</a>
+            <a href="/resources/adobe-commerce-analytics/">Adobe Commerce Analytics</a>
+            <a href="/resources/adobe-commerce-intelligence-pricing/">Adobe Commerce Intelligence Pricing</a>
+            <a href="/resources/magento-analytics-tools/">Magento Analytics Tools</a>
+            <a href="/resources/magento-reporting-dashboard/">Magento Reporting Dashboard</a>
+            <a href="/resources/magento-business-intelligence/">Magento Business Intelligence</a>
+            <a href="/resources/">All resources</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-legal">&copy; 2026 Vysible. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js?v=sw5" defer></script>
+
+  <script>
+    // The demo is the most important conversion on this site and used to fire
+    // no event at all, so no campaign, page or variant could ever be credited
+    // for it. Consent-safe: no-op when GA never loaded.
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="demo.vysible.io"], a[href^="/demo/"]');
+        if (!a || !window.gtag) return;
+        var abm = document.cookie.match(/(?:^|;\s*)ab_variant=([0-2])\b/);
+        window.gtag('event', 'demo_open', {
+          link_url: a.getAttribute('href'),
+          form_page: location.pathname,
+          ab_variant: abm ? abm[1] : '0'
+        });
+      }, true);
+    }());
+  </script>
+</body>
+</html>

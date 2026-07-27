@@ -7,9 +7,6 @@
     <loc>https://vysible.io/contact/</loc>
   </url>
   <url>
-    <loc>https://vysible.io/demo/</loc>
-  </url>
-  <url>
     <loc>https://vysible.io/pricing/</loc>
   </url>
   <url>
@@ -38,5 +35,8 @@
   </url>
   <url>
     <loc>https://vysible.io/roi-calculator/</loc>
+  </url>
+  <url>
+    <loc>https://vysible.io/security/</loc>
   </url>
 </urlset>
