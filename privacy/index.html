@@ -137,10 +137,11 @@
               <ul>
                 <li>An analytics provider (Google) for the GA4 and Search Console connections</li>
                 <li>An AI provider (OpenAI) for the AI executive brief, review targets, and AI Chat</li>
+                <li>An email delivery provider (Resend) for dashboard sign-in links</li>
                 <li>Cloud hosting, network security, and DNS providers</li>
                 <li>A contact-form processing provider</li>
               </ul>
-              <p>Cloudflare provides hosting, network security, and access-control infrastructure for the dashboard. The public demo requires no account or email address. Where access authentication is used for live client deployments, Cloudflare processes the email addresses entered at sign-in.</p>
+              <p>Cloudflare provides DNS and network security for the dashboard. The public demo is open and requires no account or email address. Live client deployments sign in with a single-use link sent by email, and Resend processes the email address in order to deliver that link.</p>
               <p>These providers process information only as needed to support Vysible operations and do not receive data beyond what is required for their specific function.</p>
               <p>OpenAI does not train on API inputs submitted through Vysible.</p>
               <p>AI Chat answers questions about a store's own Magento data. To generate a response, the dashboard runs a read-only query against the store's database and sends the results of that query to OpenAI. Chat is restricted to reporting tables, and queries that name customer contact fields such as email addresses, names, or telephone numbers are rejected. Order records can still contain customer fields, so query results sent to OpenAI may include them. Vysible does not use customer contact information to produce any report, and OpenAI does not train on data submitted through the API.</p>

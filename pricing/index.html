@@ -51,7 +51,7 @@
       "name": "Is the login page fully white-labeled for Agency clients?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The dashboard itself is fully white-labeled -- your client sees only your branding, your domain, and no mention of Vysible. The one exception is the authentication gate, which runs through Vysible's access control infrastructure at auth.vysible.io. This is a brief, one-time step per session (sessions last 24 hours) before your client lands on the fully branded dashboard. For most agency deployments this is a non-issue."
+        "text": "The dashboard is fully white-labeled. Your client sees only your branding, your domain, and no mention of Vysible. Sign-in is a single-use link sent by email, and on Agency deployments that email can come from your own domain, so there is no Vysible-branded step anywhere in the flow. Sessions last 24 hours."
       }
     },
     {
@@ -107,7 +107,7 @@
       "name": "Does the AI brief use my customer data?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The AI brief sends metric summaries -- numbers like revenue totals, session counts, and CTR percentages -- to OpenAI. No customer names, emails, or personally identifiable information are included."
+        "text": "No. The AI brief sends metric summaries to OpenAI: numbers like revenue totals, session counts, and CTR percentages. No customer names, emails, or personally identifiable information are included."
       }
     },
     {
@@ -139,7 +139,7 @@
       "name": "Will I get access to newer AI models?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. When OpenAI releases a new full model, Agency tier deployments are updated first. When a mini or efficiency variant of that model becomes available, Starter and Growth tier deployments are updated. Everyone moves forward -- Agency always stays one step ahead. You will be notified before any change is made to your deployment."
+        "text": "Yes. When OpenAI releases a new full model, Agency tier deployments are updated first. When a mini or efficiency variant of that model becomes available, Starter and Growth tier deployments are updated. Everyone moves forward, and Agency always stays one step ahead. You will be notified before any change is made to your deployment."
       }
     },
     {
@@ -147,7 +147,7 @@
       "name": "Can multiple team members use the dashboard at the same time?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Multiple team members can use the dashboard simultaneously. AI refresh limits apply per dashboard deployment, so the full allowance is shared across your team rather than tracked per individual user. Dashboard access is managed at the subdomain level -- your account manager handles who gets access during onboarding."
+        "text": "Yes. Multiple team members can use the dashboard simultaneously. The monthly AI Chat allowance applies per dashboard deployment, so it is shared across your team rather than tracked per individual user. Seats are managed from the dashboard itself by an administrator on your team, up to your plan's limit."
       }
     },
     {
@@ -407,7 +407,7 @@
             </button>
             <div class="faq-body" role="region">
               <div class="faq-body-inner">
-                The dashboard itself is fully white-labeled -- your client sees only your branding, your domain, and no mention of Vysible. The one exception is the authentication gate, which runs through Vysible's access control infrastructure at auth.vysible.io. This is a brief, one-time step per session (sessions last 24 hours) before your client lands on the fully branded dashboard. For most agency deployments this is a non-issue.
+                The dashboard is fully white-labeled. Your client sees only your branding, your domain, and no mention of Vysible. Sign-in is a single-use link sent by email, and on Agency deployments that email can come from your own domain, so there is no Vysible-branded step anywhere in the flow. Sessions last 24 hours.
               </div>
             </div>
           </div>
@@ -491,7 +491,7 @@
             </button>
             <div class="faq-body" role="region">
               <div class="faq-body-inner">
-                No. The AI brief sends metric summaries -- numbers like revenue totals, session counts, and CTR percentages -- to OpenAI. No customer names, emails, or personally identifiable information are included.
+                No. The AI brief sends metric summaries to OpenAI: numbers like revenue totals, session counts, and CTR percentages. No customer names, emails, or personally identifiable information are included.
               </div>
             </div>
           </div>
@@ -543,7 +543,7 @@
             </button>
             <div class="faq-body" role="region">
               <div class="faq-body-inner">
-                Yes. When OpenAI releases a new full model, Agency tier deployments are updated first. When a mini or efficiency variant of that model becomes available, Starter and Growth tier deployments are updated. Everyone moves forward -- Agency always stays one step ahead. You will be notified before any change is made to your deployment.
+                Yes. When OpenAI releases a new full model, Agency tier deployments are updated first. When a mini or efficiency variant of that model becomes available, Starter and Growth tier deployments are updated. Everyone moves forward, and Agency always stays one step ahead. You will be notified before any change is made to your deployment.
               </div>
             </div>
           </div>
@@ -555,7 +555,7 @@
             </button>
             <div class="faq-body" role="region">
               <div class="faq-body-inner">
-                Yes. Multiple team members can use the dashboard simultaneously. AI refresh limits apply per dashboard deployment, so the full allowance is shared across your team rather than tracked per individual user. Dashboard access is managed at the subdomain level -- your account manager handles who gets access during onboarding.
+                Yes. Multiple team members can use the dashboard simultaneously. The monthly AI Chat allowance applies per dashboard deployment, so it is shared across your team rather than tracked per individual user. Seats are managed from the dashboard itself by an administrator on your team, up to your plan's limit.
               </div>
             </div>
           </div>
