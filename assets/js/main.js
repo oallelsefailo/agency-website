@@ -305,4 +305,62 @@
     });
   }());
 
+  /* ---- Table-of-contents scroll spy -------------------------------------
+     Highlights the current section in the sticky sidebar on /privacy/,
+     /terms/ and /security/. No-op on every other page, and on browsers
+     without IntersectionObserver the links simply stay unhighlighted. */
+  (function () {
+    var toc = document.querySelector('.doc-toc');
+    if (!toc || !('IntersectionObserver' in window)) return;
+
+    var links = [].slice.call(toc.querySelectorAll('a[href^="#"]'));
+    if (!links.length) return;
+
+    var byId = {};
+    var sections = [];
+    links.forEach(function (a) {
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (el) { byId[el.id] = a; sections.push(el); }
+    });
+    if (!sections.length) return;
+
+    var current = null;
+    function setActive(id) {
+      if (id === current || !byId[id]) return;
+      if (current && byId[current]) byId[current].classList.remove('active');
+      byId[id].classList.add('active');
+      current = id;
+    }
+
+    // Only the band just below the sticky header counts as "here", so one
+    // section is active at a time rather than every section on screen.
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-112px 0px -68% 0px', threshold: 0 });
+
+    sections.forEach(function (el) { observer.observe(el); });
+
+    // The last section is often too short to reach that band, so at the
+    // bottom of the page pin the highlight to it.
+    var atBottom = false;
+    window.addEventListener('scroll', function () {
+      var nearEnd = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 40);
+      if (nearEnd && !atBottom) { atBottom = true; setActive(sections[sections.length - 1].id); }
+      else if (!nearEnd) { atBottom = false; }
+    }, { passive: true });
+
+    // Clicking should feel immediate rather than waiting for the scroll.
+    links.forEach(function (a) {
+      a.addEventListener('click', function () {
+        setActive(a.getAttribute('href').slice(1));
+      });
+    });
+
+    // Deep link: highlight whatever the URL already points at.
+    if (location.hash && byId[location.hash.slice(1)]) setActive(location.hash.slice(1));
+    else setActive(sections[0].id);
+  }());
+
 }());
