@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=sw11">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw12">
     <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
       window.vysLoadGA = function () {
@@ -153,8 +153,7 @@
               <p>Each client gets a separate deployment: its own process, its own service account on the operating system, its own configuration file and its own user database. One client's deployment cannot read another's configuration or data. Configuration files containing credentials are readable only by the service account for that one deployment.</p>
               <p>Servers are hosted with Hetzner in Hillsboro, Oregon, United States. If you are in the EU or UK and need a data transfer agreement, ask and we will put one in place before go live.</p>
               <p>Traffic is HTTPS only, with HSTS, a content security policy, and standard protective headers on every response.</p>
-              <p><strong>We do not store your commerce data.</strong> Orders are queried live and held in memory only long enough to render a view, then discarded. There is no copy of your database on our infrastructure and no historical archive of your orders. What we keep on disk is limited to your deployment's configuration and the list of email addresses authorised to sign in.</p>
-              <p>Disks are not encrypted at rest. We would rather tell you that than imply otherwise. The practical exposure is small because of what is not stored, described above.</p>
+              <p><strong>We do not store your commerce data.</strong> Orders are queried live and held in memory only long enough to render a view, then discarded. There is no copy of your database on our infrastructure and no historical archive of your orders. What we keep on disk is limited to your deployment's configuration and the list of email addresses authorised to sign in, and those disks are not encrypted at rest.</p>
             </div>
 
             <div class="doc-section" id="who-can-see">
@@ -166,11 +165,9 @@
 
             <div class="doc-section" id="how-we-operate">
               <div class="doc-section-title">How We Operate</div>
-              <p>Server access is by SSH key only. Password authentication is disabled. Failed attempts are rate limited and repeat offenders are blocked automatically.</p>
-              <p>Only the ports needed to serve the dashboard are open. Your database is never reachable from the internet through us. The connection runs outbound from our server to yours.</p>
-              <p>Security updates are applied automatically. Dependencies are pinned to exact versions and audited for known vulnerabilities before every release.</p>
-              <p>Deployment databases are backed up daily. Each backup is verified readable before it is kept, and encrypted with a key that does not exist on the server, so a copy of the disk yields nothing usable.</p>
-              <p>Every release runs an automated test suite covering the query restrictions described above, including specific tests for each way those restrictions have previously been bypassed.</p>
+              <p>Administrative access to our infrastructure is restricted and key based. Security updates are applied automatically, and dependencies are pinned to exact versions and checked for known vulnerabilities before each release.</p>
+              <p>Your database is never reachable through us. The connection runs outbound from our server to yours, and is not proxied or exposed to anyone else.</p>
+              <p>Deployment databases are backed up daily, verified readable, and encrypted with a key that is not held on the server. Every release runs an automated test suite covering the query restrictions described above.</p>
             </div>
 
             <div class="doc-section" id="what-we-do-not-have">
