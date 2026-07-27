@@ -153,7 +153,7 @@
               <p>Each client gets a separate deployment: its own process, its own service account on the operating system, its own configuration file and its own user database. One client's deployment cannot read another's configuration or data. Configuration files containing credentials are readable only by the service account for that one deployment.</p>
               <p>Servers are hosted with Hetzner in Hillsboro, Oregon, United States. If you are in the EU or UK and need a data transfer agreement, ask and we will put one in place before go live.</p>
               <p>Traffic is HTTPS only, with HSTS, a content security policy, and standard protective headers on every response.</p>
-              <p><strong>We do not store your commerce data.</strong> Orders are queried live and held in memory only long enough to render a view, then discarded. There is no copy of your database on our infrastructure and no historical archive of your orders. What we keep on disk is limited to your deployment's configuration and the list of email addresses authorised to sign in, and those disks are not encrypted at rest.</p>
+              <p><strong>We do not store your commerce data.</strong> Orders are queried live and held in memory only for the cache window described above, a few minutes for most views and an hour for category revenue, then discarded. There is no copy of your database on our infrastructure and no historical archive of your orders. What we keep on disk is limited to your deployment's configuration and the list of email addresses authorised to sign in, and those disks are not encrypted at rest.</p>
             </div>
 
             <div class="doc-section" id="who-can-see">

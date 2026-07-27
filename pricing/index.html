@@ -91,7 +91,7 @@
       "name": "How is my store data protected?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "GA4 and Search Console are connected read-only via OAuth -- no passwords are stored and access can be revoked from your Google account at any time. The Magento connection uses a read-only database user with SELECT access only. The dashboard queries live sources on each load and does not store your data."
+        "text": "GA4 and Search Console are connected read-only. In most setups you add a Google service account as a viewer on the property, and you revoke it by removing that account. No passwords are stored either way. The Magento connection uses a read-only database user with SELECT access only. Results are held in memory briefly so repeat views do not hit your store again, and no copy of your data is kept."
       }
     },
     {
@@ -131,7 +131,7 @@
       "name": "What happens if I want to disconnect?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Revoke the GA4 and Search Console OAuth token from your Google account and drop the read-only Magento database user. Access is cut immediately. No connected source data, customer records, or order data is stored on Vysible infrastructure. Contact form submissions and deployment configuration are retained for a reasonable period following cancellation."
+        "text": "Remove our viewer access from your GA4 and Search Console properties, and drop the read-only Magento database user. Access is cut immediately. No connected source data, customer records, or order data is stored on Vysible infrastructure. Contact form submissions and deployment configuration are retained for a reasonable period following cancellation."
       }
     },
     {
@@ -470,7 +470,7 @@
             </button>
             <div class="faq-body" role="region">
               <div class="faq-body-inner">
-                GA4 and Search Console are connected read-only via OAuth -- no passwords are stored and access can be revoked from your Google account at any time. The Magento connection uses a read-only database user with SELECT access only. The dashboard queries live sources on each load and does not store your data.
+                GA4 and Search Console are connected read-only. In most setups you add a Google service account as a viewer on the property, and you revoke it by removing that account. No passwords are stored either way. The Magento connection uses a read-only database user with SELECT access only. Results are held in memory briefly so repeat views do not hit your store again, and no copy of your data is kept.
               </div>
             </div>
           </div>
@@ -534,7 +534,7 @@
             </button>
             <div class="faq-body" role="region">
               <div class="faq-body-inner">
-                Revoke the GA4 and Search Console OAuth token from your Google account and drop the read-only Magento database user. Access is cut immediately. No connected source data, customer records, or order data is stored on Vysible infrastructure. Contact form submissions and deployment configuration are retained for a reasonable period following cancellation.
+                Remove our viewer access from your GA4 and Search Console properties, and drop the read-only Magento database user. Access is cut immediately. No connected source data, customer records, or order data is stored on Vysible infrastructure. Contact form submissions and deployment configuration are retained for a reasonable period following cancellation.
               </div>
             </div>
           </div>
