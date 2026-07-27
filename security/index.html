@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=sw12">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw13">
     <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
       window.vysLoadGA = function () {
@@ -161,12 +161,13 @@
               <p>Access is by one-time link sent to an email address you have authorised. There is no password to leak or reuse. Links expire after fifteen minutes and work once. Sessions last twenty four hours.</p>
               <p>You control the seat list. Adding or removing a person, or changing their role, takes effect immediately and is recorded in an audit log visible to your administrators.</p>
               <p>Each deployment answers only on its own hostname. A request for an unknown host is refused rather than served.</p>
+              <p><strong>Vysible support holds an administrative account on every deployment</strong>, used for setup, debugging and incident response. That account signs in the same way yours do, and every sign-in appears in your audit log. On tiers with AI Chat it can run the same restricted, read-only queries your own users can, subject to every limit described above, and each query it runs is written to that same audit log. Vendor access should be as visible to you as anyone else's.</p>
             </div>
 
             <div class="doc-section" id="how-we-operate">
               <div class="doc-section-title">How We Operate</div>
               <p>Administrative access to our infrastructure is restricted and key based. Security updates are applied automatically, and dependencies are pinned to exact versions and checked for known vulnerabilities before each release.</p>
-              <p>Your database is never reachable through us. The connection runs outbound from our server to yours, and is not proxied or exposed to anyone else.</p>
+              <p>Your database is not exposed to anyone else. The connection runs outbound from our server to yours, and is not proxied, shared, or reachable from the public internet through us.</p>
               <p>Deployment databases are backed up daily, verified readable, and encrypted with a key that is not held on the server. Every release runs an automated test suite covering the query restrictions described above.</p>
             </div>
 
@@ -175,7 +176,7 @@
               <p>Vysible is a small operation and it would be strange to pretend otherwise.</p>
               <p>We are not SOC 2 certified. If that is a hard requirement for you, we are not the right fit today and we would rather say so now.</p>
               <p>A data processing agreement is available on request. We do not publish one because the terms depend on your jurisdiction.</p>
-              <p>We run on a single server with daily backups. There is no automatic failover. We do not offer an uptime guarantee, and our terms say so plainly.</p>
+              <p>We do not offer a contractual uptime guarantee, and our terms say so plainly. Deployments are backed up daily and restored from the most recent backup if one fails.</p>
               <p>If any of the above is a blocker, tell us. We would rather lose the deal than misrepresent what we run.</p>
             </div>
 
