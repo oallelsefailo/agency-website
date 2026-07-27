@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=sw9">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=sw10">
     <!-- Google Analytics loads only after cookie consent (banner lives in main.js) -->
     <script>
       window.vysLoadGA = function () {
@@ -97,7 +97,7 @@
               <div class="doc-section-title">What We Connect To</div>
               <p>Three read-only connections, all of which you create and can revoke:</p>
               <ul>
-                <li><strong>Your Magento database.</strong> A MySQL user with SELECT and nothing else, created by you or your host, on your Magento schema only.</li>
+                <li><strong>Your Magento database.</strong> A MySQL user with <code>SELECT</code> and nothing else, created by you or your host, on your Magento schema only.</li>
                 <li><strong>Google Analytics 4.</strong> Viewer access to one property, granted from your GA4 admin panel.</li>
                 <li><strong>Google Search Console.</strong> Read access to one property, granted from your Search Console settings.</li>
               </ul>
@@ -106,15 +106,26 @@
 
             <div class="doc-section" id="read-only">
               <div class="doc-section-title">Read Only, Enforced Twice</div>
-              <p>The database account you create is granted SELECT and nothing else. That is the primary boundary and it is yours to verify. Running <code>SHOW GRANTS FOR 'dashboard'@'%';</code> should return only a GRANT SELECT line.</p>
-              <p>Independently of that, every connection Vysible opens begins with <code>SET SESSION TRANSACTION READ ONLY</code>, which means the MySQL engine itself rejects any INSERT, UPDATE, DELETE or schema change for the life of that connection. If the account were ever granted more than SELECT by mistake, writes would still fail.</p>
+              <p>The database account you create is granted <code>SELECT</code> and nothing else. That is the primary boundary, and it is yours to verify rather than ours to assert. Run this against your own database:</p>
+
+              <span class="code-label">Verify the grant yourself</span>
+              <div class="code-block"><code>SHOW GRANTS FOR 'dashboard'@'%';</code></div>
+
+              <p>It should return a single <code>GRANT SELECT</code> line and nothing more. If it returns anything else, the account has more access than we need and you should narrow it.</p>
+
+              <p>Independently of that, every connection Vysible opens begins with this:</p>
+
+              <span class="code-label">Sent on every connection, before any query</span>
+              <div class="code-block"><code>SET SESSION TRANSACTION READ ONLY</code></div>
+
+              <p>Which means the MySQL engine itself rejects any <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code> or schema change for the life of that connection. If the account were ever granted more than <code>SELECT</code> by mistake, writes would still fail.</p>
               <p>We have no mechanism to write to your store. Not a disabled one. There is no code path in the product that issues a write.</p>
             </div>
 
             <div class="doc-section" id="what-we-query">
               <div class="doc-section-title">What We Query, And What Is Blocked</div>
               <p>Queries are restricted to Magento reporting tables: orders, order items, credit memos, products, categories, stock and reviews. Anything outside that set is refused.</p>
-              <p>Magento system and authentication tables are explicitly blocked, including admin_user, admin_passwords, core_config_data and the OAuth tables. A query naming any of them is rejected before it reaches your database.</p>
+              <p>Magento system and authentication tables are explicitly blocked, including <code>admin_user</code>, <code>admin_passwords</code>, <code>core_config_data</code> and the OAuth tables. A query naming any of them is rejected before it reaches your database.</p>
               <p>Customer contact fields are blocked at the query layer. Names, email addresses, postal addresses, telephone numbers, dates of birth and tax identifiers cannot be selected. Against the two customer tables we go further and permit only an explicit list of non-personal columns, so a column added by a future Magento version or a third-party extension is refused by default rather than allowed by default.</p>
               <p>Wildcard selects are refused entirely. A query cannot ask for every column and receive personal data it never named.</p>
               <p>Individual customers appear only as an internal ID, and only where a count or an aggregate requires it.</p>

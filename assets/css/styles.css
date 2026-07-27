@@ -538,3 +538,56 @@ body.lightbox-open{overflow:hidden}
   .cta-inner{padding:40px 26px}
   .fincard{padding:70px 24px 84px}
 }
+
+/* ---------------------------------------------------------------------------
+   Inline code and command blocks.
+   Used on /security/ where the reader is invited to verify claims by running
+   something. Previously unstyled, so it rendered as the browser default and
+   read as a typo rather than as a command.
+   --------------------------------------------------------------------------- */
+code{
+  font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace;
+  font-size:.875em;
+  background:rgba(239,91,59,.07);
+  border:1px solid rgba(239,91,59,.18);
+  color:var(--coral-deep);
+  padding:.1em .38em;
+  border-radius:5px;
+  font-weight:500;
+  white-space:nowrap;
+}
+
+.code-block{
+  position:relative;
+  font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace;
+  font-size:.9rem;
+  line-height:1.65;
+  background:#fbf5ec;
+  border:1px solid var(--line);
+  border-left:3px solid var(--coral);
+  border-radius:10px;
+  padding:15px 18px;
+  margin:14px 0 18px;
+  overflow-x:auto;
+  color:var(--ink);
+  -webkit-overflow-scrolling:touch;
+}
+.code-block code{
+  background:none;border:0;color:inherit;padding:0;
+  white-space:pre;font-size:inherit;font-weight:500;
+}
+.code-label{
+  display:block;
+  font-family:var(--font-body);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:7px;
+}
+
+@media (max-width:640px){
+  .code-block{font-size:.82rem;padding:13px 14px;}
+  code{white-space:normal;word-break:break-word;}
+}
